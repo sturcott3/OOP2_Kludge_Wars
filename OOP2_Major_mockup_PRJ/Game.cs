@@ -29,7 +29,9 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
 
-
+        //Might be better instead of having ABC buttons, just make each option a button. No label, just change button text.
+        //It will also have to be some sort of list box so we can dynamically fill it with buttons, rather than it being limited to 3.
+        //Also I'm sure you have ideas already, but we need to fill the bottom left some more.
         private void btnOption1_Click(object sender, EventArgs e)
         {
 
