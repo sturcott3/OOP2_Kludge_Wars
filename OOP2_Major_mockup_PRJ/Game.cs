@@ -24,7 +24,7 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_-_-_TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         private void btnDebug_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("IT WORKS", "Success");
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
