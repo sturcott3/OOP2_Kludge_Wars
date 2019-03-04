@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
-            this.lblOption1 = new System.Windows.Forms.Label();
-            this.lblOption2 = new System.Windows.Forms.Label();
-            this.lblOption3 = new System.Windows.Forms.Label();
             this.pbxViewScreen = new System.Windows.Forms.PictureBox();
             this.lblOutput = new System.Windows.Forms.Label();
             this.pnlHUD = new System.Windows.Forms.Panel();
@@ -46,9 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDebug = new System.Windows.Forms.Button();
-            this.btnOption1 = new System.Windows.Forms.Button();
-            this.btnOption2 = new System.Windows.Forms.Button();
-            this.btnOption3 = new System.Windows.Forms.Button();
             this.pnlInventory = new System.Windows.Forms.Panel();
             this.pbxInventory6 = new System.Windows.Forms.PictureBox();
             this.pbxInventory5 = new System.Windows.Forms.PictureBox();
@@ -56,6 +50,12 @@
             this.pbxInventory3 = new System.Windows.Forms.PictureBox();
             this.pbxInventory2 = new System.Windows.Forms.PictureBox();
             this.pbxInventory1 = new System.Windows.Forms.PictureBox();
+            this.fpnlChoices = new System.Windows.Forms.FlowLayoutPanel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewScreen)).BeginInit();
             this.pnlHUD.SuspendLayout();
             this.pnlInventory.SuspendLayout();
@@ -65,43 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory1)).BeginInit();
+            this.fpnlChoices.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblOption1
-            // 
-            this.lblOption1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblOption1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOption1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblOption1.Location = new System.Drawing.Point(420, 408);
-            this.lblOption1.Name = "lblOption1";
-            this.lblOption1.Size = new System.Drawing.Size(542, 36);
-            this.lblOption1.TabIndex = 21;
-            this.lblOption1.Text = "Option 1: Room for two lines of text because options might get long. Lorem ipsum " +
-    "sit dolor amet butts butts butts butts";
-            // 
-            // lblOption2
-            // 
-            this.lblOption2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblOption2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOption2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblOption2.Location = new System.Drawing.Point(420, 454);
-            this.lblOption2.Name = "lblOption2";
-            this.lblOption2.Size = new System.Drawing.Size(542, 35);
-            this.lblOption2.TabIndex = 22;
-            this.lblOption2.Text = "Option 2: Room for two lines of text because options might get long. Lorem ipsum " +
-    "sit dolor amet butts butts butts butts";
-            // 
-            // lblOption3
-            // 
-            this.lblOption3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblOption3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOption3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblOption3.Location = new System.Drawing.Point(420, 501);
-            this.lblOption3.Name = "lblOption3";
-            this.lblOption3.Size = new System.Drawing.Size(542, 35);
-            this.lblOption3.TabIndex = 23;
-            this.lblOption3.Text = "Option 3: Room for two lines of text because options might get long. Lorem ipsum " +
-    "sit dolor amet butts butts butts butts";
             // 
             // pbxViewScreen
             // 
@@ -267,48 +232,6 @@
             this.btnDebug.UseVisualStyleBackColor = true;
             this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
             // 
-            // btnOption1
-            // 
-            this.btnOption1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnOption1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOption1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOption1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnOption1.Location = new System.Drawing.Point(364, 408);
-            this.btnOption1.Name = "btnOption1";
-            this.btnOption1.Size = new System.Drawing.Size(50, 36);
-            this.btnOption1.TabIndex = 30;
-            this.btnOption1.Text = "A.";
-            this.btnOption1.UseVisualStyleBackColor = false;
-            this.btnOption1.Click += new System.EventHandler(this.btnOption1_Click);
-            // 
-            // btnOption2
-            // 
-            this.btnOption2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnOption2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOption2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOption2.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnOption2.Location = new System.Drawing.Point(364, 453);
-            this.btnOption2.Name = "btnOption2";
-            this.btnOption2.Size = new System.Drawing.Size(50, 36);
-            this.btnOption2.TabIndex = 31;
-            this.btnOption2.Text = "B.";
-            this.btnOption2.UseVisualStyleBackColor = false;
-            this.btnOption2.Click += new System.EventHandler(this.btnOption2_Click);
-            // 
-            // btnOption3
-            // 
-            this.btnOption3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnOption3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOption3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOption3.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnOption3.Location = new System.Drawing.Point(364, 500);
-            this.btnOption3.Name = "btnOption3";
-            this.btnOption3.Size = new System.Drawing.Size(50, 36);
-            this.btnOption3.TabIndex = 32;
-            this.btnOption3.Text = "C.";
-            this.btnOption3.UseVisualStyleBackColor = false;
-            this.btnOption3.Click += new System.EventHandler(this.btnOption3_Click);
-            // 
             // pnlInventory
             // 
             this.pnlInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -377,6 +300,98 @@
             this.pbxInventory1.TabIndex = 24;
             this.pbxInventory1.TabStop = false;
             // 
+            // fpnlChoices
+            // 
+            this.fpnlChoices.AutoScroll = true;
+            this.fpnlChoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
+            this.fpnlChoices.Controls.Add(this.button4);
+            this.fpnlChoices.Controls.Add(this.button1);
+            this.fpnlChoices.Controls.Add(this.button2);
+            this.fpnlChoices.Controls.Add(this.button3);
+            this.fpnlChoices.Controls.Add(this.button5);
+            this.fpnlChoices.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.fpnlChoices.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.fpnlChoices.Location = new System.Drawing.Point(368, 406);
+            this.fpnlChoices.Name = "fpnlChoices";
+            this.fpnlChoices.Size = new System.Drawing.Size(593, 133);
+            this.fpnlChoices.TabIndex = 34;
+            this.fpnlChoices.WrapContents = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.button4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button4.Location = new System.Drawing.Point(3, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(570, 38);
+            this.button4.TabIndex = 36;
+            this.button4.Text = "Option 1: Room for two lines of text because options might get long. Lorem ipsum " +
+    "sit dolor amet butts butts butts butts";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.Location = new System.Drawing.Point(3, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(570, 38);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Option 2: Room for two lines of text because options might get long. Lorem ipsum " +
+    "sit dolor amet butts butts butts butts";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button2.Location = new System.Drawing.Point(3, 91);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(570, 38);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Option 3: Room for two lines of text because options might get long. Lorem ipsum " +
+    "sit dolor amet butts butts butts butts";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button3.Location = new System.Drawing.Point(3, 135);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(570, 38);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "Option 4: Room for two lines of text because options might get long. Lorem ipsum " +
+    "sit dolor amet butts butts butts butts";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button5.Location = new System.Drawing.Point(3, 179);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(570, 38);
+            this.button5.TabIndex = 40;
+            this.button5.Text = "Option 5: Room for two lines of text because options might get long. Lorem ipsum " +
+    "sit dolor amet butts butts butts butts";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,17 +399,13 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::OOP2_Major_mockup_PRJ.Properties.Resources._947454_outer_space_wallpaper_dark_hd_wallpapers_1920x1200_h;
             this.ClientSize = new System.Drawing.Size(971, 545);
+            this.Controls.Add(this.fpnlChoices);
             this.Controls.Add(this.pnlInventory);
-            this.Controls.Add(this.btnOption3);
-            this.Controls.Add(this.btnOption2);
-            this.Controls.Add(this.btnOption1);
             this.Controls.Add(this.pnlHUD);
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.pbxViewScreen);
-            this.Controls.Add(this.lblOption3);
-            this.Controls.Add(this.lblOption2);
-            this.Controls.Add(this.lblOption1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Game";
             this.Text = "Kludge Wars: The Kludge Awakens";
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewScreen)).EndInit();
@@ -407,21 +418,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory1)).EndInit();
+            this.fpnlChoices.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblOption1;
-        private System.Windows.Forms.Label lblOption2;
-        private System.Windows.Forms.Label lblOption3;
         private System.Windows.Forms.PictureBox pbxViewScreen;
         private System.Windows.Forms.Label lblOutput;
         private System.Windows.Forms.Panel pnlHUD;
         private System.Windows.Forms.Button btnDebug;
-        private System.Windows.Forms.Button btnOption1;
-        private System.Windows.Forms.Button btnOption2;
-        private System.Windows.Forms.Button btnOption3;
         private System.Windows.Forms.Label lblFuel;
         private System.Windows.Forms.Label lblRepair;
         private System.Windows.Forms.Label lblHealth;
@@ -439,6 +445,12 @@
         private System.Windows.Forms.PictureBox pbxInventory3;
         private System.Windows.Forms.PictureBox pbxInventory2;
         private System.Windows.Forms.PictureBox pbxInventory1;
+        private System.Windows.Forms.FlowLayoutPanel fpnlChoices;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
     }
 }
 
