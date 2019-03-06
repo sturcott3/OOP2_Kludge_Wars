@@ -21,22 +21,18 @@ namespace OOP2_Major_mockup_PRJ
         private object[] optionThree = new object[6];
 
 
-        //Pieces of randomization
-        private string[] descriptions = new string[]
-        {
-            //when..
-            "you notice a ship on your scanner quickly approching you. Further scans indicate it's a",
-            "a figure startles you from behind, it's a"
-        };
+        //Pieces of randomization (Each will be made longer and more descriptive).
         private string[] locations = new string[]
         {
             //You are..
             "in the swamps of Rodia",
             "exploring the deserts of Tatooine"
         };
-        private Image[] images = new Image[]
+        private string[] descriptions = new string[]
         {
-
+            //when..
+            "you notice a ship on your scanner quickly approching you. Further scans indicate",
+            "a figure startles you from behind,"
         };
         private Entity[] entities = new Entity[]
         {
@@ -44,6 +40,10 @@ namespace OOP2_Major_mockup_PRJ
             //Name, Race, Level, Merchant Level, alwaysEnemy (optional), alwaysMerchant (optional)
             new Entity("Kludge Scout", "Kludge", 5, 0, true),
             new Entity("Merchant Droid", "Droid", 0, 6),
+        };
+        private Image[] images = new Image[]
+        {
+
         };
 
 
@@ -81,12 +81,13 @@ namespace OOP2_Major_mockup_PRJ
         public virtual void GenerateScenario()
         {
 
-            //Get location, description, and entity
+            //Get location, description, entity, and later .
             location = locations[rnd.Next(0, locations.Length)];
             description = descriptions[rnd.Next(0, descriptions.Length)];
             entity = entities[rnd.Next(0, entities.Length)];
 
             // Type randomization
+            //If the entity is a enemy, type = 1, if entity is a merchant, type = 2. If entity can be either, type is random.
             if (entity.GetEnemy())
             {
                 type = 1;
@@ -100,18 +101,21 @@ namespace OOP2_Major_mockup_PRJ
             }
 
             //Format description
-            description = "You are " + location + " when " + description + " " + entity.GetName() + ", " + (type == 1 ? "prepare for combat!" : "you approach the merchant.");
+            description = "You are " + location + " when " + description + " it's a " + entity.GetName() + ", " + (type == 1 ? "prepare for combat!" : "you approach the merchant.");
 
             //Options
+            //Each option will be made longer and more descriptive.
+            //Enemy
             if (type == 1) {
-                //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect
+                //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect.
                 optionOne[0] = "Fight";
                 optionTwo[0] = "Something else";
                 optionThree[0] = "Run";
             }
+            //Merchant
             else if (type == 2)
             {
-                //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect
+                //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect.
                 optionOne[0] = "Browse Items";
                 optionTwo[0] = "Something else";
                 optionThree[0] = "Leave";

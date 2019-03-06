@@ -15,15 +15,15 @@ namespace OOP2_Major_mockup_PRJ
         {
             //TEMPORARY string return
             //Later on it will call an output controller method
-
             scenario.GenerateScenario();
 
             return scenario.GetDescription();
         }
 
-        //TEMPORARY
+        //TEMPORARY will be handled in output controller.
         public object[][] RetrieveOptions()
         {
+            //For three options, the output controller should also hide the other two buttons, and the scrollbar.
             return scenario.GetOptions();
         }
     }

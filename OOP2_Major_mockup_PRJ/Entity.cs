@@ -8,10 +8,12 @@ namespace OOP2_Major_mockup_PRJ
 {
     class Entity
     {
+        //Define fields
         private string name, race;
         private int level, merchantLevel;
         private bool alwaysEnemy, alwaysMerchant;
 
+        //Entity creation constructor
         public Entity(string name, string race, int level, int merchantLevel, bool alwaysEnemy = false, bool alwaysMerchant = false)
         {
             this.name = name;

@@ -34,11 +34,13 @@ namespace OOP2_Major_mockup_PRJ
             btnOptionOne.Text = (string)options[0][0];
             btnOptionTwo.Text = (string)options[1][0];
             btnOptionThree.Text = (string)options[2][0];
+
+            //^^^ ALL TEMPORARY
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
         // InputController input = new InputController();
-
+        // OutputController output = new OutputController();
         ScenarioController scenarioController = new ScenarioController();
         
 
