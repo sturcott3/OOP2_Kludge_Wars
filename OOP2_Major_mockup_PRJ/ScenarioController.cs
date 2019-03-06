@@ -10,7 +10,6 @@ namespace OOP2_Major_mockup_PRJ
     {
         private Scenario scenario = new Scenario();
 
-
         public string StartScenario()
         {
             //TEMPORARY string return
@@ -23,7 +22,7 @@ namespace OOP2_Major_mockup_PRJ
         //TEMPORARY will be handled in output controller.
         public object[][] RetrieveOptions()
         {
-            //For three options, the output controller should also hide the other two buttons, and the scrollbar.
+            //For three options, the output controller should also hide the other two buttons, (possibly?//and the scrollbar).
             return scenario.GetOptions();
         }
     }

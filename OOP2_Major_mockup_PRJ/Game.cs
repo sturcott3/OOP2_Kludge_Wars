@@ -36,15 +36,25 @@ namespace OOP2_Major_mockup_PRJ
             btnOptionOne.Text = (string)options[0][0];
             btnOptionTwo.Text = (string)options[1][0];
             btnOptionThree.Text = (string)options[2][0];
-
+           
             //^^^ ALL TEMPORARY
+
+            
+            btnOptionFour.Text = optionsTest4.ToString();
+            btnOptionFive.Text = optionsTest5.ToString();
+            //^^^Also temp
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
         // InputController input = new InputController();
         // OutputController output = new OutputController();
         ScenarioController scenarioController = new ScenarioController();
-        
+
+        //<temp>
+        Option optionsTest4 = new Option("Combat", "Fight", "Ouch!, you took 3 damage", -3, 0, 0, 0);
+        Option optionsTest5 = new Option("Combat", "Run", "Got away, but took 1 damage", -1, 0, 0, 0);
+        //</temp>
+
 
         private void btnOptionOne_Click(object sender, EventArgs e)
         {
@@ -64,6 +74,10 @@ namespace OOP2_Major_mockup_PRJ
         private void btnOptionFour_Click(object sender, EventArgs e)
         {
             //input.MakeChoice(4);
+
+        //in this way, we get the bridge between inputController and outputController, and more expandable robust objects
+            //updateHUD(optionsTest4.getHealthEffect(),optionsTest4.getRepairEffect(),optionsTest4.getFuelEffect(),optionsTest4.getCreditEffect())
+            btnOptionFour.Text = optionsTest4.getPostClickText();
         }
 
         private void btnOptionFive_Click(object sender, EventArgs e)
