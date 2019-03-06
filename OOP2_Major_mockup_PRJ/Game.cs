@@ -24,35 +24,47 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_-_-_TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         private void btnDebug_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("IT WORKS", "Success");
+            //TEMPORARY, will be done in outputcontroller
+            lblOutput.Text = scenarioController.StartScenario();
+
+            //Need to cast because c# doesn't know what type each object is
+            //OptionOne (0), OptionTwo (1), OptionThree (2)
+            //Button Text (0), Post-Click text (1), health effect (2), shipHealth effect (3), fuel effect (4), money effect (5).
+            object[][] options = scenarioController.RetrieveOptions();
+            btnOptionOne.Text = (string)options[0][0];
+            btnOptionTwo.Text = (string)options[1][0];
+            btnOptionThree.Text = (string)options[2][0];
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
         // InputController input = new InputController();
 
+        ScenarioController scenarioController = new ScenarioController();
+        
+
         private void btnOptionOne_Click(object sender, EventArgs e)
         {
-            //input.OptionOne();
+            //input.MakeChoice(1);
         }
 
         private void btnOptionTwo_Click(object sender, EventArgs e)
         {
-            //input.OptionTwo();
+            //input.MakeChoice(2);
         }
 
         private void btnOptionThree_Click(object sender, EventArgs e)
         {
-            //input.OptionThree();
+            //input.MakeChoice(3);
         }
 
         private void btnOptionFour_Click(object sender, EventArgs e)
         {
-            //input.OptionFour();
+            //input.MakeChoice(4);
         }
 
         private void btnOptionFive_Click(object sender, EventArgs e)
         {
-            //input.OptionFive();
+            //input.MakeChoice(5);
         }
     }
 }
