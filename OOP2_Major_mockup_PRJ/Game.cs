@@ -30,6 +30,8 @@ namespace OOP2_Major_mockup_PRJ
             //Need to cast because c# doesn't know what type each object is
             //OptionOne (0), OptionTwo (1), OptionThree (2)
             //Button Text (0), Post-Click text (1), health effect (2), shipHealth effect (3), fuel effect (4), money effect (5).
+
+            //I think we can resolve this issue by defining class Option and overriding .ToString()..... 
             object[][] options = scenarioController.RetrieveOptions();
             btnOptionOne.Text = (string)options[0][0];
             btnOptionTwo.Text = (string)options[1][0];
