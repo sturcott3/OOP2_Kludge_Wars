@@ -51,11 +51,11 @@
             this.pbxInventory2 = new System.Windows.Forms.PictureBox();
             this.pbxInventory1 = new System.Windows.Forms.PictureBox();
             this.fpnlChoices = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnOptionOne = new System.Windows.Forms.Button();
+            this.btnOptionTwo = new System.Windows.Forms.Button();
+            this.btnOptionThree = new System.Windows.Forms.Button();
+            this.btnOptionFour = new System.Windows.Forms.Button();
+            this.btnOptionFive = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewScreen)).BeginInit();
             this.pnlHUD.SuspendLayout();
             this.pnlInventory.SuspendLayout();
@@ -139,7 +139,7 @@
             this.lblMoney.Name = "lblMoney";
             this.lblMoney.Size = new System.Drawing.Size(81, 26);
             this.lblMoney.TabIndex = 34;
-            this.lblMoney.Text = "0.00";
+            this.lblMoney.Text = "$0.00";
             this.lblMoney.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblFuel
@@ -304,11 +304,11 @@
             // 
             this.fpnlChoices.AutoScroll = true;
             this.fpnlChoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(50)))));
-            this.fpnlChoices.Controls.Add(this.button4);
-            this.fpnlChoices.Controls.Add(this.button1);
-            this.fpnlChoices.Controls.Add(this.button2);
-            this.fpnlChoices.Controls.Add(this.button3);
-            this.fpnlChoices.Controls.Add(this.button5);
+            this.fpnlChoices.Controls.Add(this.btnOptionOne);
+            this.fpnlChoices.Controls.Add(this.btnOptionTwo);
+            this.fpnlChoices.Controls.Add(this.btnOptionThree);
+            this.fpnlChoices.Controls.Add(this.btnOptionFour);
+            this.fpnlChoices.Controls.Add(this.btnOptionFive);
             this.fpnlChoices.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpnlChoices.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.fpnlChoices.Location = new System.Drawing.Point(368, 406);
@@ -317,80 +317,85 @@
             this.fpnlChoices.TabIndex = 34;
             this.fpnlChoices.WrapContents = false;
             // 
-            // button4
+            // btnOptionOne
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(570, 38);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "Option 1: Room for two lines of text because options might get long. Lorem ipsum " +
+            this.btnOptionOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnOptionOne.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOptionOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOptionOne.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnOptionOne.Location = new System.Drawing.Point(3, 3);
+            this.btnOptionOne.Name = "btnOptionOne";
+            this.btnOptionOne.Size = new System.Drawing.Size(570, 38);
+            this.btnOptionOne.TabIndex = 36;
+            this.btnOptionOne.Text = "Option 1: Room for two lines of text because options might get long. Lorem ipsum " +
     "sit dolor amet butts butts butts butts";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnOptionOne.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnOptionOne.UseVisualStyleBackColor = false;
+            this.btnOptionOne.Click += new System.EventHandler(this.btnOptionOne_Click);
             // 
-            // button1
+            // btnOptionTwo
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Location = new System.Drawing.Point(3, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(570, 38);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Option 2: Room for two lines of text because options might get long. Lorem ipsum " +
+            this.btnOptionTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnOptionTwo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOptionTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOptionTwo.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnOptionTwo.Location = new System.Drawing.Point(3, 47);
+            this.btnOptionTwo.Name = "btnOptionTwo";
+            this.btnOptionTwo.Size = new System.Drawing.Size(570, 38);
+            this.btnOptionTwo.TabIndex = 37;
+            this.btnOptionTwo.Text = "Option 2: Room for two lines of text because options might get long. Lorem ipsum " +
     "sit dolor amet butts butts butts butts";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnOptionTwo.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnOptionTwo.UseVisualStyleBackColor = false;
+            this.btnOptionTwo.Click += new System.EventHandler(this.btnOptionTwo_Click);
             // 
-            // button2
+            // btnOptionThree
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button2.Location = new System.Drawing.Point(3, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(570, 38);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "Option 3: Room for two lines of text because options might get long. Lorem ipsum " +
+            this.btnOptionThree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnOptionThree.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOptionThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOptionThree.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnOptionThree.Location = new System.Drawing.Point(3, 91);
+            this.btnOptionThree.Name = "btnOptionThree";
+            this.btnOptionThree.Size = new System.Drawing.Size(570, 38);
+            this.btnOptionThree.TabIndex = 38;
+            this.btnOptionThree.Text = "Option 3: Room for two lines of text because options might get long. Lorem ipsum " +
     "sit dolor amet butts butts butts butts";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnOptionThree.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnOptionThree.UseVisualStyleBackColor = false;
+            this.btnOptionThree.Click += new System.EventHandler(this.btnOptionThree_Click);
             // 
-            // button3
+            // btnOptionFour
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button3.Location = new System.Drawing.Point(3, 135);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(570, 38);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "Option 4: Room for two lines of text because options might get long. Lorem ipsum " +
+            this.btnOptionFour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnOptionFour.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOptionFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOptionFour.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnOptionFour.Location = new System.Drawing.Point(3, 135);
+            this.btnOptionFour.Name = "btnOptionFour";
+            this.btnOptionFour.Size = new System.Drawing.Size(570, 38);
+            this.btnOptionFour.TabIndex = 39;
+            this.btnOptionFour.Text = "Option 4: Room for two lines of text because options might get long. Lorem ipsum " +
     "sit dolor amet butts butts butts butts";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnOptionFour.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnOptionFour.UseVisualStyleBackColor = false;
+            this.btnOptionFour.Click += new System.EventHandler(this.btnOptionFour_Click);
             // 
-            // button5
+            // btnOptionFive
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button5.Location = new System.Drawing.Point(3, 179);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(570, 38);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "Option 5: Room for two lines of text because options might get long. Lorem ipsum " +
+            this.btnOptionFive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnOptionFive.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOptionFive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnOptionFive.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnOptionFive.Location = new System.Drawing.Point(3, 179);
+            this.btnOptionFive.Name = "btnOptionFive";
+            this.btnOptionFive.Size = new System.Drawing.Size(570, 38);
+            this.btnOptionFive.TabIndex = 40;
+            this.btnOptionFive.Text = "Option 5: Room for two lines of text because options might get long. Lorem ipsum " +
     "sit dolor amet butts butts butts butts";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnOptionFive.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnOptionFive.UseVisualStyleBackColor = false;
+            this.btnOptionFive.Click += new System.EventHandler(this.btnOptionFive_Click);
             // 
             // Game
             // 
@@ -446,11 +451,11 @@
         private System.Windows.Forms.PictureBox pbxInventory2;
         private System.Windows.Forms.PictureBox pbxInventory1;
         private System.Windows.Forms.FlowLayoutPanel fpnlChoices;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnOptionOne;
+        private System.Windows.Forms.Button btnOptionTwo;
+        private System.Windows.Forms.Button btnOptionThree;
+        private System.Windows.Forms.Button btnOptionFour;
+        private System.Windows.Forms.Button btnOptionFive;
     }
 }
 

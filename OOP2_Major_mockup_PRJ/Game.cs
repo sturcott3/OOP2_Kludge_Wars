@@ -28,23 +28,31 @@ namespace OOP2_Major_mockup_PRJ
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
+        // InputController input = new InputController();
 
-        //Might be better instead of having ABC buttons, just make each option a button. No label, just change button text.
-        //It will also have to be some sort of list box so we can dynamically fill it with buttons, rather than it being limited to 3.
-        //Also I'm sure you have ideas already, but we need to fill the bottom left some more.
-        private void btnOption1_Click(object sender, EventArgs e)
+        private void btnOptionOne_Click(object sender, EventArgs e)
         {
-
+            //input.OptionOne();
         }
 
-        private void btnOption2_Click(object sender, EventArgs e)
+        private void btnOptionTwo_Click(object sender, EventArgs e)
         {
-
+            //input.OptionTwo();
         }
 
-        private void btnOption3_Click(object sender, EventArgs e)
+        private void btnOptionThree_Click(object sender, EventArgs e)
         {
+            //input.OptionThree();
+        }
 
+        private void btnOptionFour_Click(object sender, EventArgs e)
+        {
+            //input.OptionFour();
+        }
+
+        private void btnOptionFive_Click(object sender, EventArgs e)
+        {
+            //input.OptionFive();
         }
     }
 }
