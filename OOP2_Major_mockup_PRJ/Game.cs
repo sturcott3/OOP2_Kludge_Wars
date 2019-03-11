@@ -35,11 +35,13 @@ namespace OOP2_Major_mockup_PRJ
             object[][] options = scenarioController.RetrieveOptions();
             btnOptionOne.Text = (string)options[0][0];
             btnOptionTwo.Text = (string)options[1][0];
-            btnOptionThree.Text = (string)options[2][0];
-           
+
+            //Other option instead of casting (Uses dynamic return type)
+            btnOptionThree.Text = scenarioController.RetrieveOption(2, 0);
+
             //^^^ ALL TEMPORARY
 
-            
+
             btnOptionFour.Text = optionsTest4.ToString();
             btnOptionFive.Text = optionsTest5.ToString();
             //^^^Also temp

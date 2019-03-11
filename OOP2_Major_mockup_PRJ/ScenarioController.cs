@@ -25,5 +25,13 @@ namespace OOP2_Major_mockup_PRJ
             //For three options, the output controller should also hide the other two buttons, (possibly?//and the scrollbar).
             return scenario.GetOptions();
         }
+
+
+        //Another possible option instead of casting
+        //Dynamic returns whatever type defined at runtime
+        public dynamic RetrieveOption(int row, int col)
+        {
+            return scenario.GetOptions()[row][col];
+        }
     }
 }
