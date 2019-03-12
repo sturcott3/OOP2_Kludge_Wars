@@ -39,6 +39,13 @@ namespace OOP2_Major_mockup_PRJ
             //Other option instead of casting (Uses dynamic return type)
             btnOptionThree.Text = scenarioController.RetrieveOption(2, 0);
 
+            //******************************
+            //Probably the best option below
+
+            //Another option instead of overcomplicating it would be to just use parallel arrays instead of a 
+            //multi -dimensional array. Then we can use functions to set them. It will work the same way but 
+            //be much more simple.
+
             //^^^ ALL TEMPORARY
 
 
