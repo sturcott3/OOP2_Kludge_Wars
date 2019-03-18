@@ -37,6 +37,8 @@ namespace OOP2_Major_mockup_PRJ
         InputController input = new InputController();
         OutputController output = new OutputController();
         ScenarioController scenarioController = new ScenarioController();
+        Player player = new Player();
+        
         
 
         private void btnOptionOne_Click(object sender, EventArgs e)

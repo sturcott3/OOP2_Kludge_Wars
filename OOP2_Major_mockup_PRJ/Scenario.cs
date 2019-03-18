@@ -10,7 +10,7 @@ namespace OOP2_Major_mockup_PRJ
     class Scenario
     {
         //Private fields
-        const int MAX_OPTIONS = 5;
+        private const int MAX_OPTIONS = 5;
         private string description, location;
         private int type = 1;
         private Entity entity;
