@@ -22,7 +22,7 @@ namespace OOP2_Major_mockup_PRJ
         //TEMP button text
         public string GetOptionText(int option)
         {
-            return scenario.GetOption(option, 1);
+            return (string)scenario.GetOption(option, 1);
         }
 
 

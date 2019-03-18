@@ -70,7 +70,7 @@ namespace OOP2_Major_mockup_PRJ
         //Should ask teacher how he feels about using dynamic, we could split this up into getters for each option piece
         //Value relates to these below, option is which option/button
         //Button Text, post button text, health effects, ship health effect, fuel effect, money effect
-        public dynamic GetOption(int option, int value)
+        public object GetOption(int option, int value)
         {
             option--; //This is done so you enter 1 for option one, instead of 0
             switch (value)
