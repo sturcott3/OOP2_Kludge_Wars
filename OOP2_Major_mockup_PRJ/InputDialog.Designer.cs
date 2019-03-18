@@ -1,6 +1,6 @@
 ﻿namespace OOP2_Major_mockup_PRJ
 {
-    partial class frmInputDialog
+    partial class InputDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@
             this.lblDirections.TabIndex = 2;
             this.lblDirections.Text = "Enter Your Name";
             // 
-            // frmInputDialog
+            // InputDialog
             // 
             this.AcceptButton = this.btnConfirm;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,7 +76,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmInputDialog";
+            this.Name = "InputDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Input";
             this.ResumeLayout(false);

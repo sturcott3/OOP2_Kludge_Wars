@@ -9,7 +9,7 @@ namespace OOP2_Major_mockup_PRJ
     class InputController:Controller
     {
         //It seems C# doesn't include support for InputBox like VB does so we need to make our own dialog
-        private frmInputDialog inputDialog = new frmInputDialog();
+        private InputDialog frmInputDialog = new InputDialog();
 
         //Input getting and validation
         public string GetInput(string title, string directions)
@@ -18,12 +18,12 @@ namespace OOP2_Major_mockup_PRJ
             string input;
             //while (!StatusOk)
             //{
-                inputDialog.SetTitle(title);
-                inputDialog.SetDirections(directions);
+                frmInputDialog.SetTitle(title);
+                frmInputDialog.SetDirections(directions);
 
 
-                inputDialog.ShowDialog();
-                input = inputDialog.GetResult();
+                frmInputDialog.ShowDialog();
+                input = frmInputDialog.GetResult();
                 
                 //char.islet
                 //Input validation

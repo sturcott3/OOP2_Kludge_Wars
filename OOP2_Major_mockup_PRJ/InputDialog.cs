@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    public partial class frmInputDialog : Form
+    public partial class InputDialog : Form
     {
-        public frmInputDialog()
+        public InputDialog()
         {
             InitializeComponent();
         }
