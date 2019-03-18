@@ -11,9 +11,9 @@ namespace OOP2_Major_mockup_PRJ
         //This lets us assign the return value of the function to the text property of the form element. 
         //takes in a reference to the player object's health field, and updates it with the change.
         //negative change is damage, positive change is healing.
-        public static string updateHealth(ref int playerHealth, int change)
+        public string updateHealth(ref int playerHealth, int change)
         {
-            int newHealth = playerHealth - change;
+            int newHealth = playerHealth + change;
             string output = string.Empty;
             for (int i = 0; i < newHealth; i++)
             {
@@ -21,9 +21,9 @@ namespace OOP2_Major_mockup_PRJ
             }
             return output;
         }
-        public static string updateRepair(ref int playerRepair, int change)
+        public string updateRepair(ref int playerRepair, int change)
         {
-            int newHealth = playerRepair - change;
+            int newHealth = playerRepair + change;
             string output = string.Empty;
             for (int i = 0; i < newHealth; i++)
             {
@@ -32,9 +32,9 @@ namespace OOP2_Major_mockup_PRJ
             return output;
         }
 
-        public static string updateFuel(ref int playerFuel, int change)
+        public string updateFuel(ref int playerFuel, int change)
         {
-            int newHealth = playerFuel - change;
+            int newHealth = playerFuel + change;
             string output = string.Empty;
             for (int i = 0; i < newHealth; i++)
             {
