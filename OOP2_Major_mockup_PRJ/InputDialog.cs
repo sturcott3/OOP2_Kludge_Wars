@@ -36,5 +36,16 @@ namespace OOP2_Major_mockup_PRJ
         {
             return tbxInput.Text;
         }
+
+        private void InputDialog_Load(object sender, EventArgs e)
+        {
+            //Clear textbox each time
+            tbxInput.Clear();
+        }
+
+        public void ShowWarning(string warning)
+        {
+            MessageBox.Show(warning, "Warning");
+        }
     }
 }
