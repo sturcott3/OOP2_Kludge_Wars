@@ -10,16 +10,18 @@ namespace OOP2_Major_mockup_PRJ
     class Scenario
     {
         //Private fields
+        const int MAX_OPTIONS = 5;
         private string description, location;
         private int type = 1;
         private Entity entity;
         private Random rnd = new Random();
 
-        //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect. (Maybe also a post-click picture?)
-        private object[] optionOne = new object[6];
-        private object[] optionTwo = new object[6];
-        private object[] optionThree = new object[6];
-
+        private string[] buttonTexts = new string[MAX_OPTIONS];
+        private string[] postButtonTexts = new string[MAX_OPTIONS];
+        private int[] healthEffects = new int[MAX_OPTIONS];
+        private int[] shipHealthEffects = new int[MAX_OPTIONS];
+        private int[] fuelEffects = new int[MAX_OPTIONS];
+        private int[] moneyEffects = new int[MAX_OPTIONS];
 
         //Pieces of randomization (Each will be made longer and more descriptive).
         private string[] locations = new string[]
@@ -65,15 +67,29 @@ namespace OOP2_Major_mockup_PRJ
             return type;
         }
 
-        //You should be able to make this into a regular multidimensional array [3,6] instead of jagged, can't get it working though.
-        public object[][] GetOptions()
+        //Should ask teacher how he feels about using dynamic, we could split this up into getters for each option piece
+        //Value relates to these below, option is which option/button
+        //Button Text, post button text, health effects, ship health effect, fuel effect, money effect
+        public dynamic GetOption(int option, int value)
         {
-            //object[,] optionArray = new object[,] ;
-
-            return new object[][]
+            option--; //This is done so you enter 1 for option one, instead of 0
+            switch (value)
             {
-                optionOne, optionTwo, optionThree
-            };
+                case 1:
+                    return buttonTexts[option];
+                case 2:
+                    return postButtonTexts[option];
+                case 3:
+                    return healthEffects[option];
+                case 4:
+                    return shipHealthEffects[option];
+                case 5:
+                    return fuelEffects[option];
+                case 6:
+                    return moneyEffects[option];
+                default:
+                    return 0;
+            }
         }
 
 
@@ -108,17 +124,17 @@ namespace OOP2_Major_mockup_PRJ
             //Enemy
             if (type == 1) {
                 //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect.
-                optionOne[0] = "Fight";
-                optionTwo[0] = "Something else";
-                optionThree[0] = "Run";
+                buttonTexts[0] = "Fight";
+                buttonTexts[1] = "Something else";
+                buttonTexts[2] = "Run";
             }
             //Merchant
             else if (type == 2)
             {
                 //Button Text, Post-Click text, health effect, shipHealth effect, fuel effect, money effect.
-                optionOne[0] = "Browse Items";
-                optionTwo[0] = "Something else";
-                optionThree[0] = "Leave";
+                buttonTexts[0] = "Browse Items";
+                buttonTexts[1] = "Something else";
+                buttonTexts[2] = "Leave";
             }
 
         }

@@ -19,19 +19,13 @@ namespace OOP2_Major_mockup_PRJ
             return scenario.GetDescription();
         }
 
-        //TEMPORARY will be handled in output controller.
-        public object[][] RetrieveOptions()
+        //TEMP button text
+        public string GetOptionText(int option)
         {
-            //For three options, the output controller should also hide the other two buttons, (possibly?//and the scrollbar).
-            return scenario.GetOptions();
+            return scenario.GetOption(option, 1);
         }
 
 
-        //Another possible option instead of casting
-        //Dynamic returns whatever type defined at runtime
-        public dynamic RetrieveOption(int row, int col)
-        {
-            return scenario.GetOptions()[row][col];
-        }
+        
     }
 }
