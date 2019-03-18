@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    class Player
+    public class Player
     {
         //Constants
         private const int MAX_HEALTH = 7;
@@ -15,7 +15,7 @@ namespace OOP2_Major_mockup_PRJ
         private const int MAX_ITEMS = 6;
 
 
-        private int health = MAX_HEALTH;
+        public int health = MAX_HEALTH; //temporary change to public to demonstrate the refrences
         private int shipHealth = MAX_SHIPHEALTH;
         private int money = 0;
         private int fuel = MAX_FUEL;

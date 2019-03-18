@@ -8,16 +8,22 @@ namespace OOP2_Major_mockup_PRJ
 {
     class OutputController:Controller
     {
-        //This has to reference the player object in the game class, not create a new player object
-        //UNSURE HOW TO DO
-        Player player;
+        //now we have a reference to the player object, because it passes in the object reference to the form 
+        //when the constructor of Outputcontroller is called. Again, I think this is bad practice.
+        Game parent;
+        
+        public OutputController(Game parent)
+        {
+            this.parent = parent;
+        }
 
         //This lets us assign the return value of the function to the text property of the form element. 
         //takes in a reference to the player object's health field, and updates it with the change.
         //negative change is damage, positive change is healing.
-        public string updateHealth(ref int playerHealth, int change)
+        public string updateHealth(int change)
         {
-            int newHealth = playerHealth + change;
+            //now we dont need to pass the health in at all, just access it directly
+            int newHealth = parent.player.health + change;
             string output = string.Empty;
             for (int i = 0; i < newHealth; i++)
             {

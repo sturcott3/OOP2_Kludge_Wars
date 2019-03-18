@@ -12,14 +12,25 @@ namespace OOP2_Major_mockup_PRJ
 {
     public partial class Game : Form
     {
+       
          /*_-_-_-_SYSTEM CODE NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         public Game()
         {
             InitializeComponent();
+            self = this;//gives ability to send a ref to self
+            player = new Player();
+            scenarioController = new ScenarioController();
+            output = new OutputController(self);
+            input = new InputController();
         }
         /*_-_-_-_-_-_-_-END NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
+        public Player player;
 
+        static Game self;//just for reference purposes
+        InputController input;
+        OutputController output;
+        ScenarioController scenarioController; 
 
         /*_-_-_-_-_-_-_TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         private void btnDebug_Click(object sender, EventArgs e)
@@ -31,18 +42,11 @@ namespace OOP2_Major_mockup_PRJ
             btnOptionTwo.Text = scenarioController.GetOptionText(2);
             btnOptionThree.Text = scenarioController.GetOptionText(3);
 
-
-            int tempHealth = 7;
-            lblHealth.Text = output.updateHealth(ref tempHealth, -5) ;
+            // test call to the version of the function in outputController
+            lblHealth.Text = output.updateHealth(-4) ; 
 
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-
-        InputController input = new InputController();
-        OutputController output = new OutputController();
-        ScenarioController scenarioController = new ScenarioController();
-        Player player = new Player();
-        
         
 
         private void btnOptionOne_Click(object sender, EventArgs e)
