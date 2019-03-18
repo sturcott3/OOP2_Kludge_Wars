@@ -21,6 +21,27 @@ namespace OOP2_Major_mockup_PRJ
             }
             return output;
         }
+        public static string updateRepair(ref int playerRepair, int change)
+        {
+            int newHealth = playerRepair - change;
+            string output = string.Empty;
+            for (int i = 0; i < newHealth; i++)
+            {
+                output += "{} ";
+            }
+            return output;
+        }
+
+        public static string updateFuel(ref int playerFuel, int change)
+        {
+            int newHealth = playerFuel - change;
+            string output = string.Empty;
+            for (int i = 0; i < newHealth; i++)
+            {
+                output += "[] ";
+            }
+            return output;
+        }
 
     }
 }
