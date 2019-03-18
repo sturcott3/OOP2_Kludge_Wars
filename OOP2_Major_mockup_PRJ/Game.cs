@@ -45,34 +45,36 @@ namespace OOP2_Major_mockup_PRJ
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-        // InputController input = new InputController();
-        // OutputController output = new OutputController();
+        InputController input = new InputController();
+        OutputController output = new OutputController();
         ScenarioController scenarioController = new ScenarioController();
-
+        
 
         private void btnOptionOne_Click(object sender, EventArgs e)
         {
-            //input.MakeChoice(1);
+            //Input Testing
+            MessageBox.Show(input.GetInput("Enter Name", "Enter Your Name"), "Output");
+            input.MakeChoice(1);
         }
 
         private void btnOptionTwo_Click(object sender, EventArgs e)
         {
-            //input.MakeChoice(2);
+            input.MakeChoice(2);
         }
 
         private void btnOptionThree_Click(object sender, EventArgs e)
         {
-            //input.MakeChoice(3);
+            input.MakeChoice(3);
         }
 
         private void btnOptionFour_Click(object sender, EventArgs e)
         {
-            //input.MakeChoice(4)
+            input.MakeChoice(4);
         }
 
         private void btnOptionFive_Click(object sender, EventArgs e)
         {
-            //input.MakeChoice(5);
+            input.MakeChoice(5);
         }
     }
 }

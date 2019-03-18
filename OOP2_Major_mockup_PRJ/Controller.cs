@@ -8,16 +8,13 @@ namespace OOP2_Major_mockup_PRJ
 {
     class Controller
     {
-
-        private bool statusOk = true;
+        //Made it a protected property so that derived classes have access to it.
+        protected bool StatusOk { get; set; } = true;
 
         public bool GetStatusOk()
         {
-            return statusOk;
+            return StatusOk;
         }
-
-        //No need for a setter, since it will never be set outside it's class.
-        //Sam agrees. could be used to actually do stuff, but we don't need it to yet.
 
     }
 }
