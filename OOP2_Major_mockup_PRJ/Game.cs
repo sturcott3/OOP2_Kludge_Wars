@@ -42,7 +42,7 @@ namespace OOP2_Major_mockup_PRJ
         private void btnOptionOne_Click(object sender, EventArgs e)
         {
             //Input Testing
-            MessageBox.Show(input.GetInput("Enter Name", "Enter Your Name"), "Output");
+            MessageBox.Show(input.GetInput("Enter Name", "Enter Your Name", 1), "Output");
             input.MakeChoice(1);
         }
 
