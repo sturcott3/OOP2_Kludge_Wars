@@ -31,6 +31,10 @@ namespace OOP2_Major_mockup_PRJ
             btnOptionTwo.Text = scenarioController.GetOptionText(2);
             btnOptionThree.Text = scenarioController.GetOptionText(3);
 
+
+            int tempHealth = 7;
+            lblHealth.Text = output.updateHealth(ref tempHealth, -5) ;
+
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
