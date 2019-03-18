@@ -31,17 +31,6 @@ namespace OOP2_Major_mockup_PRJ
             btnOptionTwo.Text = scenarioController.GetOptionText(2);
             btnOptionThree.Text = scenarioController.GetOptionText(3);
 
-            //temp to show how to reference images and see how they look on the form
-            Image[] viewscreens = { OOP2_Major_mockup_PRJ.Properties.Resources.city_1,
-                                    OOP2_Major_mockup_PRJ.Properties.Resources.city_2,
-            OOP2_Major_mockup_PRJ.Properties.Resources.city_3,
-            OOP2_Major_mockup_PRJ.Properties.Resources.forest_2,
-            OOP2_Major_mockup_PRJ.Properties.Resources.space_4,
-            OOP2_Major_mockup_PRJ.Properties.Resources.game_over_space_jpg,};
-
-            Random r = new Random();
-            pbxViewScreen.Image = viewscreens[r.Next(0,6)];
-            //End image temp block
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
