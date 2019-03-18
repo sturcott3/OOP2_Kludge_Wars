@@ -92,5 +92,89 @@
   <ItemGroup>
     <None Include="Resources\screen.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\city_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\city_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\city_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\city_4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\city_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest_4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_over_planetside.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_over_space.jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nebula_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nebula_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nebula_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\space_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\space_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\space_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\space_4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\space_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cargo_gem.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cargo_metal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fuel_large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fuel_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medkit_large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medkit_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuke.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

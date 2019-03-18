@@ -44,14 +44,21 @@ namespace OOP2_Major_mockup_PRJ
 
             //Another option instead of overcomplicating it would be to just use parallel arrays instead of a 
             //multi -dimensional array. Then we can use functions to set them. It will work the same way but 
-            //be much more simple.
+            //be much more simple. NOTE: group members spoke and agreed to do this version.
 
             //^^^ ALL TEMPORARY
 
+            //temp to show how to reference images and see how they look on the form
+            Image[] viewscreens = { OOP2_Major_mockup_PRJ.Properties.Resources.city_1,
+                                    OOP2_Major_mockup_PRJ.Properties.Resources.city_2,
+            OOP2_Major_mockup_PRJ.Properties.Resources.city_3,
+            OOP2_Major_mockup_PRJ.Properties.Resources.forest_2,
+            OOP2_Major_mockup_PRJ.Properties.Resources.space_4,
+            OOP2_Major_mockup_PRJ.Properties.Resources.game_over_space_jpg,};
 
-            btnOptionFour.Text = optionsTest4.ToString();
-            btnOptionFive.Text = optionsTest5.ToString();
-            //^^^Also temp
+            Random r = new Random();
+            pbxViewScreen.Image = viewscreens[r.Next(0,6)];
+            //End image temp block
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
