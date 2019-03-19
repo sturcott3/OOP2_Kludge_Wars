@@ -15,6 +15,7 @@ namespace OOP2_Major_mockup_PRJ
         private int type = 1;
         private Entity entity;
         private Random rnd = new Random();
+        private Bitmap image;
 
         private string[] buttonTexts = new string[MAX_OPTIONS];
         private string[] postButtonTexts = new string[MAX_OPTIONS];
@@ -43,9 +44,27 @@ namespace OOP2_Major_mockup_PRJ
             new Entity("Kludge Scout", "Kludge", 5, 0, true),
             new Entity("Merchant Droid", "Droid", 0, 6),
         };
-        private Image[] images = new Image[]
+        private Bitmap[] images = new Bitmap[]
         {
-
+            new Bitmap(Properties.Resources.city_1),
+            new Bitmap(Properties.Resources.city_2),
+            new Bitmap(Properties.Resources.city_3),
+            new Bitmap(Properties.Resources.city_4),
+            new Bitmap(Properties.Resources.city_5),
+            new Bitmap(Properties.Resources.forest_1),
+            new Bitmap(Properties.Resources.forest_2),
+            new Bitmap(Properties.Resources.forest_3),
+            new Bitmap(Properties.Resources.forest_4),
+            new Bitmap(Properties.Resources.nebula_1),
+            new Bitmap(Properties.Resources.nebula_2),
+            new Bitmap(Properties.Resources.nebula_3),
+            new Bitmap(Properties.Resources.planet_1),
+            new Bitmap(Properties.Resources.planet_2),
+            new Bitmap(Properties.Resources.space_1),
+            new Bitmap(Properties.Resources.space_2),
+            new Bitmap(Properties.Resources.space_3),
+            new Bitmap(Properties.Resources.space_4),
+            new Bitmap(Properties.Resources.space_5)
         };
 
 
@@ -66,8 +85,11 @@ namespace OOP2_Major_mockup_PRJ
         {
             return type;
         }
+        public Bitmap GetImage()
+        {
+            return image;
+        }
 
-        //Should ask teacher how he feels about using dynamic, we could split this up into getters for each option piece
         //Value relates to these below, option is which option/button
         //Button Text, post button text, health effects, ship health effect, fuel effect, money effect
         public object GetOption(int option, int value)
@@ -101,6 +123,7 @@ namespace OOP2_Major_mockup_PRJ
             location = locations[rnd.Next(0, locations.Length)];
             description = descriptions[rnd.Next(0, descriptions.Length)];
             entity = entities[rnd.Next(0, entities.Length)];
+            image = images[rnd.Next(0, images.Length)];
 
             // Type randomization
             //If the entity is a enemy, type = 1, if entity is a merchant, type = 2. If entity can be either, type is random.

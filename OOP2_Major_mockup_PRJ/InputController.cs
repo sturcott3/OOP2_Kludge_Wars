@@ -8,15 +8,13 @@ namespace OOP2_Major_mockup_PRJ
 {
     class InputController:Controller
     {
-        //It seems C# doesn't include support for InputBox like VB does so we need to make our own dialog
         private InputDialog frmInputDialog = new InputDialog();
 
         //Input getting and validation
         public string GetInput(string title, string directions, int type)
         {
-            //Need to implement types still
             //Type 1 = Letters only, Type 2 = Numbers only, Type 3, Letters and Numbers only, Type 4, All Characters Allowed
-            string input = "";
+            string input = string.Empty;
 
             frmInputDialog.SetTitle(title);
             frmInputDialog.SetDirections(directions);
@@ -28,14 +26,29 @@ namespace OOP2_Major_mockup_PRJ
                 frmInputDialog.ShowDialog();
                 input = frmInputDialog.GetResult();
                 
-                if(input.Length > 0 && IsAllLetters(input))
+                if(input.Length > 0 && ((type == 1 && IsAllLetters(input)) || (type == 2 && IsAllNumbers(input)) || (type == 3 && IsAllLettersNumbers(input)) || (type == 4)))
                 {
                     StatusOk = true;
                 }
                 else
                 {
-                    frmInputDialog.ShowWarning("Invalid Input, must contain letters only");
-                    //Loop
+                    switch (type)
+                    {
+                        case 1:
+                            frmInputDialog.ShowWarning("Invalid Input, must contain letters only.");
+                            break;
+                        case 2:
+                            frmInputDialog.ShowWarning("Invalid Input, must contain numbers only.");
+                            break;
+                        case 3:
+                            frmInputDialog.ShowWarning("Invalid Input, must contain letters and numbers only.");
+                            break;
+                        case 4:
+                            frmInputDialog.ShowWarning("Invalid Input, must not be empty.");
+                            break;
+                        default:
+                            throw new Exception("Invalid input type " + type);
+                    }
                 }
             }
             
@@ -55,6 +68,33 @@ namespace OOP2_Major_mockup_PRJ
 
             return true;
         }
+        public bool IsAllNumbers(string input)
+        {
+            foreach (char c in input)
+            {
+                //If character is not a number
+                if (!char.IsNumber(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        public bool IsAllLettersNumbers(string input)
+        {
+            foreach (char c in input)
+            {
+                //If character is not a letter or number
+                if (!char.IsLetter(c) && !char.IsNumber(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
 
         public void MakeChoice(int option)
         {

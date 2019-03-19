@@ -19,10 +19,14 @@ namespace OOP2_Major_mockup_PRJ
             return scenario.GetDescription();
         }
 
-        //TEMP button text
+        //TEMP button text and image
         public string GetOptionText(int option)
         {
             return (string)scenario.GetOption(option, 1);
+        }
+        public System.Drawing.Bitmap GetScenarioImage()
+        {
+            return scenario.GetImage();
         }
 
 

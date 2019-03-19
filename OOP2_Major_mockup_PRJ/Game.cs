@@ -28,20 +28,21 @@ namespace OOP2_Major_mockup_PRJ
         Player player;
         InputController input;
         OutputController output;
-        ScenarioController scenarioController; 
+        ScenarioController scenarioController;
+        private int distance = 0;
 
         /*_-_-_-_-_-_-_TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         private void btnDebug_Click(object sender, EventArgs e)
         {
             //TEMPORARY, will be done in outputcontroller
             lblOutput.Text = scenarioController.StartScenario();
+            pbxViewScreen.Image = scenarioController.GetScenarioImage();
 
             btnOptionOne.Text = scenarioController.GetOptionText(1);
             btnOptionTwo.Text = scenarioController.GetOptionText(2);
             btnOptionThree.Text = scenarioController.GetOptionText(3);
 
-            // test call to the version of the function in outputController
-            lblHealth.Text = output.updateHealth(-4) ; 
+            
 
         }
         /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
@@ -56,11 +57,13 @@ namespace OOP2_Major_mockup_PRJ
 
         private void btnOptionTwo_Click(object sender, EventArgs e)
         {
-            //Testing output player reference
-            player.UpdateHealth(-2);
-
-            MessageBox.Show("Player Object Health: " + player.GetHealth() + "\nOutput Controller Player Reference Health: " + output.TestReference());
-            input.MakeChoice(2);
+            //Test updating HUD
+            player.Money = 250;
+            player.Health = 4;
+            player.Fuel = 2;
+            player.ShipHealth = 5;
+            distance = 25;
+            UpdateHUD();
         }
 
         private void btnOptionThree_Click(object sender, EventArgs e)
@@ -76,6 +79,39 @@ namespace OOP2_Major_mockup_PRJ
         private void btnOptionFive_Click(object sender, EventArgs e)
         {
             input.MakeChoice(5);
+        }
+
+        private void UpdateHUD()
+        {
+            //Update Health
+            string output = string.Empty;
+            for (int i = 0; i < player.Health; i++)
+            {
+                output += "+ ";
+            }
+            lblHealth.Text = output;
+
+            //Update Ship Health
+            output = string.Empty;
+            for (int i = 0; i < player.ShipHealth; i++)
+            {
+                output += "{} ";
+            }
+            lblRepair.Text = output;
+
+            //Update Fuel
+            output = string.Empty;
+            for (int i = 0; i < player.Fuel; i++)
+            {
+                output += "[] ";
+            }
+            lblFuel.Text = output;
+
+            //Update Money            
+            lblMoney.Text = player.Money.ToString("C0");
+
+            //Update Distance
+            lblDistance.Text = distance + " LY";
         }
     }
 }

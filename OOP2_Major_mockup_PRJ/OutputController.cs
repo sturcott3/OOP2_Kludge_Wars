@@ -8,6 +8,10 @@ namespace OOP2_Major_mockup_PRJ
 {
     class OutputController:Controller
     {
+        //It might be better to just have Game.cs AS the output controller, this class isn't really necessary and it would reduce dependancies.
+        //Or we could also have all the controller classes are some type of global static class/library that every class can access, 
+        //that way we don't need to be hacky and make reference constructors and all that.
+
         //Player Reference
         private Player player;
 
@@ -17,13 +21,11 @@ namespace OOP2_Major_mockup_PRJ
             this.player = player;
         }
 
-        //This lets us assign the return value of the function to the text property of the form element. 
-        //takes in a reference to the player object's health field, and updates it with the change.
         //negative change is damage, positive change is healing.
         public string updateHealth(int change)
         {
             //now we dont need to pass the health in at all, just access it directly
-            int newHealth = player.GetHealth() + change;
+            int newHealth = player.Health + change;
             string output = string.Empty;
             for (int i = 0; i < newHealth; i++)
             {
@@ -51,16 +53,6 @@ namespace OOP2_Major_mockup_PRJ
                 output += "[] ";
             }
             return output;
-        }
-
-        public void UpdateHUD()
-        {
-            //Gets player values and updates HUD
-        }
-
-        public int TestReference()
-        {
-            return player.GetHealth();
         }
 
     }

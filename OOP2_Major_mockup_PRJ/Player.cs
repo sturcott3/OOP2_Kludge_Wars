@@ -21,39 +21,50 @@ namespace OOP2_Major_mockup_PRJ
         private int fuel = MAX_FUEL;
         //Item[] inventory = new Item[MAX_ITEMS]
 
-        //Negative change is damage, positive change is healing.
-        public void UpdateHealth(int change)
+        //Properties
+        public int Health
         {
-            health = health + change;
-
-            //Check max/min
-            if (health < 0) health = 0;
-            if (health > MAX_HEALTH) health = MAX_HEALTH;
+            get{return health;}
+            set{
+                //Use += for incremental differences
+                health = value;
+                //Check max/min
+                if (health < 0) health = 0;
+                if (health > MAX_HEALTH) health = MAX_HEALTH;
+            }
         }
-        public void UpdateShipHealth(int change)
+        public int ShipHealth
         {
-            shipHealth = shipHealth + change;
-
-            //Check max/min
-            if (shipHealth < 0) shipHealth = 0;
-            if (shipHealth > MAX_SHIPHEALTH) shipHealth = MAX_SHIPHEALTH;
+            get { return shipHealth; }
+            set
+            {
+                //Use += for incremental differences
+                shipHealth = value;
+                //Check max/min
+                if (shipHealth < 0) shipHealth = 0;
+                if (shipHealth > MAX_SHIPHEALTH) shipHealth = MAX_SHIPHEALTH;
+            }
         }
-        public void UpdateFuel(int change)
+        public int Fuel
         {
-            fuel = fuel + change;
-
-            //Check max/min
-            if (fuel < 0) fuel = 0;
-            if (fuel > MAX_FUEL) fuel = MAX_FUEL;
+            get { return fuel; }
+            set
+            {
+                //Use += for incremental differences
+                fuel = value;
+                //Check max/min
+                if(fuel < 0) fuel = 0;
+                if (fuel > MAX_FUEL) fuel = MAX_FUEL;
+            }
         }
-        public void UpdateMoney(int change)
+        public int Money
         {
-            money = money + change;
-        }
-        
-        public int GetHealth()
-        {
-            return health;
+            get { return money; }
+            set
+            {
+                //Use += for incremental differences
+                money = value;
+            }
         }
     }
 }
