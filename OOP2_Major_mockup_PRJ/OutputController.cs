@@ -11,6 +11,12 @@ namespace OOP2_Major_mockup_PRJ
         //Player Reference
         private Player player;
 
+        public OutputController (ref Player player)
+        {
+            //Getting reference to player
+            this.player = player;
+        }
+
         //This lets us assign the return value of the function to the text property of the form element. 
         //takes in a reference to the player object's health field, and updates it with the change.
         //negative change is damage, positive change is healing.
@@ -50,11 +56,6 @@ namespace OOP2_Major_mockup_PRJ
         public void UpdateHUD()
         {
             //Gets player values and updates HUD
-        }
-
-        public void UpdateReference(ref Player player)
-        {
-            this.player = player;
         }
 
         public int TestReference()

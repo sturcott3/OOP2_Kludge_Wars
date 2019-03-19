@@ -19,11 +19,9 @@ namespace OOP2_Major_mockup_PRJ
             InitializeComponent();
             player = new Player();
             scenarioController = new ScenarioController();
-            output = new OutputController();
+            output = new OutputController(ref player);
             input = new InputController();
 
-            //Set References
-            output.UpdateReference(ref player);
         }
         /*_-_-_-_-_-_-_-END NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
