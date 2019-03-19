@@ -57,14 +57,6 @@ namespace OOP2_Major_mockup_PRJ
                 if (fuel > MAX_FUEL) fuel = MAX_FUEL;
             }
         }
-        public int Money
-        {
-            get { return money; }
-            set
-            {
-                //Use += for incremental differences
-                money = value;
-            }
-        }
+        public int Money { get; set; }
     }
 }

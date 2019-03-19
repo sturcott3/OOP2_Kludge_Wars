@@ -12,8 +12,17 @@ namespace OOP2_Major_mockup_PRJ
 {
     public partial class Game : Form
     {
-       
-         /*_-_-_-_SYSTEM CODE NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
+        //I've been thinking about how we are doing our code and the way we have this planned. Our objects aren't really being used as objects.
+
+        //We can have the controllers as instantiable, reusable objects, but that means most of the code returns back to Game.cs and 
+        //Game.cs would handle most of the game state. lblHealth.Text = output.UpdateHealth(player.Health); This would be more OOP related.
+
+        //OR we can make everything interconnected and divert tasks to each controller like we had originally planned, but then it doesn't really 
+        //make sense to use them like objects, you would never be able to reuse them for different things. We should have them as static if thats 
+        //how we want to use them. That would solve our reference issues, they would be referenced by Game.GetPlayer(), Game.GetInput(), etc.
+
+
+        /*_-_-_-_SYSTEM CODE NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         public Game()
         {
             InitializeComponent();

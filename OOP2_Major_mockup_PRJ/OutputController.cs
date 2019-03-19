@@ -8,9 +8,6 @@ namespace OOP2_Major_mockup_PRJ
 {
     class OutputController:Controller
     {
-        //It might be better to just have Game.cs AS the output controller, this class isn't really necessary and it would reduce dependancies.
-        //Or we could also have all the controller classes are some type of global static class/library that every class can access, 
-        //that way we don't need to be hacky and make reference constructors and all that.
 
         //Player Reference
         private Player player;
