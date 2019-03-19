@@ -15,7 +15,7 @@ namespace OOP2_Major_mockup_PRJ
         private const int MAX_ITEMS = 6;
 
 
-        public int health = MAX_HEALTH; //temporary change to public to demonstrate the refrences
+        private int health = MAX_HEALTH; //temporary change to public to demonstrate the refrences
         private int shipHealth = MAX_SHIPHEALTH;
         private int money = 0;
         private int fuel = MAX_FUEL;
@@ -49,6 +49,11 @@ namespace OOP2_Major_mockup_PRJ
         public void UpdateMoney(int change)
         {
             money = money + change;
+        }
+        
+        public int GetHealth()
+        {
+            return health;
         }
     }
 }

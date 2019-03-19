@@ -17,17 +17,17 @@ namespace OOP2_Major_mockup_PRJ
         public Game()
         {
             InitializeComponent();
-            self = this;//gives ability to send a ref to self
             player = new Player();
             scenarioController = new ScenarioController();
-            output = new OutputController(self);
+            output = new OutputController();
             input = new InputController();
+
+            //Set References
+            output.UpdateReference(ref player);
         }
         /*_-_-_-_-_-_-_-END NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-        public Player player;
-
-        static Game self;//just for reference purposes
+        Player player;
         InputController input;
         OutputController output;
         ScenarioController scenarioController; 
@@ -58,6 +58,10 @@ namespace OOP2_Major_mockup_PRJ
 
         private void btnOptionTwo_Click(object sender, EventArgs e)
         {
+            //Testing output player reference
+            player.UpdateHealth(-2);
+
+            MessageBox.Show("Player Object Health: " + player.GetHealth() + "\nOutput Controller Player Reference Health: " + output.TestReference());
             input.MakeChoice(2);
         }
 
