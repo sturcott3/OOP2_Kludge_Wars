@@ -14,10 +14,11 @@ namespace OOP2_Major_mockup_PRJ
         private const int MAX_FUEL = 7;
         private const int MAX_ITEMS = 6;
 
-
+       
         private int health = MAX_HEALTH; //temporary change to public to demonstrate the refrences
         private int shipHealth = MAX_SHIPHEALTH;
         private int money = 0;
+        private int distance = 0;
         private int fuel = MAX_FUEL;
         //Item[] inventory = new Item[MAX_ITEMS]
 
@@ -58,5 +59,7 @@ namespace OOP2_Major_mockup_PRJ
             }
         }
         public int Money { get; set; }
+
+        public int Distance { get; set; }
     }
 }

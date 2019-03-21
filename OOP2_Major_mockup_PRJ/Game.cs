@@ -12,82 +12,143 @@ namespace OOP2_Major_mockup_PRJ
 {
     public partial class Game : Form
     {
-        //I've been thinking about how we are doing our code and the way we have this planned. Our objects aren't really being used as objects.
-
-        //We can have the controllers as instantiable, reusable objects, but that means most of the code returns back to Game.cs and 
-        //Game.cs would handle most of the game state. lblHealth.Text = output.UpdateHealth(player.Health); This would be more OOP related.
-
-        //OR we can make everything interconnected and divert tasks to each controller like we had originally planned, but then it doesn't really 
-        //make sense to use them like objects, you would never be able to reuse them for different things. We should have them as static if thats 
-        //how we want to use them. That would solve our reference issues, they would be referenced by Game.GetPlayer(), Game.GetInput(), etc.
-
-
-        /*_-_-_-_SYSTEM CODE NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-        public Game()
-        {
-            InitializeComponent();
-            player = new Player();
-            scenarioController = new ScenarioController();
-            output = new OutputController(ref player);
-            input = new InputController();
-
-        }
-        /*_-_-_-_-_-_-_-END NO TOUCHIE_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
+        /*fields here -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
         Player player;
         InputController input;
-        OutputController output;
-        ScenarioController scenarioController;
-        private int distance = 0;
+        ScenarioController scene;
+        Random r = new Random();
+        Option[] currentOptions;
+
+        /*end fields -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
+
+
+        public Game() // constructor for form; use this to instantiate all objects,
+                      //and use form load below to start the game loop/initialze properties 
+        {
+            InitializeComponent();
+            player = new Player();
+            scene = new ScenarioController();
+            input = new InputController();
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {//form load is just before display, but after the constructor has run. Use it to initialize data 
+         //for either a game in progress (TODO), or to take input for Player name etc.(TODO)
+
+            BlankButtons();//temp to protect from exceptions during testing
+            lblOutput.Text = string.Empty;
+        }
 
         /*_-_-_-_-_-_-_TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         private void btnDebug_Click(object sender, EventArgs e)
         {
-            //TEMPORARY, will be done in outputcontroller
-            lblOutput.Text = scenarioController.StartScenario();
-            pbxViewScreen.Image = scenarioController.GetScenarioImage();
-
-            btnOptionOne.Text = scenarioController.GetOptionText(1);
-            btnOptionTwo.Text = scenarioController.GetOptionText(2);
-            btnOptionThree.Text = scenarioController.GetOptionText(3);
-
+            //BeginTurn(1); //uncomment to run scripted
+            BeginTurn(r.Next(5,11)); //uncomment to run randoms
             
+            //# passed in to BeginTurn controls the chance of the next scripted scene occuring. (once both scene types are up and running)
+        }                              
+        /*_-_-_-_-_-_-_-END TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-        }
-        /*_-_-_-_-_-_-_-END TESTER_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-        
+
+        /*_-_-_-_-_Begin Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
 
         private void btnOptionOne_Click(object sender, EventArgs e)
         {
-            //Input Testing
-            MessageBox.Show(input.GetInput("Enter Name", "Enter Your Name", 1), "Output");
-            input.MakeChoice(1);
+
+            UpdatePlayer(0);
+            UpdateHUD();
+            lblOutput.Text = currentOptions[0].ResultDescription + currentOptions[0].PostClickText;
+            BlankButtons();
         }
 
         private void btnOptionTwo_Click(object sender, EventArgs e)
         {
-            //Test updating HUD
-            player.Money = 250;
-            player.Health = 4;
-            player.Fuel = 2;
-            player.ShipHealth = 5;
-            distance = 25;
+            UpdatePlayer(1);
             UpdateHUD();
+            lblOutput.Text = currentOptions[1].ResultDescription + currentOptions[1].PostClickText;
+            BlankButtons();
         }
 
         private void btnOptionThree_Click(object sender, EventArgs e)
         {
-            input.MakeChoice(3);
+            UpdatePlayer(2);
+            UpdateHUD();
+            lblOutput.Text = currentOptions[2].ResultDescription + currentOptions[2].PostClickText;
+            BlankButtons();
         }
 
         private void btnOptionFour_Click(object sender, EventArgs e)
         {
-            input.MakeChoice(4);
+            UpdatePlayer(3);
+            UpdateHUD();
+            lblOutput.Text = currentOptions[3].ResultDescription + currentOptions[3].PostClickText;
+            BlankButtons();
         }
 
         private void btnOptionFive_Click(object sender, EventArgs e)
         {
-            input.MakeChoice(5);
+            UpdatePlayer(4);
+            UpdateHUD();
+            lblOutput.Text = currentOptions[4].ResultDescription + currentOptions[4].PostClickText;
+            BlankButtons(); 
+        }
+
+        private void BeginTurn(int sceneType)
+        {//call to start a new turn
+
+            int[] index = scene.RandomUniques(Data.MAX_OPTIONS);
+
+            if (sceneType <= 4)
+            {//40%-ish chance to run scripted here
+                bool isScripted = true;
+                scene.StartScenario(isScripted);
+                currentOptions = scene.ScriptScene.GetOptions(index);
+
+                lblOutput.Text = scene.ScriptScene.Description;
+            }
+            else
+            {//or random here
+                bool isScripted = false;
+                scene.StartScenario(isScripted);
+                currentOptions = scene.RandScene.GetOptions(index);
+                lblOutput.Text = scene.RandScene.Description;
+            }
+
+            //TODO make a system that keep the image inline with Location
+            //i.e. planetside/station/space
+
+            //change the image
+            pbxViewScreen.Image = scene.GetScenarioImage();
+
+            //set the text for each button
+            btnOptionOne.Text = currentOptions[0].ButtonText;
+            btnOptionTwo.Text = currentOptions[1].ButtonText;
+            btnOptionThree.Text = currentOptions[2].ButtonText;
+            btnOptionFour.Text = currentOptions[3].ButtonText;
+            btnOptionFive.Text = currentOptions[4].ButtonText;
+        }
+        /*_-_-_-_-_End of Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
+
+        private void BlankButtons()
+        {//removes text and options from buttons, so that there is no chance of double ups on results
+            btnOptionOne.Text = string.Empty;
+            btnOptionTwo.Text = string.Empty;
+            btnOptionThree.Text = string.Empty;
+            btnOptionFour.Text = string.Empty;
+            btnOptionFive.Text = string.Empty;
+            currentOptions = Data.EmptyOptions;
+            //this is temp solution to handling null everywhere / preventing repeat outcomes. 
+            //Could be much more robust, but would be alot of work
+        }
+
+        private void UpdatePlayer(int index)
+        {//pass the index corresponding to the button/option, and this will update the player's 
+         //data according to the contents of the corresponding option object
+            player.Health += currentOptions[index].PlayerHealthEffect;
+            player.ShipHealth += currentOptions[index].ShipHealthEffect;
+            player.Fuel += currentOptions[index].FuelEffect;
+            player.Money += currentOptions[index].MoneyEffect;
         }
 
         private void UpdateHUD()
@@ -120,7 +181,7 @@ namespace OOP2_Major_mockup_PRJ
             lblMoney.Text = player.Money.ToString("C0");
 
             //Update Distance
-            lblDistance.Text = distance + " LY";
+            lblDistance.Text = player.Distance + " LY";
         }
     }
 }
