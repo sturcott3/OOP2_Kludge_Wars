@@ -22,6 +22,15 @@ namespace OOP2_Major_mockup_PRJ
         //provides default values for 'turning the buttons off', without causing null refs
         public static Option[] EmptyOptions { get; } = { new Option(), new Option(), new Option(), new Option(), new Option() };
 
+        /*-_-_-_-_-Misc Data bits _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
+
+        public static string[] DeathReasons { get; } =
+        {
+            "You ran out of HP. You are dead.",
+            "Your Ship exploded. Whoops.",
+            "Adrift in space and out of fuel, the kludge catches up to you. The aftermath is not pretty."
+        };
+
 
         /*-_-_-_-_-Random Scenario data pieces_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
         public static string[] Locations { get; } = {

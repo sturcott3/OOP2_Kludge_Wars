@@ -51,14 +51,12 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
         {
-            //BeginTurn(1); //uncomment to run only scripted
+            //the number passed to BeginTurn controls the chance of the next scripted scene occuring. 
+            //BeginTurn(1); //uncomment to run only scripted , change to 5 to run only randoms  
+            BeginTurn(r.Next(1,11));  //runs scripted scenes roughly 4 in 10
 
-            BeginTurn(r.Next(1,11)); //lower bound 5 to run only randoms, 
-            //change lower bound to 1 to run both at 4/6 frequency
-
-            //# passed in to BeginTurn controls the chance of the next scripted scene occuring. 
-            //(once both scene types are up and running)
-
+            player.Fuel -= 1;//amount of fuel per turn could be changed to random or be based on circumstances
+            UpdateHUD();
         }
         private void ReturnToShip_Click(object sender, EventArgs e)
         {
@@ -69,41 +67,41 @@ namespace OOP2_Major_mockup_PRJ
         {
 
             UpdatePlayer(0);
-            UpdateHUD();
             lblOutput.Text = currentOptions[0].ResultDescription + currentOptions[0].PostClickText;
             BlankButtons();
+            UpdateHUD();
         }
 
         private void OptionTwo_Click(object sender, EventArgs e)
         {
             UpdatePlayer(1);
-            UpdateHUD();
             lblOutput.Text = currentOptions[1].ResultDescription + currentOptions[1].PostClickText;
             BlankButtons();
+            UpdateHUD();
         }
 
         private void OptionThree_Click(object sender, EventArgs e)
         {
             UpdatePlayer(2);
-            UpdateHUD();
             lblOutput.Text = currentOptions[2].ResultDescription + currentOptions[2].PostClickText;
             BlankButtons();
+            UpdateHUD();
         }
 
         private void OptionFour_Click(object sender, EventArgs e)
         {
             UpdatePlayer(3);
-            UpdateHUD();
             lblOutput.Text = currentOptions[3].ResultDescription + currentOptions[3].PostClickText;
             BlankButtons();
+            UpdateHUD();
         }
 
         private void OptionFive_Click(object sender, EventArgs e)
         {
             UpdatePlayer(4);
-            UpdateHUD();
             lblOutput.Text = currentOptions[4].ResultDescription + currentOptions[4].PostClickText;
-            BlankButtons(); 
+            BlankButtons();
+            UpdateHUD();
         }
         /*_-_-_-_-_End Buttons_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_-_-_-_-_*/
 
@@ -154,10 +152,9 @@ namespace OOP2_Major_mockup_PRJ
             btnOptionFour.Text = string.Empty;
             btnOptionFive.Text = string.Empty;
             currentOptions = Data.EmptyOptions;
-            //this is temp solution to handling null everywhere / preventing repeat outcomes. 
-            //Could be much more robust, but would be alot of work
+            //this is temp solution to handling null / preventing repeat outcomes. 
+            //Could and should be much more robust, TODO
         }
-
         private void UpdatePlayer(int index)
         {//pass the index corresponding to the button/option, and this will update the player's 
          //data according to the contents of the corresponding option object
@@ -166,7 +163,6 @@ namespace OOP2_Major_mockup_PRJ
             player.Fuel += currentOptions[index].FuelEffect;
             player.Money += currentOptions[index].MoneyEffect;
         }
-
         private void UpdateHUD()
         {
             //Update Health
@@ -176,6 +172,8 @@ namespace OOP2_Major_mockup_PRJ
                 output += "+ ";
             }
             lblHealth.Text = output;
+            if (player.Health == 0) { GameOver("health"); };
+
 
             //Update Ship Health
             output = string.Empty;
@@ -184,6 +182,7 @@ namespace OOP2_Major_mockup_PRJ
                 output += "{} ";
             }
             lblRepair.Text = output;
+            if (player.ShipHealth == 0) { GameOver("ship"); }
 
             //Update Fuel
             output = string.Empty;
@@ -192,12 +191,32 @@ namespace OOP2_Major_mockup_PRJ
                 output += "[] ";
             }
             lblFuel.Text = output;
+            if (player.Fuel == 0) { GameOver("fuel"); }
 
             //Update Money            
             lblMoney.Text = player.Money.ToString("C0");
 
             //Update Distance
             lblDistance.Text = player.Distance + " LY";
+        }
+
+        private void GameOver(string reason)
+        {
+            if (reason == "health")
+            {
+                pbxViewScreen.Image = Properties.Resources.game_over_planetside;
+                lblOutput.Text = Data.DeathReasons[0];
+            }
+            else if (reason == "ship")
+            {
+                pbxViewScreen.Image = Properties.Resources.game_over_space_jpg;
+                lblOutput.Text = Data.DeathReasons[1];
+            }
+            else if (reason == "fuel")
+            {
+                pbxViewScreen.Image = Properties.Resources.game_over_space_jpg;
+                lblOutput.Text = Data.DeathReasons[2];
+            }
         }
     }
 }

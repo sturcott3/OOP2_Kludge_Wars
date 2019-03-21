@@ -94,11 +94,5 @@ namespace OOP2_Major_mockup_PRJ
 
             return true;
         }
-
-
-        public void MakeChoice(int option)
-        {
-
-        }
     }
 }
