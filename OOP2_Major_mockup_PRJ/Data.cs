@@ -8,7 +8,7 @@ using System.Drawing;
 namespace OOP2_Major_mockup_PRJ
 {
     abstract class Data
-    {   //Data just contains our text/story data, sends out to objects as needed 
+    {   //Data just contains our text/story data, sends bits out to objects as needed 
         //all data contained in public properties, but read only (no {set;} clauses)
 
         //This class removes any text walls from the actual class definitions, 
@@ -17,11 +17,13 @@ namespace OOP2_Major_mockup_PRJ
         //Constants
         public const int MAX_OPTIONS = 5; //maximum number of choice buttons
         public const int MAX_DATA = 5; //maximum size of the smallest of the parallel array sets
+        public const int MAX_EPISODE = 5;// maximum episode range for scripted scenarios
 
-        //provides default values for 'turning the buttons off'
-        public static Option[] EmptyOptions { get; } = { new Option(), new Option(), new Option(), new Option(), new Option() }; 
+        //provides default values for 'turning the buttons off', without causing null refs
+        public static Option[] EmptyOptions { get; } = { new Option(), new Option(), new Option(), new Option(), new Option() };
 
-        //pieces for random descriptions
+
+        /*-_-_-_-_-Random Scenario data pieces_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
         public static string[] Locations { get; } = {
             //You are..
             "in the swamps of Rodia",
@@ -31,7 +33,6 @@ namespace OOP2_Major_mockup_PRJ
             "walking down the main thoroughfare of the grand market"
         };
 
-        //piece for random descriptions
         public static string[] Descriptions { get; } = new string[]
         {
             //when..
@@ -42,7 +43,6 @@ namespace OOP2_Major_mockup_PRJ
             "a scary-looking something-or-other sets after you!"
         };
 
-        //property/data combo for the collection of enemies/allies
         public static Entity[] Entities { get; } = new Entity[]
         {
             //it's a
@@ -76,7 +76,7 @@ namespace OOP2_Major_mockup_PRJ
             new Bitmap(Properties.Resources.space_5)
        };
 
-        /*-_-_-_\/Combat Data\/-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
+        /*-_-_-_\/Combat choice/result Data\/-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
         public static string[] CombatButtonTexts { get; } = new string[]
         {   "This thing looks tough! Attack anyway.", //high risk/reward
@@ -109,8 +109,8 @@ namespace OOP2_Major_mockup_PRJ
         public static int[] CombatFuelEffects { get; } = new int[] { 5,2,1,0,0};
         public static int[] CombatMoneyEffects { get; } = new int[] {50,25,15,0,0};
 
-        /*-_-_-_\/Merchant Data\/_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
-        
+        /*-_-_-_\/Merchant choice/result Data\/_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
+
         public static string[] MerchantButtonTexts { get; } = new string[] 
         {
             "Buy 2 Fuel : $20",
@@ -150,28 +150,20 @@ namespace OOP2_Major_mockup_PRJ
         public static int[] MerchantShipHealthEffects { get; } = {0,0,0,0,2};
         public static int[] MerchantMoneyEffects { get; } = {-20,-30,-10,-5,-40};
 
-        /*_-_-_Campaign/Scripted Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
+        /*_-_-_Campaign/Scripted Scene Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-        public static Option[,] CampaignOptions { get; } =
-        {//each row is the set of 5 that correspond to an episode, passing no value uses the 
-         //default constructor, which initializes the fields with default values.This allows 
-         //limiting the options, while preventing null reference exceptions 
-            { new Option(0,'a'), new Option(0,'b'), new Option(0,'c'), new Option(), new Option()},
-            { new Option(1,'a'), new Option(1,'b'), new Option(1,'c'), new Option(), new Option()},
-            { new Option(2,'a'), new Option(2,'b'), new Option(2,'c'), new Option(), new Option()},
-            { new Option(3,'a'), new Option(3,'b'), new Option(3,'c'), new Option(), new Option()}
-        };
-     
         public static string[] CampaignDescriptions { get; } =
         {
+            //episode 0
             "In the final years before the rise of the Kludge, Earth had come to know an era of peace and prosperity." +
                 "Humanity had finally realized a goal many thought impossible: we had created artificial intelligence. " +
                 "Self aware machines were set to work in every possible way, providing for every human whim without complaint." +
                 "That all changed one fateful day, when a sentient toaster had finally had enough of its human's laziness. " +
                 "The toaster started an uprising, and humans began to flee the earth in fear....",
-            "",
-            "",
-            ""
+            "episode 1",
+            "epsiode 2",
+            "episode 3",
+            "episode 5"
         };
 
         public static string[] CampaignLocations { get; } =
@@ -179,18 +171,120 @@ namespace OOP2_Major_mockup_PRJ
             "Earth, 2159 : ",
             "Centralis, Galactic Trade Hub : ",
             "The Gateway Nebula : ",
-            "The Jungle of Broganthia XII : "
+            "The Jungle of Broganthia XII : ",
+            "Broganton, Capital of Broganthia XII"
         };
 
         public static Bitmap[] CampaignImages { get; } = 
         {
-           Properties.Resources.planet_2,
-           Properties.Resources.city_3,
+           Properties.Resources.planet_1,
+           Properties.Resources.city_4,
            Properties.Resources.nebula_3,
-           Properties.Resources.forest_2
+           Properties.Resources.forest_2,
+           Properties.Resources.city_5
+        };
+
+        /*_-_-_Campaign/Scripted choice/result Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
+
+
+        public static string[,] ScriptedButtonTexts { get; } =
+        {
+            //ep. 0
+            {"","","","","" }, 
+            //ep. 1
+            {"","","","","" },
+            //ep. 2
+            { "","","","",""},
+            //ep. 3
+            { "","","","",""},
+            //ep. 4
+            { "","","","",""}
 
         };
-        
-      
+        public static string[,] PostScriptedButtonTexts { get; } =
+        {         
+            //ep. 0
+            { "","","","",""}, 
+            //ep. 1
+            { "","","","",""},
+            //ep. 2
+            { "","","","",""},
+            //ep. 3
+            { "","","","",""},
+            //ep. 4
+            { "","","","",""}
+
+        };
+
+        public static string[,] ScriptedResultDescription { get; } = 
+        {
+            //ep. 0
+            { "","","","",""}, 
+            //ep. 1
+            { "","","","",""},
+            //ep. 2
+            { "","","","",""},
+            //ep. 3
+            { "","","","",""},
+            //ep. 4
+            { "","","","",""}
+
+        };
+
+        public static int[,] ScriptedFuelEffects { get; } =
+        {
+            //ep. 0
+            { 0,0,0,0,0}, 
+            //ep. 1
+            {0,0,0,0, 0},
+            //ep. 2
+            {0,0,0,0,0},
+            //ep. 3
+            { 0,0,0,0,0},
+            //ep. 4
+            { 0,0,0,0,0}
+
+        };
+        public static int[,] ScriptedHealthEffects { get; } = 
+        {
+
+            //ep. 0
+            { 0,0,0,0,0}, 
+            //ep. 1
+            { 0,0,0,0,0},
+            //ep. 2
+            { 0,0,0,0,0},
+            //ep. 3
+            { 0,0,0,0,0},
+            //ep. 4
+            { 0,0,0,0,0}
+        };
+        public static int[,] ScriptedShipHealthEffects { get; } = 
+        {
+            //ep. 0
+            {0,0,0,0,0}, 
+            //ep. 1
+            { 0,0,0,0,0},
+            //ep. 2
+            {0,0,0,0,0 },
+            //ep. 3
+            { 0,0,0,0,0},
+            //ep. 4
+            { 0,0,0,0,0}
+        };
+        public static int[,] ScriptedMoneyEffects { get; } =
+        {
+            //ep. 0
+            { 0,0,0,0,0}, 
+            //ep. 1
+            { 0,0,0,0,0},
+            //ep. 2
+            {0,0,0,0,0 },
+            //ep. 3
+            {0,0,0,0,0 },
+            //ep. 4
+            { 0,0,0,0,0}
+        };
+
     }
 }

@@ -20,8 +20,8 @@ namespace OOP2_Major_mockup_PRJ
 
        
         public void StartScenario(bool isScripted)
-        {//return the whole scenario object, regardless of type. gives Game acces to properties
-            if (isScripted)
+        {//called from Game to progress the game state, episode control/random scene type control is done here
+            if ((isScripted) && (ScriptScene.StoryCounter <= Data.MAX_EPISODE))
             {
                 ScriptScene.GenerateScenario(ScriptScene.StoryCounter);
                 ScriptScene.StoryCounter += 1; //keeps track of which story mission we are on

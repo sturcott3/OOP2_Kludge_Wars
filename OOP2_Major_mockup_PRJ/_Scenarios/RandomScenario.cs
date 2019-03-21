@@ -23,7 +23,7 @@ namespace OOP2_Major_mockup_PRJ
         {//randomizes the order of the button layout
             for (int i = 0; i < Data.MAX_OPTIONS; i++)
             {
-                this.CurrentOptions[i] = new Option(type, index[i]);
+                CurrentOptions[i] = new Option(type, index[i]);
             }
             return CurrentOptions;
         }

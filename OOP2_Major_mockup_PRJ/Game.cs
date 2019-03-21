@@ -41,19 +41,31 @@ namespace OOP2_Major_mockup_PRJ
         }
 
         /*_-_-_-_-_-_-_TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-        private void btnDebug_Click(object sender, EventArgs e)
+        private void Debug_Click(object sender, EventArgs e)
         {
-            //BeginTurn(1); //uncomment to run scripted
-            BeginTurn(r.Next(5,11)); //uncomment to run randoms
             
-            //# passed in to BeginTurn controls the chance of the next scripted scene occuring. (once both scene types are up and running)
-        }                              
+        }
         /*_-_-_-_-_-_-_-END TEST BLOCK_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
 
-        /*_-_-_-_-_Begin Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
+        /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
+        private void NextTurn_Click(object sender, EventArgs e)
+        {
+            //BeginTurn(1); //uncomment to run only scripted
 
-        private void btnOptionOne_Click(object sender, EventArgs e)
+            BeginTurn(r.Next(1,11)); //lower bound 5 to run only randoms, 
+            //change lower bound to 1 to run both at 4/6 frequency
+
+            //# passed in to BeginTurn controls the chance of the next scripted scene occuring. 
+            //(once both scene types are up and running)
+
+        }
+        private void ReturnToShip_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OptionOne_Click(object sender, EventArgs e)
         {
 
             UpdatePlayer(0);
@@ -62,7 +74,7 @@ namespace OOP2_Major_mockup_PRJ
             BlankButtons();
         }
 
-        private void btnOptionTwo_Click(object sender, EventArgs e)
+        private void OptionTwo_Click(object sender, EventArgs e)
         {
             UpdatePlayer(1);
             UpdateHUD();
@@ -70,7 +82,7 @@ namespace OOP2_Major_mockup_PRJ
             BlankButtons();
         }
 
-        private void btnOptionThree_Click(object sender, EventArgs e)
+        private void OptionThree_Click(object sender, EventArgs e)
         {
             UpdatePlayer(2);
             UpdateHUD();
@@ -78,7 +90,7 @@ namespace OOP2_Major_mockup_PRJ
             BlankButtons();
         }
 
-        private void btnOptionFour_Click(object sender, EventArgs e)
+        private void OptionFour_Click(object sender, EventArgs e)
         {
             UpdatePlayer(3);
             UpdateHUD();
@@ -86,13 +98,17 @@ namespace OOP2_Major_mockup_PRJ
             BlankButtons();
         }
 
-        private void btnOptionFive_Click(object sender, EventArgs e)
+        private void OptionFive_Click(object sender, EventArgs e)
         {
             UpdatePlayer(4);
             UpdateHUD();
             lblOutput.Text = currentOptions[4].ResultDescription + currentOptions[4].PostClickText;
             BlankButtons(); 
         }
+        /*_-_-_-_-_End Buttons_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_-_-_-_-_*/
+
+
+        /*_-_-_-_-_Begin Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
 
         private void BeginTurn(int sceneType)
         {//call to start a new turn
