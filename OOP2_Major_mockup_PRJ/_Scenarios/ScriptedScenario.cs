@@ -12,10 +12,8 @@ namespace OOP2_Major_mockup_PRJ
     {
         public int StoryCounter { get; set; }
 
-
         public override void GenerateScenario(int seed)
         {//here seed is used to track which episode we are on
-            
             Description = Data.CampaignDescriptions[seed];
             Image = Data.CampaignImages[seed];
         }

@@ -23,11 +23,9 @@ namespace OOP2_Major_mockup_PRJ
         //<temp>
         bool messageShown = false;
         //</temp>
-
-
+        
         /*end fields -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
-
-
+        
         public Game() // constructor for form; use this to instantiate all objects,
                       //and use form load below to start the game loop/initialze properties 
         {
@@ -63,6 +61,7 @@ namespace OOP2_Major_mockup_PRJ
                 BeginTurn(sceneType);  //runs scripted scenes roughly 4 in 10
 
                 player.Fuel -= 1;//amount of fuel per turn could be changed to random or be based on circumstances
+                player.Distance += 1;
                 UpdateHUD();
             }
             //Not on ship

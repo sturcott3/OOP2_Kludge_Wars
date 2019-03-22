@@ -4,7 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-
+/*
+ 1. Is it ok to use these static data members or should we use a library
+ 
+    2. Is it better to use one constructor that branches based on a third argument,
+        or to use a data type to force a different parameter list to get a separate constructor?
+     
+     */
 namespace OOP2_Major_mockup_PRJ
 {
     static class Data
@@ -16,7 +22,7 @@ namespace OOP2_Major_mockup_PRJ
 
         //Constants
         public const int MAX_OPTIONS = 5; //maximum number of choice buttons
-        public const int MAX_DATA = 5; //maximum size of the smallest of the parallel array sets
+        
         public const int MAX_EPISODE = 5;// maximum episode range for scripted scenarios
 
         //provides default values for 'turning the buttons off', without causing null refs

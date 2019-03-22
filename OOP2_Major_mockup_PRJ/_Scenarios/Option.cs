@@ -25,8 +25,6 @@ namespace OOP2_Major_mockup_PRJ
         public Option() { }//no arg constructor allows piece by piece construction of these later, 
                            //in the scripted scenarios(from player input at runtime or other possible functionality)
 
-
-
         //1 arg constructor for scripted, predetermined
         //seed tracks which episode we are on, next enforces overloading/differentiation
         public Option(int seed, char next)
