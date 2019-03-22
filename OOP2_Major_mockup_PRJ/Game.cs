@@ -46,7 +46,7 @@ namespace OOP2_Major_mockup_PRJ
 
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
-        {
+        { 
             if (player.IsOnShip) {
                 //<temp>
                 if ((scene.ScriptScene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))

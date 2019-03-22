@@ -7,10 +7,10 @@ using System.Drawing;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    abstract class Data
+    static class Data
     {   //Data just contains our text/story data, sends bits out to objects as needed 
         //all data contained in public properties, but read only (no {set;} clauses)
-
+        public static Random rand = new Random();
         //This class removes any text walls from the actual class definitions, 
         //to minimize brain melting, as well as save system resources 
 
