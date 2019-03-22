@@ -10,7 +10,6 @@ namespace OOP2_Major_mockup_PRJ
     class RandomScenario : Scenario 
     {
         //Private fields, not shared with ScriptedScenario
-        private Random rnd = new Random();
         private int type = 0; 
         Entity Entity { get; set; }
 
@@ -33,10 +32,10 @@ namespace OOP2_Major_mockup_PRJ
         {   //here seed arg is intended to be used to keep track of planetside/space/station (TODO)
 
             //Get random location, description, entity, and image
-            Location = Data.Locations[rnd.Next(0, Data.Locations.Length)];
-            Description = Data.Descriptions[rnd.Next(0, Data.Descriptions.Length)];
-            Entity = Data.Entities[rnd.Next(0, Data.Entities.Length)];
-            Image = Data.Images[rnd.Next(0, Data.Images.Length)];
+            Location = Data.Locations[Data.Rand.Next(0, Data.Locations.Length)];
+            Description = Data.Descriptions[Data.Rand.Next(0, Data.Descriptions.Length)];
+            Entity = Data.Entities[Data.Rand.Next(0, Data.Entities.Length)];
+            Image = Data.Images[Data.Rand.Next(0, Data.Images.Length)];
 
             // Type randomization
             //If the entity is a enemy, type = 1, if entity is a merchant, type = 2. If entity can be either, type is random.
@@ -49,7 +48,7 @@ namespace OOP2_Major_mockup_PRJ
             }
             else
             {
-                type = rnd.Next(1, 3);//can use this to expand to more random encounter types later
+                type = Data.Rand.Next(1, 3);//can use this to expand to more random encounter types later
             }
 
             //Format description ... could build a logic tree around this to give more flixibility,

@@ -9,7 +9,6 @@ namespace OOP2_Major_mockup_PRJ
 {
     class ScenarioController:Controller
     {
-        Random rand = new Random();
 
         public RandomScenario RandScene { get; } = new RandomScenario();
 
@@ -18,20 +17,19 @@ namespace OOP2_Major_mockup_PRJ
         //to keep track of game flow between the two scenario types
         private bool isScripted = false;
 
-       
-        public void StartScenario(bool isScripted)
+
+        public void StartScenario(bool isScripted = false)
         {//called from Game to progress the game state, episode control/random scene type control is done here
             if ((isScripted) && (ScriptScene.StoryCounter <= Data.MAX_EPISODE))
             {
                 ScriptScene.GenerateScenario(ScriptScene.StoryCounter);
                 ScriptScene.StoryCounter += 1; //keeps track of which story mission we are on
-                this.isScripted = isScripted;
             }
             else
             {
-                RandScene.GenerateScenario(rand.Next(1,2));
-                this.isScripted = isScripted;
+                RandScene.GenerateScenario(Data.Rand.Next(1,2));
             }
+            this.isScripted = isScripted;
         }
 
         public int[] RandomUniques(int numberOfValues)
@@ -48,7 +46,7 @@ namespace OOP2_Major_mockup_PRJ
             for (int i = 0; i <= numberOfValues - 1; i++) { possibleValues.Add(i); }
             for (int i = 0; i <= numberOfValues - 1; i++)
             {
-                int index = rand.Next(0, possibleValues.Count);
+                int index = Data.Rand.Next(0, possibleValues.Count);
                 values.Add(possibleValues[index]);
                 possibleValues.RemoveAt(index);
             }
@@ -59,7 +57,9 @@ namespace OOP2_Major_mockup_PRJ
         public Bitmap GetScenarioImage()
         {
             if (isScripted) { return ScriptScene.Image; }
-            else { return RandScene.Image; }
+
+            //Else
+            return RandScene.Image;
         }
 
         //add methods and property to determine encounter level?

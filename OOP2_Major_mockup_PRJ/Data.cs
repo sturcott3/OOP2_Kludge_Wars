@@ -22,6 +22,8 @@ namespace OOP2_Major_mockup_PRJ
         //provides default values for 'turning the buttons off', without causing null refs
         public static Option[] EmptyOptions { get; } = { new Option(), new Option(), new Option(), new Option(), new Option() };
 
+        public static Random Rand = new Random();
+
         /*-_-_-_-_-Misc Data bits _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
         public static string[] DeathReasons { get; } =

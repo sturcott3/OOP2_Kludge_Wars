@@ -17,7 +17,6 @@ namespace OOP2_Major_mockup_PRJ
         Player player;
         InputController input;
         ScenarioController scene;
-        Random r = new Random();
         Option[] currentOptions;
         private int sceneType;
 
@@ -51,13 +50,12 @@ namespace OOP2_Major_mockup_PRJ
                 //<temp>
                 if ((scene.ScriptScene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
-                    MessageBox.Show("WIP. More Episodes Coming soon. Please continue to enjoy randomly " +
-                        "generated scenes until your character dies horribly.");
+                    MessageBox.Show("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", "WIP");
                     sceneType = 5;
                     messageShown = true;
                 }
                 else if (messageShown) { sceneType = 5; }
-                else { sceneType = r.Next(1, 11); }
+                else { sceneType = Data.Rand.Next(1, 11); }
                 //</temp>
 
                 //the number passed to BeginTurn controls the chance of the next scripted scene occuring. 
@@ -66,6 +64,12 @@ namespace OOP2_Major_mockup_PRJ
 
                 player.Fuel -= 1;//amount of fuel per turn could be changed to random or be based on circumstances
                 UpdateHUD();
+            }
+            //Not on ship
+            else
+            {
+                //We can make this better
+                MessageBox.Show("You must be on your ship to warp.", "Can't Warp");
             }
         }
 
@@ -149,15 +153,13 @@ namespace OOP2_Major_mockup_PRJ
             //decide scenario type
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
-                bool isScripted = true;
-                scene.StartScenario(isScripted);
+                scene.StartScenario(true);
                 currentOptions = scene.ScriptScene.GetOptions(index);
                 lblOutput.Text = scene.ScriptScene.Description;
             }
             else
             {//or random here
-                bool isScripted = false;
-                scene.StartScenario(isScripted);
+                scene.StartScenario();
                 currentOptions = scene.RandScene.GetOptions(index);
                 lblOutput.Text = scene.RandScene.Description;
             }
@@ -169,6 +171,9 @@ namespace OOP2_Major_mockup_PRJ
             pbxViewScreen.Image = scene.GetScenarioImage();
 
             //set the text for each button
+
+            //SUGGESTION - Instead of erasing button text when its not an option, instead use Hide() so it limits button size, 
+            //and eliminates scroll bar with random scenarios.
             btnOptionOne.Text = currentOptions[0].ButtonText;
             btnOptionTwo.Text = currentOptions[1].ButtonText;
             btnOptionThree.Text = currentOptions[2].ButtonText;
@@ -191,7 +196,10 @@ namespace OOP2_Major_mockup_PRJ
 
         private void UpdateHUD()
         {//no arg version works without applying the option objects to it
-            //will become more useful later when inventory gets implemented
+         //will become more useful later when inventory gets implemented
+
+            //SUGGESTION - Could be simplified. Instead of a loop, start off with a string of max value, 
+            //and use substring to change size. +++++++ to string.Substring(0, health - 1).
 
             //Update Health
             string output = string.Empty;
@@ -286,6 +294,12 @@ namespace OOP2_Major_mockup_PRJ
                 pbxViewScreen.Image = Properties.Resources.game_over_space_jpg;
                 lblOutput.Text = Data.DeathReasons[2];
             }
+        }
+
+        private void Menu_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet.
+            MessageBox.Show("Menu not implemented.", "WIP");
         }
     }
 }
