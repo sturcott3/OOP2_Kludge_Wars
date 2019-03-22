@@ -15,14 +15,16 @@ namespace OOP2_Major_mockup_PRJ
 
         public override void GenerateScenario(int seed)
         {//here seed is used to track which episode we are on
-
+            
             Description = Data.CampaignDescriptions[seed];
             Image = Data.CampaignImages[seed];
         }
 
         public override Option[] GetOptions(int[] index)
-        {//index controls the order the options will be displayed only
-            //letter keeps the results unique, and enforces use of the overloaded constructor
+        {//index controls the order the options will be displayed only (from the RandomUnique function)
+         //letter keeps the results unique, and enforces use of the overloaded constructor
+
+
             for (int i = 0; i < Data.MAX_OPTIONS; i++)
             {
                 switch (index[i])

@@ -58,8 +58,17 @@ namespace OOP2_Major_mockup_PRJ
                 if (fuel > MAX_FUEL) fuel = MAX_FUEL;
             }
         }
-        public int Money { get; set; }
-
+        public int Money { get { return money; }
+            set
+            {//check if money would go below 0, if it would, don't change it. 
+                //checked for ability to pay elswhere in calling code 
+                int temp = money;
+                money = value;
+                if (money < 0) money = temp;
+            }
+        }
         public int Distance { get; set; }
+        public bool IsOnShip { get; set; }
+        public bool HasMadeChoice { get; set; }
     }
 }

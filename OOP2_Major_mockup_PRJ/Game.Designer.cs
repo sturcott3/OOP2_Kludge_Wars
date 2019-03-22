@@ -42,7 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDebug = new System.Windows.Forms.Button();
             this.pnlInventory = new System.Windows.Forms.Panel();
             this.pbxInventory6 = new System.Windows.Forms.PictureBox();
             this.pbxInventory5 = new System.Windows.Forms.PictureBox();
@@ -58,7 +57,10 @@
             this.btnOptionFive = new System.Windows.Forms.Button();
             this.NextTurn = new System.Windows.Forms.Button();
             this.Menu = new System.Windows.Forms.Button();
-            this.ReturnToShip = new System.Windows.Forms.Button();
+            this.Dis_Embark = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblLocation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewScreen)).BeginInit();
             this.pnlHUD.SuspendLayout();
             this.pnlInventory.SuspendLayout();
@@ -69,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory1)).BeginInit();
             this.fpnlChoices.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbxViewScreen
@@ -237,17 +240,6 @@
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Health: ";
-            // 
-            // btnDebug
-            // 
-            this.btnDebug.Location = new System.Drawing.Point(54, 574);
-            this.btnDebug.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDebug.Name = "btnDebug";
-            this.btnDebug.Size = new System.Drawing.Size(144, 59);
-            this.btnDebug.TabIndex = 27;
-            this.btnDebug.Text = "TEST";
-            this.btnDebug.UseVisualStyleBackColor = true;
-            this.btnDebug.Click += new System.EventHandler(this.Debug_Click);
             // 
             // pnlInventory
             // 
@@ -433,12 +425,12 @@
             this.NextTurn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.NextTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.NextTurn.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.NextTurn.Location = new System.Drawing.Point(253, 446);
+            this.NextTurn.Location = new System.Drawing.Point(253, 511);
             this.NextTurn.Margin = new System.Windows.Forms.Padding(4);
             this.NextTurn.Name = "NextTurn";
-            this.NextTurn.Size = new System.Drawing.Size(179, 91);
+            this.NextTurn.Size = new System.Drawing.Size(227, 71);
             this.NextTurn.TabIndex = 38;
-            this.NextTurn.Text = "Travel";
+            this.NextTurn.Text = "Warp";
             this.NextTurn.UseVisualStyleBackColor = false;
             this.NextTurn.Click += new System.EventHandler(this.NextTurn_Click);
             // 
@@ -448,28 +440,64 @@
             this.Menu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Menu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.Menu.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Menu.Location = new System.Drawing.Point(54, 447);
+            this.Menu.Location = new System.Drawing.Point(16, 559);
             this.Menu.Margin = new System.Windows.Forms.Padding(4);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(179, 91);
+            this.Menu.Size = new System.Drawing.Size(105, 100);
             this.Menu.TabIndex = 39;
             this.Menu.Text = "Menu";
             this.Menu.UseVisualStyleBackColor = false;
             // 
-            // ReturnToShip
+            // Dis_Embark
             // 
-            this.ReturnToShip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ReturnToShip.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ReturnToShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.ReturnToShip.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ReturnToShip.Location = new System.Drawing.Point(253, 552);
-            this.ReturnToShip.Margin = new System.Windows.Forms.Padding(4);
-            this.ReturnToShip.Name = "ReturnToShip";
-            this.ReturnToShip.Size = new System.Drawing.Size(179, 91);
-            this.ReturnToShip.TabIndex = 40;
-            this.ReturnToShip.Text = "Return To Ship";
-            this.ReturnToShip.UseVisualStyleBackColor = false;
-            this.ReturnToShip.Click += new System.EventHandler(this.ReturnToShip_Click);
+            this.Dis_Embark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Dis_Embark.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Dis_Embark.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.Dis_Embark.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Dis_Embark.Location = new System.Drawing.Point(253, 590);
+            this.Dis_Embark.Margin = new System.Windows.Forms.Padding(4);
+            this.Dis_Embark.Name = "Dis_Embark";
+            this.Dis_Embark.Size = new System.Drawing.Size(227, 71);
+            this.Dis_Embark.TabIndex = 40;
+            this.Dis_Embark.Text = "Board Ship";
+            this.Dis_Embark.UseVisualStyleBackColor = false;
+            this.Dis_Embark.Click += new System.EventHandler(this.Dis_Embark_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.lblLocation);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(253, 427);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(227, 74);
+            this.panel1.TabIndex = 35;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label5.Location = new System.Drawing.Point(36, 6);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(156, 20);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Current Location:";
+            // 
+            // lblLocation
+            // 
+            this.lblLocation.BackColor = System.Drawing.Color.Black;
+            this.lblLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.lblLocation.ForeColor = System.Drawing.Color.MintCream;
+            this.lblLocation.Location = new System.Drawing.Point(12, 29);
+            this.lblLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(205, 35);
+            this.lblLocation.TabIndex = 38;
+            this.lblLocation.Text = "Planetside";
+            this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Game
             // 
@@ -477,15 +505,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::OOP2_Major_mockup_PRJ.Properties.Resources._947454_outer_space_wallpaper_dark_hd_wallpapers_1920x1200_h;
-            this.ClientSize = new System.Drawing.Size(1295, 671);
-            this.Controls.Add(this.ReturnToShip);
+            this.ClientSize = new System.Drawing.Size(1295, 683);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Dis_Embark);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.NextTurn);
             this.Controls.Add(this.fpnlChoices);
             this.Controls.Add(this.pnlInventory);
             this.Controls.Add(this.pnlHUD);
             this.Controls.Add(this.lblOutput);
-            this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.pbxViewScreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -503,6 +531,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxInventory1)).EndInit();
             this.fpnlChoices.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -511,7 +541,6 @@
         private System.Windows.Forms.PictureBox pbxViewScreen;
         private System.Windows.Forms.Label lblOutput;
         private System.Windows.Forms.Panel pnlHUD;
-        private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Label lblFuel;
         private System.Windows.Forms.Label lblRepair;
         private System.Windows.Forms.Label lblHealth;
@@ -537,7 +566,10 @@
         private System.Windows.Forms.PictureBox pbxInventory1;
         private System.Windows.Forms.Button NextTurn;
         private System.Windows.Forms.Button Menu;
-        private System.Windows.Forms.Button ReturnToShip;
+        private System.Windows.Forms.Button Dis_Embark;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblLocation;
+        private System.Windows.Forms.Label label5;
     }
 }
 

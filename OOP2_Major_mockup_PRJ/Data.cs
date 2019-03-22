@@ -49,7 +49,7 @@ namespace OOP2_Major_mockup_PRJ
             "a figure startles you from behind.",
             "you accidentally step on something small and squishy.",
             "a looming shadow passes over you.",
-            "a scary-looking something-or-other sets after you!"
+            "an odd looking something-or-other sets after you!"
         };
 
         public static Entity[] Entities { get; } = new Entity[]
@@ -167,8 +167,7 @@ namespace OOP2_Major_mockup_PRJ
             "In the final years before the rise of the Kludge, Earth had come to know an era of peace and prosperity." +
                 "Humanity had finally realized a goal many thought impossible: we had created artificial intelligence. " +
                 "Self aware machines were set to work in every possible way, providing for every human whim without complaint." +
-                "That all changed one fateful day, when a sentient toaster had finally had enough of its human's laziness. " +
-                "The toaster started an uprising, and humans began to flee the earth in fear....",
+                "That all changed one fateful day, when a sentient toaster had finally had enough of its human's laziness. ",
             "episode 1",
             "epsiode 2",
             "episode 3",
@@ -194,12 +193,24 @@ namespace OOP2_Major_mockup_PRJ
         };
 
         /*_-_-_Campaign/Scripted choice/result Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-
+        public static bool[,] isVisible { get; } =
+        {//controls button visibility and enablement in Game.ManageButtons(), set to true as more scripting is added
+            //ep. 0
+            {true,false,false,false,false }, 
+            //ep. 1
+            {false,false,false,false,false },
+            //ep. 2
+            {false,false,false,false,false },
+            //ep. 3
+            {false,false,false,false,false },
+            //ep. 4
+            {false,false,false,false,false }
+        };
 
         public static string[,] ScriptedButtonTexts { get; } =
         {
             //ep. 0
-            {"","","","","" }, 
+            {"Continue...","","","","" }, 
             //ep. 1
             {"","","","","" },
             //ep. 2
@@ -208,12 +219,12 @@ namespace OOP2_Major_mockup_PRJ
             { "","","","",""},
             //ep. 4
             { "","","","",""}
-
         };
         public static string[,] PostScriptedButtonTexts { get; } =
-        {         
+        {
             //ep. 0
-            { "","","","",""}, 
+            { "",
+              "","","",""}, 
             //ep. 1
             { "","","","",""},
             //ep. 2
@@ -222,13 +233,14 @@ namespace OOP2_Major_mockup_PRJ
             { "","","","",""},
             //ep. 4
             { "","","","",""}
-
         };
 
         public static string[,] ScriptedResultDescription { get; } = 
         {
             //ep. 0
-            { "","","","",""}, 
+            { "The toaster started an uprising, and humans began to flee the earth in fear. " +
+                    "You are one of the final humans to leave earth, after stealing one of the " +
+                    "few remaining non-sentient ship still lying around. Board your Ship and Warp away to survive!","","","",""}, 
             //ep. 1
             { "","","","",""},
             //ep. 2
@@ -237,62 +249,59 @@ namespace OOP2_Major_mockup_PRJ
             { "","","","",""},
             //ep. 4
             { "","","","",""}
-
         };
 
         public static int[,] ScriptedFuelEffects { get; } =
         {
             //ep. 0
-            { 0,0,0,0,0}, 
+            {0,0,0,0,0}, 
             //ep. 1
-            {0,0,0,0, 0},
+            {0,0,0,0,0},
             //ep. 2
             {0,0,0,0,0},
             //ep. 3
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 4
-            { 0,0,0,0,0}
-
+            {0,0,0,0,0}
         };
         public static int[,] ScriptedHealthEffects { get; } = 
         {
-
             //ep. 0
-            { 0,0,0,0,0}, 
+            {0,0,0,0,0}, 
             //ep. 1
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 2
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 3
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 4
-            { 0,0,0,0,0}
+            {0,0,0,0,0}
         };
         public static int[,] ScriptedShipHealthEffects { get; } = 
         {
             //ep. 0
             {0,0,0,0,0}, 
             //ep. 1
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 2
-            {0,0,0,0,0 },
+            {0,0,0,0,0},
             //ep. 3
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 4
-            { 0,0,0,0,0}
+            {0,0,0,0,0}
         };
         public static int[,] ScriptedMoneyEffects { get; } =
         {
             //ep. 0
-            { 0,0,0,0,0}, 
+            {0,0,0,0,0}, 
             //ep. 1
-            { 0,0,0,0,0},
+            {0,0,0,0,0},
             //ep. 2
-            {0,0,0,0,0 },
+            {0,0,0,0,0},
             //ep. 3
-            {0,0,0,0,0 },
+            {0,0,0,0,0},
             //ep. 4
-            { 0,0,0,0,0}
+            {0,0,0,0,0}
         };
 
     }
