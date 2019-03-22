@@ -37,7 +37,6 @@ namespace OOP2_Major_mockup_PRJ
 
         private void Game_Load(object sender, EventArgs e)
         {//After? taking input for Player name etc.(TODO) or have it be part of the first scene?
-
             BeginTurn(1); //starts the first scripted scene to be the intro
         }
 
