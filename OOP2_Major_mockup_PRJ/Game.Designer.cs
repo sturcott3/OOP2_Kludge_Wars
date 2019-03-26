@@ -495,7 +495,7 @@
             this.lblShipBoard.BackColor = System.Drawing.Color.Black;
             this.lblShipBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
             this.lblShipBoard.ForeColor = System.Drawing.Color.MintCream;
-            this.lblShipBoard.Location = new System.Drawing.Point(9, 98);
+            this.lblShipBoard.Location = new System.Drawing.Point(10, 98);
             this.lblShipBoard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblShipBoard.Name = "lblShipBoard";
             this.lblShipBoard.Size = new System.Drawing.Size(205, 41);
