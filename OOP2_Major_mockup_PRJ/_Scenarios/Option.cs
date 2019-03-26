@@ -19,98 +19,93 @@ namespace OOP2_Major_mockup_PRJ
         public int MoneyEffect { get; set; }
 
 
-        //Overloaded constructors allows type of encounter to get relevant data from Data class
+        //constructor allows type of encounter to get relevant data from Data class
 
 
         public Option() { }//no arg constructor allows piece by piece construction of these later, 
                            //in the scripted scenarios(from player input at runtime or other possible functionality)
 
-        //1 arg constructor for scripted, predetermined
-        //seed tracks which episode we are on, next enforces overloading/differentiation
-        public Option(int seed, int index , bool isScripted  )
+        
+        //seed tracks which episode we are on when Scripted is true. When Scripted is false, sceneTracker tracks 
+        public Option(int sceneTracker, int button , bool Scripted)
         {
-            if (isScripted) {
+            if (Scripted) {
 
-                switch (index)
+                sceneTracker -= 1;
+
+                switch (button)
                 {
-                    case 1://a corresponds to the first column of the buttonOne row
-                        ButtonText = Data.ScriptedButtonTexts[seed, 0];
-                        PostClickText = Data.PostScriptedButtonTexts[seed, 0];
-                        ResultDescription = Data.ScriptedResultDescription[seed, 0];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[seed, 0];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[seed, 0];
-                        FuelEffect = Data.ScriptedFuelEffects[seed, 0];
-                        MoneyEffect = Data.ScriptedMoneyEffects[seed, 0];
+                    case 0:
+                        ButtonText = Data.ScriptedButtonTexts[sceneTracker,button];
+                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
+                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
+                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
+                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
+                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
+                        break;
+                    case 1:
+                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
+                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
+                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
+                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
+                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
+                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
                         break;
                     case 2:
-                        ButtonText = Data.ScriptedButtonTexts[seed, 1];
-                        PostClickText = Data.PostScriptedButtonTexts[seed, 1];
-                        ResultDescription = Data.ScriptedResultDescription[seed, 1];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[seed, 1];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[seed, 1];
-                        FuelEffect = Data.ScriptedFuelEffects[seed, 1];
-                        MoneyEffect = Data.ScriptedMoneyEffects[seed, 1];
+                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
+                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
+                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
+                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
+                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
+                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
                         break;
                     case 3:
-                        ButtonText = Data.ScriptedButtonTexts[seed, 2];
-                        PostClickText = Data.PostScriptedButtonTexts[seed, 2];
-                        ResultDescription = Data.ScriptedResultDescription[seed, 2];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[seed, 2];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[seed, 2];
-                        FuelEffect = Data.ScriptedFuelEffects[seed, 2];
-                        MoneyEffect = Data.ScriptedMoneyEffects[seed, 2];
+                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
+                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
+                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
+                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
+                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
+                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
                         break;
                     case 4:
-                        ButtonText = Data.ScriptedButtonTexts[seed, 3];
-                        PostClickText = Data.PostScriptedButtonTexts[seed, 3];
-                        ResultDescription = Data.ScriptedResultDescription[seed, 3];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[seed, 3];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[seed, 3];
-                        FuelEffect = Data.ScriptedFuelEffects[seed, 3];
-                        MoneyEffect = Data.ScriptedMoneyEffects[seed, 3];
-                        break;
-                    case 5:
-                        ButtonText = Data.ScriptedButtonTexts[seed, 4];
-                        PostClickText = Data.PostScriptedButtonTexts[seed, 4];
-                        ResultDescription = Data.ScriptedResultDescription[seed, 4];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[seed, 4];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[seed, 4];
-                        FuelEffect = Data.ScriptedFuelEffects[seed, 4];
-                        MoneyEffect = Data.ScriptedMoneyEffects[seed, 4];
+                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
+                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
+                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
+                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
+                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
+                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
                         break;
                 }
-             
             }
             else
             {
-                if (index == 1)
+                if (sceneTracker == 1)
                 {
-                    ButtonText = Data.CombatButtonTexts[seed];
-                    PostClickText = Data.PostCombatButtonTexts[seed];
-                    ResultDescription = Data.CombatResultDescription[seed];
-                    PlayerHealthEffect = Data.CombatHealthEffects[seed];
-                    ShipHealthEffect = Data.CombatShipHealthEffects[seed];
-                    FuelEffect = Data.CombatFuelEffects[seed];
-                    MoneyEffect = Data.CombatMoneyEffects[seed];
+                    ButtonText = Data.CombatButtonTexts[button];
+                    PostClickText = Data.PostCombatButtonTexts[button];
+                    ResultDescription = Data.CombatResultDescription[button];
+                    PlayerHealthEffect = Data.CombatHealthEffects[button];
+                    ShipHealthEffect = Data.CombatShipHealthEffects[button];
+                    FuelEffect = Data.CombatFuelEffects[button];
+                    MoneyEffect = Data.CombatMoneyEffects[button];
 
                 }
-                else if (index == 2)
+                else if (sceneTracker == 2)
                 {
-                    ButtonText = Data.MerchantButtonTexts[seed];
-                    PostClickText = Data.PostMerchantButtonTexts[seed];
-                    ResultDescription = Data.MerchantResultDescription[seed];
-                    PlayerHealthEffect = Data.MerchantHealthEffects[seed];
-                    ShipHealthEffect = Data.MerchantShipHealthEffects[seed];
-                    FuelEffect = Data.MerchantFuelEffects[seed];
-                    MoneyEffect = Data.MerchantMoneyEffects[seed];
+                    ButtonText = Data.MerchantButtonTexts[sceneTracker];
+                    PostClickText = Data.PostMerchantButtonTexts[sceneTracker];
+                    ResultDescription = Data.MerchantResultDescription[sceneTracker];
+                    PlayerHealthEffect = Data.MerchantHealthEffects[sceneTracker];
+                    ShipHealthEffect = Data.MerchantShipHealthEffects[sceneTracker];
+                    FuelEffect = Data.MerchantFuelEffects[sceneTracker];
+                    MoneyEffect = Data.MerchantMoneyEffects[sceneTracker];
                 }
             }
         }
-
-        
-        //2 integer arg version of constructor is for random gen
-        //can add a new encounter type pretty easily by adding the relevant data to Data, and making a 'type' 3
-       
-        
     }
 }

@@ -18,11 +18,11 @@ namespace OOP2_Major_mockup_PRJ
         //They are directly accessible from anywhere (both scenario types),
         //but are read-only (safe, but only one place to update with story/enemy/NPC/location content)
 
-        public override Option[] GetOptions(int[] index)
+        public override Option[] GetOptions(int[] index,int sceneTracker)
         {//randomizes the order of the button layout
             for (int i = 0; i < Data.MAX_OPTIONS; i++)
             {
-                CurrentOptions[i] = new Option(index[i], type, false);
+                CurrentOptions[i] = new Option(sceneTracker, index[i], false);
             }
             return CurrentOptions;
         }

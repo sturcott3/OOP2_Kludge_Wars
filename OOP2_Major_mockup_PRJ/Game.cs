@@ -45,7 +45,7 @@ namespace OOP2_Major_mockup_PRJ
         { 
             if (player.IsOnShip) {
                 //<temp>
-                if ((scene.ScriptScene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
+                if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
                     MessageBox.Show("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", "WIP");
                     sceneType = 5;
@@ -76,12 +76,12 @@ namespace OOP2_Major_mockup_PRJ
             player.IsOnShip = !player.IsOnShip;//filps it when you click it
             if (player.IsOnShip)
             {
-                lblLocation.Text = "Shipboard";
+                lblShipBoard.Text = "Shipboard";
                 Dis_Embark.Text = "Disembark";
             }
             else
             {
-                lblLocation.Text = "Planetside";
+                lblShipBoard.Text = "Planetside";
                 Dis_Embark.Text = "Board Ship";
             }
             //will need to become a check on integers if other possibilties are added eg. space stations etc.
@@ -144,7 +144,7 @@ namespace OOP2_Major_mockup_PRJ
         private void BeginTurn(int sceneType)
         {//call to start a new turn
 
-            int[] index = scene.RandomUniques(Data.MAX_OPTIONS);
+            int[] index = { 0, 1, 2, 3, 4 };
             player.HasMadeChoice = false;
 
 
@@ -152,13 +152,13 @@ namespace OOP2_Major_mockup_PRJ
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
                 scene.StartScenario(true);
-                currentOptions = scene.ScriptScene.GetOptions(index);
+                currentOptions = scene.ScriptScene.GetOptions(index,scene.StoryCounter);
                 lblOutput.Text = scene.ScriptScene.Description;
             }
             else
             {//or random here
                 scene.StartScenario();
-                currentOptions = scene.RandScene.GetOptions(index);
+                currentOptions = scene.RandScene.GetOptions(index,Data.rand.Next(1,3));
                 lblOutput.Text = scene.RandScene.Description;
             }
 
@@ -167,7 +167,7 @@ namespace OOP2_Major_mockup_PRJ
 
             //change the image
             pbxViewScreen.Image = scene.GetScenarioImage();
-
+            
             //set the text for each button
 
             //SUGGESTION - Instead of erasing button text when its not an option, instead use Hide() so it limits button size, 

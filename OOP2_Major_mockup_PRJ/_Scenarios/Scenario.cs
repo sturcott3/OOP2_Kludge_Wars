@@ -24,7 +24,7 @@ namespace OOP2_Major_mockup_PRJ
 
         //virtual methods for now only here to allow both scenario types to inherit the method, 
         //could later have code that is mutual brought back in. 
-        public virtual void GenerateScenario(int seed) {  }
-        public virtual Option[] GetOptions(int[] index) { return null; }
+        public virtual void GenerateScenario(int sceneTracker) {  }
+        public virtual Option[] GetOptions(int[] index, int sceneTracker) { return null; }
     }
 }
