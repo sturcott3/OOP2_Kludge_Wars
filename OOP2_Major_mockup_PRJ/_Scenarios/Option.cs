@@ -93,17 +93,16 @@ namespace OOP2_Major_mockup_PRJ
                     ShipHealthEffect = Data.CombatShipHealthEffects[button];
                     FuelEffect = Data.CombatFuelEffects[button];
                     MoneyEffect = Data.CombatMoneyEffects[button];
-
                 }
                 else if (sceneTracker == 2)
                 {
-                    ButtonText = Data.MerchantButtonTexts[sceneTracker];
-                    PostClickText = Data.PostMerchantButtonTexts[sceneTracker];
-                    ResultDescription = Data.MerchantResultDescription[sceneTracker];
-                    PlayerHealthEffect = Data.MerchantHealthEffects[sceneTracker];
-                    ShipHealthEffect = Data.MerchantShipHealthEffects[sceneTracker];
-                    FuelEffect = Data.MerchantFuelEffects[sceneTracker];
-                    MoneyEffect = Data.MerchantMoneyEffects[sceneTracker];
+                    ButtonText = Data.MerchantButtonTexts[button];
+                    PostClickText = Data.PostMerchantButtonTexts[button];
+                    ResultDescription = Data.MerchantResultDescription[button];
+                    PlayerHealthEffect = Data.MerchantHealthEffects[button];
+                    ShipHealthEffect = Data.MerchantShipHealthEffects[button];
+                    FuelEffect = Data.MerchantFuelEffects[button];
+                    MoneyEffect = Data.MerchantMoneyEffects[button];
                 }
             }
         }
