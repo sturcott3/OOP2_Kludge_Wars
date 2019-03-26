@@ -5,12 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 /*
- 1. Is it ok to use these static data members or should we use a library
- 
-    2. Is it better to use one constructor that branches based on a third argument,
+ * Questions for instructor(s?)
+ * 
+    1. Is it ok to use these static data members or should we use a library
+        - answered yes
+
+    2. Is it good/bad practice to use properties everywhere? why or why not?
+           - answered is good, no reason not to
+
+    3. Is it better to use one constructor that branches based on a third argument,
         or to use a data type to force a different parameter list to get a separate constructor?
-     
-     */
+  - answered ambiguosly, decided on the single constructor with branching logic inside. maybe add enumerated type later.
+*/
+
 namespace OOP2_Major_mockup_PRJ
 {
     static class Data
@@ -220,11 +227,11 @@ namespace OOP2_Major_mockup_PRJ
             //ep. 0
             {"Continue...","","","","" }, 
             //ep. 1
-            {"","","","","" },
+            {"zbxzbs","","","","" },
             //ep. 2
-            { "","","","",""},
+            { "","","","","fdsvsdfvs"},
             //ep. 3
-            { "","","","",""},
+            { "","","sdfvsdfvsdfv","",""},
             //ep. 4
             { "","","","",""}
         };

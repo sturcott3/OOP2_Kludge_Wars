@@ -28,19 +28,19 @@ namespace OOP2_Major_mockup_PRJ
                 switch (index[i])
                 {
                     case 0:
-                        CurrentOptions[index[i]] = new Option(index[i], 'a');
+                        CurrentOptions[index[i]] = new Option(0, index[i], true);
                         break;
                     case 1:
-                        CurrentOptions[index[i]] = new Option(index[i], 'b');
+                        CurrentOptions[index[i]] = new Option(1, index[i], true);
                         break;
                     case 2:
-                        CurrentOptions[index[i]] = new Option(index[i], 'c');
+                        CurrentOptions[index[i]] = new Option(2, index[i], true);
                         break;
                     case 3:
-                        CurrentOptions[index[i]] = new Option(index[i], 'd');
+                        CurrentOptions[index[i]] = new Option(3, index[i], true);
                         break;
                     case 4:
-                        CurrentOptions[index[i]] = new Option(index[i], 'e');
+                        CurrentOptions[index[i]] = new Option( 4, index[i] , true);
                         break;
 
                 }
