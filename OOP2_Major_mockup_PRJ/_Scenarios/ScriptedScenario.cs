@@ -14,6 +14,7 @@ namespace OOP2_Major_mockup_PRJ
         {//here seed is used to track which episode we are on
             Description = Data.CampaignDescriptions[sceneTracker];
             Image = Data.CampaignImages[sceneTracker];
+            LocationType = Data.CampaignLocationType[sceneTracker];
         }
 
     public override Option[] GetOptions(int[] buttons, int sceneTracker)

@@ -17,6 +17,13 @@ namespace OOP2_Major_mockup_PRJ
         //to keep track of game flow between the two scenario types
         public int StoryCounter { get; set; }
 
+        public int LocationType {
+            get
+            {
+                return (isScripted) ? ScriptScene.LocationType : RandScene.LocationType;
+            }
+        }
+
         private bool isScripted = false;
 
 
@@ -29,7 +36,8 @@ namespace OOP2_Major_mockup_PRJ
             }
             else
             {
-                RandScene.GenerateScenario(Data.Rand.Next(1,2));
+                //1 - City, 2 - Forest, 3 - Space
+                RandScene.GenerateScenario(Data.Rand.Next(1,4));
             }
             this.isScripted = Scripted;
         }

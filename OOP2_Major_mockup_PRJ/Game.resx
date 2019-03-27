@@ -120,4 +120,7 @@
   <data name="lblOutput.Text" xml:space="preserve">
     <value>Scenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario DescriptionsScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions HereScenario Descriptions Here Here</value>
   </data>
+  <metadata name="tltToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

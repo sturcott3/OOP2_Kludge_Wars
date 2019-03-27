@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="_Entities\Item.cs" />
     <Compile Include="_Scenarios\Option.cs" />
     <Compile Include="_Entities\Player.cs" />
     <Compile Include="_Scenarios\RandomScenario.cs" />

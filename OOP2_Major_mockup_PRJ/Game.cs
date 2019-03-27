@@ -38,12 +38,19 @@ namespace OOP2_Major_mockup_PRJ
         private void Game_Load(object sender, EventArgs e)
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
-            //Also how would we reference the names? It would probably have to be inserted into Data.cs instead of Player.cs for this.
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 1, 3);
+            //Temporarily set to input type 5, so you can type whatever for now
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
             Data.PlayerName = playerInfo[0];
             Data.ShipName = playerInfo[1];
 
             BeginTurn(1); //starts the first scripted scene to be the intro
+
+
+            //Just for testing purposes, later on Option and Data can be modified to include adding items
+            player.Inventory[0] = Data.Items[0];
+            player.Inventory[1] = Data.Items[1];
+            player.Inventory[2] = Data.Items[2];
+            UpdateHUD();
         }
 
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
@@ -79,18 +86,8 @@ namespace OOP2_Major_mockup_PRJ
 
         private void Dis_Embark_Click(object sender, EventArgs e)
         {
-            player.IsOnShip = !player.IsOnShip;//filps it when you click it
-            if (player.IsOnShip)
-            {
-                lblShipBoard.Text = "Shipboard";
-                Dis_Embark.Text = "Disembark";
-            }
-            else
-            {
-                lblShipBoard.Text = "Planetside";
-                Dis_Embark.Text = "Board Ship";
-            }
-            //will need to become a check on integers if other possibilties are added eg. space stations etc.
+            player.IsOnShip = !player.IsOnShip;
+            UpdateHUD();
         }
 
         private void OptionOne_Click(object sender, EventArgs e)
@@ -164,12 +161,12 @@ namespace OOP2_Major_mockup_PRJ
             else
             {//or random here
                 scene.StartScenario();
-                currentOptions = scene.RandScene.GetOptions(index,Data.rand.Next(1,3));
+                currentOptions = scene.RandScene.GetOptions(index, scene.RandScene.Type);
                 lblOutput.Text = scene.RandScene.Description;
             }
 
-            //TODO make a system that keep the image inline with Location
-            //i.e. planetside/station/space
+            //If scene type is not in space, disembark
+            if(scene.LocationType != 3) player.IsOnShip = false;
 
             //change the image
             pbxViewScreen.Image = scene.GetScenarioImage();
@@ -198,13 +195,37 @@ namespace OOP2_Major_mockup_PRJ
             player.HasMadeChoice = true;
         }
 
+        private void UpdateHUD(ref Item item)
+        {
+            //Item version will use the item and apply it's effects
+            //May need to modify if we want to prevent players from using an item if its stat is full (Using a medkit at full health)
+            //0 - Health, 1 - Repair, 2 - Fuel, 3 - Money
+            player.Health += item.effects[0];
+            player.ShipHealth += item.effects[1];
+            player.Fuel += item.effects[2];
+            player.Money += item.effects[3];
+
+            //Using the byref, will set the item in the inventory to be equal to null, updating the hud will remove that item from inventory and remove its effects
+            item = null;
+
+            UpdateHUD();
+        }
+        private void UpdateHUD(int button)
+        {
+            //int version keeps results corresponding to the button/option, 
+            //and will update the player's 
+            //data according to the contents of the corresponding option object
+
+            player.Health += currentOptions[button].PlayerHealthEffect;
+            player.ShipHealth += currentOptions[button].ShipHealthEffect;
+            player.Fuel += currentOptions[button].FuelEffect;
+            player.Money += currentOptions[button].MoneyEffect;
+
+            UpdateHUD();
+        }
+
         private void UpdateHUD()
-        {//no arg version works without applying the option objects to it
-         //will become more useful later when inventory gets implemented
-
-            //SUGGESTION - Could be simplified. Instead of a loop, start off with a string of max value, 
-            //and use substring to change size. +++++++ to string.Substring(0, health - 1). This would be an issue if max values ever change.
-
+        {
             //Update Health
             string output = string.Empty;
             for (int i = 0; i < player.Health; i++)
@@ -213,7 +234,7 @@ namespace OOP2_Major_mockup_PRJ
             }
             lblHealth.Text = output;
             if (player.Health == 0) { GameOver("health"); };
-            
+
             //Update Ship Health
             output = string.Empty;
             for (int i = 0; i < player.ShipHealth; i++)
@@ -237,52 +258,55 @@ namespace OOP2_Major_mockup_PRJ
 
             //Update Distance
             lblDistance.Text = player.Distance + " LY";
-        }
-        private void UpdateHUD(int button)
-        {//arg version keeps results corresponding to the button/option, 
-         //and will update the player's 
-         //data according to the contents of the corresponding option object
 
-            //Update Health
-            player.Health += currentOptions[button].PlayerHealthEffect;
-            string output = string.Empty;
-            for (int i = 0; i < player.Health; i++)
+            //Update Inventory Icons
+            btnInventory1.BackgroundImage = (player.Inventory[0] != null) ? player.Inventory[0].Icon : null;
+            btnInventory2.BackgroundImage = (player.Inventory[1] != null) ? player.Inventory[1].Icon : null;
+            btnInventory3.BackgroundImage = (player.Inventory[2] != null) ? player.Inventory[2].Icon : null;
+            btnInventory4.BackgroundImage = (player.Inventory[3] != null) ? player.Inventory[3].Icon : null;
+            btnInventory5.BackgroundImage = (player.Inventory[4] != null) ? player.Inventory[4].Icon : null;
+
+            //Update Inventory Tooltips
+            tltToolTip.SetToolTip(btnInventory1, (player.Inventory[0] != null) ? player.Inventory[0].Name + " - " + player.Inventory[0].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory2, (player.Inventory[1] != null) ? player.Inventory[1].Name + " - " + player.Inventory[1].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory3, (player.Inventory[2] != null) ? player.Inventory[2].Name + " - " + player.Inventory[2].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory4, (player.Inventory[3] != null) ? player.Inventory[3].Name + " - " + player.Inventory[3].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory5, (player.Inventory[4] != null) ? player.Inventory[4].Name + " - " + player.Inventory[4].Description : string.Empty);
+
+            //Update location info 
+            //WIP, location name is not included, but we may remove to lower complexity. (We would need to make and assign an array thats parallel to Data.Locations)
+            if (player.IsOnShip)
             {
-                output += "+ ";
+                lblShipBoard.Text = "Shipboard";
+                Dis_Embark.Text = "Disembark";
             }
-            lblHealth.Text = output;
-            if (player.Health == 0) { GameOver("health"); };
-
-            //Update Ship Health
-            player.ShipHealth += currentOptions[button].ShipHealthEffect;
-            output = string.Empty;
-            for (int i = 0; i < player.ShipHealth; i++)
+            else
             {
-                output += "{} ";
+                Dis_Embark.Text = "Board Ship";
+                switch (scene.LocationType)
+                {
+                    //1 - City, 2 - Forest, 3 - Space
+                    case 1:
+                        lblShipBoard.Text = "In City";
+                        break;
+                    case 2:
+                        lblShipBoard.Text = "In Wilderness";
+                        break;
+                    case 3:
+                        lblShipBoard.Text = "In Exosuit";
+                        break;
+                    default:
+                        lblShipBoard.Text = "Planetside";
+                        break;
+                }
             }
-            lblRepair.Text = output;
-            if (player.ShipHealth == 0) { GameOver("ship"); }
-
-            //Update Fuel
-            player.Fuel += currentOptions[button].FuelEffect;
-            output = string.Empty;
-            for (int i = 0; i < player.Fuel; i++)
-            {
-                output += "[] ";
-            }
-            lblFuel.Text = output;
-            if (player.Fuel == 0) { GameOver("fuel"); }
-
-            //Update Money
-            player.Money += currentOptions[button].MoneyEffect;
-            lblMoney.Text = player.Money.ToString("C0");
-
-            //Update Distance
-            lblDistance.Text = player.Distance + " LY";
         }
 
         private void GameOver(string reason)
         {
+            //DISABLED death for debug purposes.
+
+            /*
             if (reason == "health")
             {
                 pbxViewScreen.Image = Properties.Resources.game_over_planetside;
@@ -298,12 +322,44 @@ namespace OOP2_Major_mockup_PRJ
                 pbxViewScreen.Image = Properties.Resources.game_over_space_jpg;
                 lblOutput.Text = Data.DeathReasons[2];
             }
+            */
         }
 
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
             MessageBox.Show("Menu not implemented.", "WIP");
+        }
+
+        //Inventory interaction
+        private void btnInventory1_Click(object sender, EventArgs e)
+        {
+            if (player.Inventory[0] != null) UpdateHUD(ref player.Inventory[0]);
+        }
+
+        private void btnInventory2_Click(object sender, EventArgs e)
+        {
+            if (player.Inventory[1] != null) UpdateHUD(ref player.Inventory[1]);
+        }
+
+        private void btnInventory3_Click(object sender, EventArgs e)
+        {
+            if (player.Inventory[2] != null) UpdateHUD(ref player.Inventory[2]);
+        }
+
+        private void btnInventory4_Click(object sender, EventArgs e)
+        {
+            if (player.Inventory[3] != null) UpdateHUD(ref player.Inventory[3]);
+        }
+
+        private void btnInventory5_Click(object sender, EventArgs e)
+        {
+            if (player.Inventory[4] != null) UpdateHUD(ref player.Inventory[4]);
+        }
+
+        private void btnInventory6_Click(object sender, EventArgs e)
+        {
+            if (player.Inventory[5] != null) UpdateHUD(ref player.Inventory[5]);
         }
     }
 }

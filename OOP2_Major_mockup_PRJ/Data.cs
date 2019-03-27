@@ -4,33 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-/*
- * Questions for instructor(s?)
- * 
-    1. Is it ok to use these static data members or should we use a library
-        - answered yes
-
-    2. Is it good/bad practice to use properties everywhere? why or why not?
-           - answered is good, no reason not to
-
-    3. Is it better to use one constructor that branches based on a third argument,
-        or to use a data type to force a different parameter list to get a separate constructor?
-  - answered ambiguosly, decided on the single constructor with branching logic inside. maybe add enumerated type later.
-*/
 
 namespace OOP2_Major_mockup_PRJ
 {
     static class Data
-    {   //Data just contains our text/story data, sends bits out to objects as needed 
-        //all data contained in public properties, but read only (no {set;} clauses)
+    {   
+    
         public static Random rand = new Random();
-        //This class removes any text walls from the actual class definitions, 
-        //to minimize brain melting, as well as save system resources 
 
         //Constants
         public const int MAX_OPTIONS = 5; //maximum number of choice buttons
-
         public const int MAX_EPISODE = 5;// maximum episode range for scripted scenarios
+
+        //Biome constants. indicates where in the location, image, arrays do each biome start (Instead of having to make a separate array for each)
+        //This can be split up if we find having the same amount of images as locations is too difficult or limiting.
+        //If anything is added, cases will need to be added in RandomScenario.cs in GenerateScenario() and Game.cs in UpdateHUD() and , and random generation in ScenarioController.cs in StartScenario() will need an increased max
+        public const int CITY_INDEX = 0;
+        public const int FOREST_INDEX = 5;
+        public const int SPACE_INDEX = 9;
+
+        //Used for descriptions and entities as they are less specific.
+        public const int ON_FOOT_INDEX = 0;
+        public const int ON_SHIP_INDEX = 5;
+
 
         //provides default values for 'turning the buttons off', without causing null refs
         public static Option[] EmptyOptions { get; } = { new Option(), new Option(), new Option(), new Option(), new Option() };
@@ -49,57 +45,98 @@ namespace OOP2_Major_mockup_PRJ
 
         /*-_-_-_-_-Random Scenario data pieces_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
         public static string[] Locations { get; } = {
+            //If anything is added, index constants may need to be adjusted
             //You are..
-            "in the swamps of Rodia",
-            "exploring the deserts of Tatooine",
-            "jumping down from your cockpit to the planet's surface",
-            "floating in empty space minding your own business",
-            "walking down the main thoroughfare of the grand market"
+            "walking down the main thoroughfare of the grand market", //Cities/Urban Index
+            "city2",
+            "city3",
+            "city4",
+            "city5",
+            "in the swamps of Rodia", //Forests Index
+            "forest2",
+            "forest3",
+            "forest4",
+            //"exploring the deserts of Tatooine", //Deserts Index
+            "floating in empty space minding your own business", //Space Index
+            "space2",
+            "space3",
+            "space4",
+            "space5",
+            "space6",
+            "space7",
+            "space8",
+            "space9",
+            "space10"
         };
 
         public static string[] Descriptions { get; } = new string[]
         {
+            //If anything is added, index constants may need to be adjusted
             //when..
-            "you notice a ship on your scanner quickly approching you. Further scans indicate",
-            "a figure startles you from behind.",
+            "a figure startles you from behind.", //On Foot Index
             "you accidentally step on something small and squishy.",
             "a looming shadow passes over you.",
-            "an odd looking something-or-other sets after you!"
+            "an odd looking something-or-other sets after you!",
+            "OnFoot5",
+            "you notice a ship on your scanner quickly approching you. Further scans indicate" //On Ship Index
         };
 
         public static Entity[] Entities { get; } = new Entity[]
         {
+            //If anything is added, index constants may need to be adjusted
             //it's a
             //Name, Race, Level, Merchant Level, alwaysEnemy (optional), alwaysMerchant (optional)
-            new Entity("Kludge Scout", "Kludge", 5, 0, true,false),
-            new Entity("Vendor Droid", "Droid", 0, 6,false,true),
-            new Entity("Quivering Mass", "Creature", 3, 0,true,false),
-            new Entity("Chirping Hawker", "Creature", 0, 4,false,true),
-            new Entity("Floating Brain", "Creature", 4, 0,true,false)
+            new Entity("Kludge Scout", "Kludge", 5, 0, true, false), //On Foot Index
+            new Entity("Vendor Droid", "Droid", 0, 6, false, true),
+            new Entity("Quivering Mass", "Creature", 3, 0, true, false),
+            new Entity("Chirping Hawker", "Creature", 0, 4, false, true),
+            new Entity("Floating Brain", "Creature", 4, 0, true, false),
+            new Entity("Kludge Scout Ship", "Corvette", 5, 0, true, false) //On Ship Index
         };
 
         public static Bitmap[] Images { get; } = 
         {
-            Properties.Resources.city_1,
+            //If anything is added, index constants may need to be adjusted
+            Properties.Resources.city_1, //Cities/Urban Index
             Properties.Resources.city_2,
             Properties.Resources.city_3,
             Properties.Resources.city_4,
             Properties.Resources.city_5,
-            Properties.Resources.forest_1,
+            Properties.Resources.forest_1, //Forests Index
             Properties.Resources.forest_2,
             Properties.Resources.forest_3,
             Properties.Resources.forest_4,
-            Properties.Resources.nebula_1,
+            //Deserts Index
+            Properties.Resources.nebula_1, //Space Index
             Properties.Resources.nebula_2,
             Properties.Resources.nebula_3,
             Properties.Resources.planet_1,
             Properties.Resources.planet_2,
-            Properties.Resources.space_1,
+            Properties.Resources.space_1, 
             Properties.Resources.space_2,
             Properties.Resources.space_3,
             Properties.Resources.space_4,
             Properties.Resources.space_5
        };
+
+        public static Bitmap[] ItemImages { get; } =
+        {
+            Properties.Resources.medkit_small,
+            Properties.Resources.medkit_large,
+            Properties.Resources.fuel_small,
+            Properties.Resources.fuel_large,
+            Properties.Resources.cargo_gem,
+            Properties.Resources.cargo_metal,
+            Properties.Resources.nuke
+        };
+
+        public static Item[] Items { get; } = new Item[]
+        {
+            //Health, Repair, Fuel, Money
+            new Item("Medkit", "A large container containing various medical supplies. (+3 Health)", 3, 0, 0, 0, ItemImages[1]),
+            new Item("Fuel Cannister", "A small cannister containing fuel. (+2 Fuel)", 0, 0, 2, 0, ItemImages[2]),
+            new Item("Bag of Gems", "A small bag containing valuable gems. (+45 Credits)", 0, 0, 0, 45, ItemImages[4])
+        };
 
         /*-_-_-_\/Combat choice/result Data\/-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
@@ -152,6 +189,7 @@ namespace OOP2_Major_mockup_PRJ
             "thank the merchant and his buddies, then return to the ship | +2 Repair || -$40|",
         };
 
+        //Need to add a money check, where if the player can't afford the purchase, the merchant will laugh at you or something and tell you to go away.
         public static string[] MerchantResultDescription { get; } = new string[]
         {
             "The strange little... thing? person? vomits directly into your ships fuel tank, " +
@@ -206,6 +244,12 @@ namespace OOP2_Major_mockup_PRJ
            Properties.Resources.nebula_3,
            Properties.Resources.forest_2,
            Properties.Resources.city_5
+        };
+
+        public static int[] CampaignLocationType { get; } =
+        {
+             //1 - City, 2 - Forest, 3 - Space
+            3, 1, 3, 2, 1
         };
 
         /*_-_-_Campaign/Scripted choice/result Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/

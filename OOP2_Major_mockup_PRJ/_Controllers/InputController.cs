@@ -57,10 +57,10 @@ namespace OOP2_Major_mockup_PRJ
 
         private bool ValidateInput(string input, int type)
         {
-            //Type 1 = Letters only, Type 2 = Numbers only, Type 3, Letters and Numbers only, Type 4, All Characters Allowed
+            //Type 1 = Letters only, Type 2 = Numbers only, Type 3 = Letters and Numbers only, Type 4 = All Characters Allowed, Type 5 = No validation preformed (Used for debug purposes).
 
             //Input validation
-            if (input.Length > 0 && ((type == 1 && IsAllLetters(input)) || (type == 2 && IsAllNumbers(input)) || (type == 3 && IsAllLettersNumbers(input)) || (type == 4)))
+            if ((input.Length > 0 && ((type == 1 && IsAllLetters(input)) || (type == 2 && IsAllNumbers(input)) || (type == 3 && IsAllLettersNumbers(input)) || (type == 4))) || type == 5)
             {
                 return true;
             }

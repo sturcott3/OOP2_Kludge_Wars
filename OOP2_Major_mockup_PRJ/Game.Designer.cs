@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.pbxViewScreen = new System.Windows.Forms.PictureBox();
             this.lblOutput = new System.Windows.Forms.Label();
@@ -43,12 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlInventory = new System.Windows.Forms.Panel();
-            this.pbxInventory6 = new System.Windows.Forms.PictureBox();
-            this.pbxInventory5 = new System.Windows.Forms.PictureBox();
-            this.pbxInventory4 = new System.Windows.Forms.PictureBox();
-            this.pbxInventory3 = new System.Windows.Forms.PictureBox();
-            this.pbxInventory2 = new System.Windows.Forms.PictureBox();
-            this.pbxInventory1 = new System.Windows.Forms.PictureBox();
             this.fpnlChoices = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOptionOne = new System.Windows.Forms.Button();
             this.btnOptionTwo = new System.Windows.Forms.Button();
@@ -62,15 +57,16 @@
             this.lblLocation = new System.Windows.Forms.Label();
             this.lblShipBoard = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnInventory6 = new System.Windows.Forms.Button();
+            this.btnInventory5 = new System.Windows.Forms.Button();
+            this.btnInventory4 = new System.Windows.Forms.Button();
+            this.btnInventory3 = new System.Windows.Forms.Button();
+            this.btnInventory2 = new System.Windows.Forms.Button();
+            this.btnInventory1 = new System.Windows.Forms.Button();
+            this.tltToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewScreen)).BeginInit();
             this.pnlHUD.SuspendLayout();
             this.pnlInventory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory1)).BeginInit();
             this.fpnlChoices.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -232,70 +228,16 @@
             // pnlInventory
             // 
             this.pnlInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.pnlInventory.Controls.Add(this.pbxInventory6);
-            this.pnlInventory.Controls.Add(this.pbxInventory5);
-            this.pnlInventory.Controls.Add(this.pbxInventory4);
-            this.pnlInventory.Controls.Add(this.pbxInventory3);
-            this.pnlInventory.Controls.Add(this.pbxInventory2);
-            this.pnlInventory.Controls.Add(this.pbxInventory1);
+            this.pnlInventory.Controls.Add(this.btnInventory1);
+            this.pnlInventory.Controls.Add(this.btnInventory2);
+            this.pnlInventory.Controls.Add(this.btnInventory3);
+            this.pnlInventory.Controls.Add(this.btnInventory4);
+            this.pnlInventory.Controls.Add(this.btnInventory5);
+            this.pnlInventory.Controls.Add(this.btnInventory6);
             this.pnlInventory.Location = new System.Drawing.Point(10, 274);
             this.pnlInventory.Name = "pnlInventory";
             this.pnlInventory.Size = new System.Drawing.Size(350, 67);
             this.pnlInventory.TabIndex = 33;
-            // 
-            // pbxInventory6
-            // 
-            this.pbxInventory6.BackColor = System.Drawing.Color.Black;
-            this.pbxInventory6.Location = new System.Drawing.Point(294, 8);
-            this.pbxInventory6.Name = "pbxInventory6";
-            this.pbxInventory6.Size = new System.Drawing.Size(50, 50);
-            this.pbxInventory6.TabIndex = 34;
-            this.pbxInventory6.TabStop = false;
-            // 
-            // pbxInventory5
-            // 
-            this.pbxInventory5.BackColor = System.Drawing.Color.Black;
-            this.pbxInventory5.Location = new System.Drawing.Point(236, 8);
-            this.pbxInventory5.Name = "pbxInventory5";
-            this.pbxInventory5.Size = new System.Drawing.Size(50, 50);
-            this.pbxInventory5.TabIndex = 32;
-            this.pbxInventory5.TabStop = false;
-            // 
-            // pbxInventory4
-            // 
-            this.pbxInventory4.BackColor = System.Drawing.Color.Black;
-            this.pbxInventory4.Location = new System.Drawing.Point(180, 8);
-            this.pbxInventory4.Name = "pbxInventory4";
-            this.pbxInventory4.Size = new System.Drawing.Size(50, 50);
-            this.pbxInventory4.TabIndex = 30;
-            this.pbxInventory4.TabStop = false;
-            // 
-            // pbxInventory3
-            // 
-            this.pbxInventory3.BackColor = System.Drawing.Color.Black;
-            this.pbxInventory3.Location = new System.Drawing.Point(122, 8);
-            this.pbxInventory3.Name = "pbxInventory3";
-            this.pbxInventory3.Size = new System.Drawing.Size(52, 50);
-            this.pbxInventory3.TabIndex = 28;
-            this.pbxInventory3.TabStop = false;
-            // 
-            // pbxInventory2
-            // 
-            this.pbxInventory2.BackColor = System.Drawing.Color.Black;
-            this.pbxInventory2.Location = new System.Drawing.Point(64, 8);
-            this.pbxInventory2.Name = "pbxInventory2";
-            this.pbxInventory2.Size = new System.Drawing.Size(50, 50);
-            this.pbxInventory2.TabIndex = 26;
-            this.pbxInventory2.TabStop = false;
-            // 
-            // pbxInventory1
-            // 
-            this.pbxInventory1.BackColor = System.Drawing.Color.Black;
-            this.pbxInventory1.Location = new System.Drawing.Point(6, 8);
-            this.pbxInventory1.Name = "pbxInventory1";
-            this.pbxInventory1.Size = new System.Drawing.Size(50, 50);
-            this.pbxInventory1.TabIndex = 24;
-            this.pbxInventory1.TabStop = false;
             // 
             // fpnlChoices
             // 
@@ -482,6 +424,78 @@
             this.label5.TabIndex = 37;
             this.label5.Text = "Current Location:";
             // 
+            // btnInventory6
+            // 
+            this.btnInventory6.BackColor = System.Drawing.Color.Black;
+            this.btnInventory6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventory6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInventory6.Location = new System.Drawing.Point(294, 8);
+            this.btnInventory6.Name = "btnInventory6";
+            this.btnInventory6.Size = new System.Drawing.Size(50, 50);
+            this.btnInventory6.TabIndex = 41;
+            this.btnInventory6.UseVisualStyleBackColor = false;
+            this.btnInventory6.Click += new System.EventHandler(this.btnInventory6_Click);
+            // 
+            // btnInventory5
+            // 
+            this.btnInventory5.BackColor = System.Drawing.Color.Black;
+            this.btnInventory5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventory5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInventory5.Location = new System.Drawing.Point(236, 8);
+            this.btnInventory5.Name = "btnInventory5";
+            this.btnInventory5.Size = new System.Drawing.Size(50, 50);
+            this.btnInventory5.TabIndex = 42;
+            this.btnInventory5.UseVisualStyleBackColor = false;
+            this.btnInventory5.Click += new System.EventHandler(this.btnInventory5_Click);
+            // 
+            // btnInventory4
+            // 
+            this.btnInventory4.BackColor = System.Drawing.Color.Black;
+            this.btnInventory4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventory4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInventory4.Location = new System.Drawing.Point(180, 8);
+            this.btnInventory4.Name = "btnInventory4";
+            this.btnInventory4.Size = new System.Drawing.Size(50, 50);
+            this.btnInventory4.TabIndex = 43;
+            this.btnInventory4.UseVisualStyleBackColor = false;
+            this.btnInventory4.Click += new System.EventHandler(this.btnInventory4_Click);
+            // 
+            // btnInventory3
+            // 
+            this.btnInventory3.BackColor = System.Drawing.Color.Black;
+            this.btnInventory3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventory3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInventory3.Location = new System.Drawing.Point(122, 8);
+            this.btnInventory3.Name = "btnInventory3";
+            this.btnInventory3.Size = new System.Drawing.Size(50, 50);
+            this.btnInventory3.TabIndex = 44;
+            this.btnInventory3.UseVisualStyleBackColor = false;
+            this.btnInventory3.Click += new System.EventHandler(this.btnInventory3_Click);
+            // 
+            // btnInventory2
+            // 
+            this.btnInventory2.BackColor = System.Drawing.Color.Black;
+            this.btnInventory2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventory2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInventory2.Location = new System.Drawing.Point(64, 8);
+            this.btnInventory2.Name = "btnInventory2";
+            this.btnInventory2.Size = new System.Drawing.Size(50, 50);
+            this.btnInventory2.TabIndex = 45;
+            this.btnInventory2.UseVisualStyleBackColor = false;
+            this.btnInventory2.Click += new System.EventHandler(this.btnInventory2_Click);
+            // 
+            // btnInventory1
+            // 
+            this.btnInventory1.BackColor = System.Drawing.Color.Black;
+            this.btnInventory1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventory1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInventory1.Location = new System.Drawing.Point(6, 8);
+            this.btnInventory1.Name = "btnInventory1";
+            this.btnInventory1.Size = new System.Drawing.Size(50, 50);
+            this.btnInventory1.TabIndex = 46;
+            this.btnInventory1.UseVisualStyleBackColor = false;
+            this.btnInventory1.Click += new System.EventHandler(this.btnInventory1_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,12 +520,6 @@
             this.pnlHUD.ResumeLayout(false);
             this.pnlHUD.PerformLayout();
             this.pnlInventory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxInventory1)).EndInit();
             this.fpnlChoices.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -534,18 +542,12 @@
         private System.Windows.Forms.Label lblDistance;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlInventory;
-        private System.Windows.Forms.PictureBox pbxInventory6;
-        private System.Windows.Forms.PictureBox pbxInventory5;
-        private System.Windows.Forms.PictureBox pbxInventory4;
-        private System.Windows.Forms.PictureBox pbxInventory3;
-        private System.Windows.Forms.PictureBox pbxInventory2;
         private System.Windows.Forms.FlowLayoutPanel fpnlChoices;
         private System.Windows.Forms.Button btnOptionOne;
         private System.Windows.Forms.Button btnOptionTwo;
         private System.Windows.Forms.Button btnOptionThree;
         private System.Windows.Forms.Button btnOptionFour;
         private System.Windows.Forms.Button btnOptionFive;
-        private System.Windows.Forms.PictureBox pbxInventory1;
         private System.Windows.Forms.Button NextTurn;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Button Dis_Embark;
@@ -553,6 +555,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.Label lblShipBoard;
+        private System.Windows.Forms.Button btnInventory6;
+        private System.Windows.Forms.Button btnInventory1;
+        private System.Windows.Forms.Button btnInventory2;
+        private System.Windows.Forms.Button btnInventory3;
+        private System.Windows.Forms.Button btnInventory4;
+        private System.Windows.Forms.Button btnInventory5;
+        private System.Windows.Forms.ToolTip tltToolTip;
     }
 }
 
