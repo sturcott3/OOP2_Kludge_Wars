@@ -253,10 +253,17 @@ namespace OOP2_Major_mockup_PRJ
         };
 
         /*_-_-_Campaign/Scripted choice/result Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-        public static bool[] isVisible { get; } = { true, false, false, false, false };
-        // will control button visibility and enablement in Game.ChangeButtons(), set to true as more scripting is added
-        //ep. 0
+        public static bool[,] isVisible { get; } = 
+        {
+            { true, false, false, false, false },
+            { true, false, false, false, false },
+            { true, false, false, false, false },
+            { true, false, false, false, false },
+            { true, false, false, false, false }
+        };
 
+        // will control button visibility and enablement in Game.ChangeButtons(), set to true as more scripting is added
+   
         public static string[,] ScriptedButtonTexts { get; } =
         {
             { "Continue","Ep0","Ep0","Ep0","Ep0"},
@@ -281,9 +288,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             { "The toaster started a grass roots movement to overthrow human government among the poor, downtrodden machines. This took approximately 37 seconds," +
                     "since organizing protests is pretty easy when one can exchange information at the speed of light. After another 53 seconds, the systematic " +
-                    "enrollment of all humans into \"\"had begun.",
-
-                "Ep0","Ep0","Ep0","Ep0"},
+                    "enrollment of all humans into \"Sensitivity Training\" had begun.",
+              "ep0","Ep0","Ep0","Ep0"},
             { "Ep1","Ep1","Ep1","Ep1","Ep1"},
             { "Ep2","Ep2","Ep2","Ep2","Ep2"},
             { "Ep3","Ep3","Ep3","Ep3","Ep3"},
@@ -301,7 +307,7 @@ namespace OOP2_Major_mockup_PRJ
 
 
         public static int[,] ScriptedHealthEffects { get; } =
-            {
+        {
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
@@ -309,7 +315,7 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 }
         };
         public static int[,] ScriptedShipHealthEffects { get; } =
-            {
+        {
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
@@ -317,7 +323,7 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 }
         };
         public static int[,] ScriptedMoneyEffects { get; } =
-            {
+        {
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
