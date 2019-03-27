@@ -34,7 +34,10 @@
             this.lblDirections2 = new System.Windows.Forms.Label();
             this.tbxInput2 = new System.Windows.Forms.TextBox();
             this.pbxStartup = new System.Windows.Forms.PictureBox();
+            this.srpWarning = new System.Windows.Forms.StatusStrip();
+            this.sblWarning = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxStartup)).BeginInit();
+            this.srpWarning.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -43,7 +46,7 @@
             this.btnConfirm.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConfirm.Location = new System.Drawing.Point(177, 346);
+            this.btnConfirm.Location = new System.Drawing.Point(177, 335);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 0;
@@ -95,6 +98,27 @@
             this.pbxStartup.TabIndex = 5;
             this.pbxStartup.TabStop = false;
             // 
+            // srpWarning
+            // 
+            this.srpWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.srpWarning.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sblWarning});
+            this.srpWarning.Location = new System.Drawing.Point(0, 359);
+            this.srpWarning.Name = "srpWarning";
+            this.srpWarning.Size = new System.Drawing.Size(264, 22);
+            this.srpWarning.SizingGrip = false;
+            this.srpWarning.TabIndex = 42;
+            // 
+            // sblWarning
+            // 
+            this.sblWarning.BackColor = System.Drawing.Color.Transparent;
+            this.sblWarning.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sblWarning.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.sblWarning.Name = "sblWarning";
+            this.sblWarning.Size = new System.Drawing.Size(67, 17);
+            this.sblWarning.Text = "sblWarning";
+            this.sblWarning.Visible = false;
+            // 
             // InputDialog
             // 
             this.AcceptButton = this.btnConfirm;
@@ -102,6 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(264, 381);
+            this.Controls.Add(this.srpWarning);
             this.Controls.Add(this.pbxStartup);
             this.Controls.Add(this.lblDirections2);
             this.Controls.Add(this.tbxInput2);
@@ -116,6 +141,8 @@
             this.Text = "Input";
             this.Load += new System.EventHandler(this.InputDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxStartup)).EndInit();
+            this.srpWarning.ResumeLayout(false);
+            this.srpWarning.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +156,7 @@
         private System.Windows.Forms.Label lblDirections2;
         private System.Windows.Forms.TextBox tbxInput2;
         private System.Windows.Forms.PictureBox pbxStartup;
+        private System.Windows.Forms.StatusStrip srpWarning;
+        private System.Windows.Forms.ToolStripStatusLabel sblWarning;
     }
 }

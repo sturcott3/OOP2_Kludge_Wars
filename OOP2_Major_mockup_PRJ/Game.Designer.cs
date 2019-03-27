@@ -64,11 +64,14 @@
             this.btnInventory2 = new System.Windows.Forms.Button();
             this.btnInventory1 = new System.Windows.Forms.Button();
             this.tltToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.srpWarning = new System.Windows.Forms.StatusStrip();
+            this.sblWarning = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxViewScreen)).BeginInit();
             this.pnlHUD.SuspendLayout();
             this.pnlInventory.SuspendLayout();
             this.fpnlChoices.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.srpWarning.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbxViewScreen
@@ -496,13 +499,35 @@
             this.btnInventory1.UseVisualStyleBackColor = false;
             this.btnInventory1.Click += new System.EventHandler(this.btnInventory1_Click);
             // 
+            // srpWarning
+            // 
+            this.srpWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.srpWarning.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sblWarning});
+            this.srpWarning.Location = new System.Drawing.Point(0, 546);
+            this.srpWarning.Name = "srpWarning";
+            this.srpWarning.Size = new System.Drawing.Size(971, 22);
+            this.srpWarning.SizingGrip = false;
+            this.srpWarning.TabIndex = 41;
+            // 
+            // sblWarning
+            // 
+            this.sblWarning.BackColor = System.Drawing.Color.Transparent;
+            this.sblWarning.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sblWarning.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.sblWarning.Name = "sblWarning";
+            this.sblWarning.Size = new System.Drawing.Size(67, 17);
+            this.sblWarning.Text = "sblWarning";
+            this.sblWarning.Visible = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::OOP2_Major_mockup_PRJ.Properties.Resources._947454_outer_space_wallpaper_dark_hd_wallpapers_1920x1200_h;
-            this.ClientSize = new System.Drawing.Size(971, 555);
+            this.ClientSize = new System.Drawing.Size(971, 568);
+            this.Controls.Add(this.srpWarning);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Dis_Embark);
             this.Controls.Add(this.btnMenu);
@@ -523,7 +548,10 @@
             this.fpnlChoices.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.srpWarning.ResumeLayout(false);
+            this.srpWarning.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -562,6 +590,8 @@
         private System.Windows.Forms.Button btnInventory4;
         private System.Windows.Forms.Button btnInventory5;
         private System.Windows.Forms.ToolTip tltToolTip;
+        private System.Windows.Forms.StatusStrip srpWarning;
+        private System.Windows.Forms.ToolStripStatusLabel sblWarning;
     }
 }
 

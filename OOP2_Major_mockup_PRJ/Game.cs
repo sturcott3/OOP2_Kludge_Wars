@@ -18,6 +18,7 @@ namespace OOP2_Major_mockup_PRJ
         InputController input;
         ScenarioController scene;
         Option[] currentOptions;
+        Timer t = new Timer();
         private int sceneType;
 
         //<temp>
@@ -39,7 +40,7 @@ namespace OOP2_Major_mockup_PRJ
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
             //Temporarily set to input type 5, so you can type whatever for now
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
             Data.PlayerName = playerInfo[0];
             Data.ShipName = playerInfo[1];
 
@@ -60,7 +61,7 @@ namespace OOP2_Major_mockup_PRJ
                 //<temp>
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
-                    MessageBox.Show("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", "WIP");
+                    ShowWarning("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", 2.5);
                     sceneType = 5;
                     messageShown = true;
                 }
@@ -80,8 +81,8 @@ namespace OOP2_Major_mockup_PRJ
             else
             {
                 //We can make this better
-                MessageBox.Show("You must be on your ship to warp.", "Can't Warp");
-                //could do a colour change on the Shipboard label with a little delay to simulate flashing? 
+                ShowWarning("Unable to warp, you must be on your ship.", 2.5);
+
             }
         }
 
@@ -120,6 +121,7 @@ namespace OOP2_Major_mockup_PRJ
                 UpdateHUD(2);
             }
         }
+
         private void OptionFour_Click(object sender, EventArgs e)
         {
             if (!player.HasMadeChoice)
@@ -149,21 +151,20 @@ namespace OOP2_Major_mockup_PRJ
 
             int[] index = { 0, 1, 2, 3, 4 };
             player.HasMadeChoice = false;
-            
+
+
             //decide scenario type
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
                 scene.StartScenario(true);
                 currentOptions = scene.ScriptScene.GetOptions(index,scene.StoryCounter);
-                lblOutput.Text = scene.ScriptScene.PlaceName;
-                lblLocation.Text = scene.ScriptScene.Location;
+                lblOutput.Text = scene.ScriptScene.Description;
             }
             else
             {//or random here
                 scene.StartScenario();
                 currentOptions = scene.RandScene.GetOptions(index, scene.RandScene.Type);
-                lblOutput.Text = scene.RandScene.PlaceName;
-                lblLocation.Text = scene.RandScene.Location;
+                lblOutput.Text = scene.RandScene.Description;
             }
 
             //If scene type is not in space, disembark
@@ -329,7 +330,7 @@ namespace OOP2_Major_mockup_PRJ
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
-            MessageBox.Show("Menu not implemented.", "WIP");
+            ShowWarning("Menu not implemented.", 2.5);
         }
 
         //Inventory interaction
@@ -361,6 +362,25 @@ namespace OOP2_Major_mockup_PRJ
         private void btnInventory6_Click(object sender, EventArgs e)
         {
             if (player.Inventory[5] != null) UpdateHUD(ref player.Inventory[5]);
+        }
+
+        public void ShowWarning(string message, double seconds)
+        {
+            sblWarning.Text = message;
+            sblWarning.Visible = true;
+
+            //Reset the timer each run incase message already being shown
+            t.Stop();
+
+            t.Interval = Convert.ToInt32(seconds * 1000);
+
+            t.Tick += (s, e) =>
+            {
+                sblWarning.Visible = false;
+                t.Stop();
+            };
+
+            t.Start();
         }
     }
 }

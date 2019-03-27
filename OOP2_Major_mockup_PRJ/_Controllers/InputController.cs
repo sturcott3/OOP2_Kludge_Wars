@@ -70,16 +70,16 @@ namespace OOP2_Major_mockup_PRJ
                 {
                     
                     case 1:
-                        frmInputDialog.ShowWarning("Invalid Input, must contain letters only.");
+                        frmInputDialog.ShowWarning("Invalid Input, must contain letters only.", 2.5);
                         break;
                     case 2:
-                        frmInputDialog.ShowWarning("Invalid Input, must contain numbers only.");
+                        frmInputDialog.ShowWarning("Invalid Input, must contain numbers only.", 2.5);
                         break;
                     case 3:
-                        frmInputDialog.ShowWarning("Invalid Input, must contain letters and numbers only.");
+                        frmInputDialog.ShowWarning("Invalid Input, must contain letters and numbers only.", 2.5);
                         break;
                     case 4:
-                        frmInputDialog.ShowWarning("Invalid Input, must not be empty.");
+                        frmInputDialog.ShowWarning("Invalid Input, must not be empty.", 2.5);
                         break;
                     default:
                         throw new Exception("Invalid input type " + type);
