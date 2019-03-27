@@ -60,7 +60,7 @@ namespace OOP2_Major_mockup_PRJ
                 //<temp>
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
-                    MessageBox.Show("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", "WIP");
+                    ShowWarning("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", 2.5);
                     sceneType = 5;
                     messageShown = true;
                 }
@@ -80,7 +80,8 @@ namespace OOP2_Major_mockup_PRJ
             else
             {
                 //We can make this better
-                MessageBox.Show("You must be on your ship to warp.", "Can't Warp");
+                ShowWarning("Unable to warp, you must be on your ship.", 2.5);
+
             }
         }
 
@@ -328,7 +329,7 @@ namespace OOP2_Major_mockup_PRJ
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
-            MessageBox.Show("Menu not implemented.", "WIP");
+            ShowWarning("Menu not implemented.", 2.5);
         }
 
         //Inventory interaction
@@ -360,6 +361,25 @@ namespace OOP2_Major_mockup_PRJ
         private void btnInventory6_Click(object sender, EventArgs e)
         {
             if (player.Inventory[5] != null) UpdateHUD(ref player.Inventory[5]);
+        }
+
+        public void ShowWarning(string message, double seconds)
+        {
+            sblWarning.Text = message;
+            sblWarning.Visible = true;
+
+            Timer t = new Timer
+            {
+                Interval = Convert.ToInt32(seconds * 1000)
+            };
+
+            t.Tick += (s, e) =>
+            {
+                sblWarning.Visible = false;
+                t.Stop();
+            };
+
+            t.Start();
         }
     }
 }

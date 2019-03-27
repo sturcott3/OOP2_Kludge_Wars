@@ -54,9 +54,23 @@ namespace OOP2_Major_mockup_PRJ
             tbxInput2.Clear();
         }
 
-        public void ShowWarning(string warning)
+        public void ShowWarning(string warning, double seconds)
         {
-            MessageBox.Show(warning, "Warning");
+            sblWarning.Text = warning;
+            sblWarning.Visible = true;
+
+            Timer t = new Timer
+            {
+                Interval = Convert.ToInt32(seconds * 1000)
+            };
+
+            t.Tick += (s, e) =>
+            {
+                sblWarning.Visible = false;
+                t.Stop();
+            };
+
+            t.Start();
         }
 
         public void SetStyle(int style)
