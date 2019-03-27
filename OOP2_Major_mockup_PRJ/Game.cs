@@ -81,6 +81,7 @@ namespace OOP2_Major_mockup_PRJ
             {
                 //We can make this better
                 MessageBox.Show("You must be on your ship to warp.", "Can't Warp");
+                //could do a colour change on the Shipboard label with a little delay to simulate flashing? 
             }
         }
 
@@ -119,7 +120,6 @@ namespace OOP2_Major_mockup_PRJ
                 UpdateHUD(2);
             }
         }
-
         private void OptionFour_Click(object sender, EventArgs e)
         {
             if (!player.HasMadeChoice)
@@ -149,20 +149,21 @@ namespace OOP2_Major_mockup_PRJ
 
             int[] index = { 0, 1, 2, 3, 4 };
             player.HasMadeChoice = false;
-
-
+            
             //decide scenario type
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
                 scene.StartScenario(true);
                 currentOptions = scene.ScriptScene.GetOptions(index,scene.StoryCounter);
-                lblOutput.Text = scene.ScriptScene.Description;
+                lblOutput.Text = scene.ScriptScene.PlaceName;
+                lblLocation.Text = scene.ScriptScene.Location;
             }
             else
             {//or random here
                 scene.StartScenario();
                 currentOptions = scene.RandScene.GetOptions(index, scene.RandScene.Type);
-                lblOutput.Text = scene.RandScene.Description;
+                lblOutput.Text = scene.RandScene.PlaceName;
+                lblLocation.Text = scene.RandScene.Location;
             }
 
             //If scene type is not in space, disembark

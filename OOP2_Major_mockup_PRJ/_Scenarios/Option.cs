@@ -87,7 +87,7 @@ namespace OOP2_Major_mockup_PRJ
                 if (sceneTracker == 1)
                 {
                     ButtonText = Data.CombatButtonTexts[button];
-                    PostClickText = Data.PostCombatButtonTexts[button];
+                    PostClickText = Data.PostCombatTexts[button];
                     ResultDescription = Data.CombatResultDescription[button];
                     PlayerHealthEffect = Data.CombatHealthEffects[button];
                     ShipHealthEffect = Data.CombatShipHealthEffects[button];
@@ -97,7 +97,7 @@ namespace OOP2_Major_mockup_PRJ
                 else if (sceneTracker == 2)
                 {
                     ButtonText = Data.MerchantButtonTexts[button];
-                    PostClickText = Data.PostMerchantButtonTexts[button];
+                    PostClickText = Data.PostMerchantTexts[button];
                     ResultDescription = Data.MerchantResultDescription[button];
                     PlayerHealthEffect = Data.MerchantHealthEffects[button];
                     ShipHealthEffect = Data.MerchantShipHealthEffects[button];

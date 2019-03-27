@@ -15,6 +15,8 @@ namespace OOP2_Major_mockup_PRJ
         public Bitmap Image { get; set; }
         public int LocationType { get; protected set; } = 1;
 
+        public string PlaceName { get; set; }
+
         //5 buttons, 5 Options + 1 container to pass them all at once
         public Option Button1 { get; set; }
         public Option Button2 { get; set; }

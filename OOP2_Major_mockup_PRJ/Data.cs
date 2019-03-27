@@ -150,7 +150,7 @@ namespace OOP2_Major_mockup_PRJ
 
         //need to implement the inventory and/or more complex 
         //random scenarios to make better use of these (a second stage/aftermath?)
-        public static string[] PostCombatButtonTexts { get; } = new string[]
+        public static string[] PostCombatTexts { get; } = new string[]
         {   " You limp away from the spot, groaning and counting your money.|-3 HP || +5 Fuel || +$50 |",
             " You find a decent amount of loot in the thing's remains.|-2 HP || +2 Fuel || +$25 |",
             " You stuff the very wet money into your pocket as you stroll away whistling.|-1 HP || +1 Fuel || +$15 |",
@@ -181,7 +181,8 @@ namespace OOP2_Major_mockup_PRJ
             "Regain 1 health : $5",
             "Repair ship 2 points : $40"
         };
-        public static string[] PostMerchantButtonTexts { get; } = new string[]
+
+        public static string[] PostMerchantTexts { get; } = new string[]
         {   "You return to your ship without saying anything | +2 Fuel || -$20|",
             "Make a rude gesture as you hastily climb back onto the ship | +5 Fuel || -$30| ",
             "You thank the merchant profusely, then return to the ship  | +3 Health || -$10|",
@@ -230,11 +231,11 @@ namespace OOP2_Major_mockup_PRJ
 
         public static string[] CampaignLocations { get; } =
         {
-            "Earth, 2159 : ",
-            "Centralis, Galactic Trade Hub : ",
-            "The Gateway Nebula : ",
-            "The Jungle of Borogantia XII : ",
-            "Broganton, Capital of Borogantia XII"
+            "",
+            "",
+            "",
+            "",
+            ""
         };
 
         public static Bitmap[] CampaignImages { get; } =
@@ -250,6 +251,16 @@ namespace OOP2_Major_mockup_PRJ
         {
              //1 - City, 2 - Forest, 3 - Space
             3, 1, 3, 2, 1
+        };
+
+        public static string[] CampaignPlaceNames { get; } =
+        {
+            //episode 0
+            "Earth, 2159 : ",
+            "Centralis, Galactic Trade Hub : ",
+            "The Gateway Nebula : ",
+            "The Jungle of Borogantia XII : ",
+            "Broganton, Capital of Borogantia XII"
         };
 
         /*_-_-_Campaign/Scripted choice/result Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/

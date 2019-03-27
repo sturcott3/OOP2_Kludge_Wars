@@ -57,6 +57,7 @@ namespace OOP2_Major_mockup_PRJ
 
             //Get random location, description, entity, and image
             Location = Data.Locations[Data.Rand.Next(seed, endIndex)];
+           
             Image = Data.Images[Data.Rand.Next(seed, endIndex)];
 
             //Get on-foot, or on-ship
