@@ -233,6 +233,16 @@ namespace OOP2_Major_mockup_PRJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LogoGameWide {
+            get {
+                object obj = ResourceManager.GetObject("LogoGameWide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap medkit_large {
             get {
                 object obj = ResourceManager.GetObject("medkit_large", resourceCulture);

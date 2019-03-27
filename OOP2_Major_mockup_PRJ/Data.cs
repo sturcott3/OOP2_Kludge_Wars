@@ -78,26 +78,27 @@ namespace OOP2_Major_mockup_PRJ
             new Entity("Floating Brain", "Creature", 4, 0,true,false)
         };
 
-        public static Bitmap[] Images { get; } = new Bitmap[]{
-            new Bitmap(Properties.Resources.city_1),
-            new Bitmap(Properties.Resources.city_2),
-            new Bitmap(Properties.Resources.city_3),
-            new Bitmap(Properties.Resources.city_4),
-            new Bitmap(Properties.Resources.city_5),
-            new Bitmap(Properties.Resources.forest_1),
-            new Bitmap(Properties.Resources.forest_2),
-            new Bitmap(Properties.Resources.forest_3),
-            new Bitmap(Properties.Resources.forest_4),
-            new Bitmap(Properties.Resources.nebula_1),
-            new Bitmap(Properties.Resources.nebula_2),
-            new Bitmap(Properties.Resources.nebula_3),
-            new Bitmap(Properties.Resources.planet_1),
-            new Bitmap(Properties.Resources.planet_2),
-            new Bitmap(Properties.Resources.space_1),
-            new Bitmap(Properties.Resources.space_2),
-            new Bitmap(Properties.Resources.space_3),
-            new Bitmap(Properties.Resources.space_4),
-            new Bitmap(Properties.Resources.space_5)
+        public static Bitmap[] Images { get; } = 
+        {
+            Properties.Resources.city_1,
+            Properties.Resources.city_2,
+            Properties.Resources.city_3,
+            Properties.Resources.city_4,
+            Properties.Resources.city_5,
+            Properties.Resources.forest_1,
+            Properties.Resources.forest_2,
+            Properties.Resources.forest_3,
+            Properties.Resources.forest_4,
+            Properties.Resources.nebula_1,
+            Properties.Resources.nebula_2,
+            Properties.Resources.nebula_3,
+            Properties.Resources.planet_1,
+            Properties.Resources.planet_2,
+            Properties.Resources.space_1,
+            Properties.Resources.space_2,
+            Properties.Resources.space_3,
+            Properties.Resources.space_4,
+            Properties.Resources.space_5
        };
 
         /*-_-_-_\/Combat choice/result Data\/-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
@@ -186,7 +187,7 @@ namespace OOP2_Major_mockup_PRJ
             "episode 1",
             "epsiode 2",
             "episode 3",
-            "episode 5"
+            "episode 4"
         };
 
         public static string[] CampaignLocations { get; } =
@@ -200,7 +201,7 @@ namespace OOP2_Major_mockup_PRJ
 
         public static Bitmap[] CampaignImages { get; } =
         {
-           Properties.Resources.planet_1,
+           Properties.Resources.LogoGameWide,
            Properties.Resources.city_4,
            Properties.Resources.nebula_3,
            Properties.Resources.forest_2,
@@ -279,5 +280,9 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         };
+
+        //Need to put Player Names here in order to use it in scenarios
+        public static string PlayerName { get; set; } = "No Name";
+        public static string ShipName { get; set; } = "No Ship Name";
     }
 }

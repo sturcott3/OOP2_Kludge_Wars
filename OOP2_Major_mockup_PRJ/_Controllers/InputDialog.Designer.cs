@@ -87,11 +87,11 @@
             // 
             // pbxStartup
             // 
-            this.pbxStartup.Image = global::OOP2_Major_mockup_PRJ.Properties.Resources.LogoGame;
+            this.pbxStartup.Image = global::OOP2_Major_mockup_PRJ.Properties.Resources.planet_1;
             this.pbxStartup.Location = new System.Drawing.Point(12, 140);
             this.pbxStartup.Name = "pbxStartup";
             this.pbxStartup.Size = new System.Drawing.Size(240, 186);
-            this.pbxStartup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxStartup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbxStartup.TabIndex = 5;
             this.pbxStartup.TabStop = false;
             // 

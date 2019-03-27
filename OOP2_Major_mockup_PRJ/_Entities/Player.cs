@@ -69,8 +69,5 @@ namespace OOP2_Major_mockup_PRJ
         public int Distance { get; set; }
         public bool IsOnShip { get; set; }
         public bool HasMadeChoice { get; set; }
-
-        public string Name { get; set; }
-        public string ShipName { get; set; }
     }
 }

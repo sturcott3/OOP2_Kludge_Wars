@@ -40,8 +40,8 @@ namespace OOP2_Major_mockup_PRJ
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
             //Also how would we reference the names? It would probably have to be inserted into Data.cs instead of Player.cs for this.
             string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 1, 3);
-            player.Name = playerInfo[0];
-            player.ShipName = playerInfo[1];
+            Data.PlayerName = playerInfo[0];
+            Data.ShipName = playerInfo[1];
 
             BeginTurn(1); //starts the first scripted scene to be the intro
         }
