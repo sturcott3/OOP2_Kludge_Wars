@@ -27,25 +27,66 @@ namespace OOP2_Major_mockup_PRJ
             Text = title;
         }
 
-        public void SetDirections(string directions)
+        public void SetDirections(string directions, string directions2 = "")
         {
-            lblDirections.Text = directions;
+            lblDirections1.Text = directions;
+            lblDirections2.Text = directions2;
         }
 
         public string GetResult()
         {
-            return tbxInput.Text;
+            return tbxInput1.Text;
+        }
+        public string[] GetResults()
+        {
+            return new string[] { tbxInput1.Text, tbxInput2.Text };
+        }
+
+        public void SetButton(string buttonText)
+        {
+            btnConfirm.Text = buttonText;
         }
 
         private void InputDialog_Load(object sender, EventArgs e)
         {
             //Clear textbox each time
-            tbxInput.Clear();
+            tbxInput1.Clear();
+            tbxInput2.Clear();
         }
 
         public void ShowWarning(string warning)
         {
             MessageBox.Show(warning, "Warning");
+        }
+
+        public void SetStyle(int style)
+        {
+            //1. Single string input
+            //2. Dual string input
+            //3. Startup Screen
+            switch (style)
+            {
+                case 1:
+                    this.Height = 160;
+                    lblDirections2.Visible = false;
+                    tbxInput2.Visible = false;
+                    pbxStartup.Visible = false;
+                    break;
+                case 2:
+                    this.Height = 240;
+                    lblDirections2.Visible = true;
+                    tbxInput2.Visible = true;
+                    pbxStartup.Visible = false;
+                    break;
+                case 3:
+                    this.Height = 420;
+                    lblDirections2.Visible = true;
+                    tbxInput2.Visible = true;
+                    pbxStartup.Visible = true;
+                    break;
+                default:
+                    throw new Exception("Invalid Form Style");
+            }
         }
     }
 }

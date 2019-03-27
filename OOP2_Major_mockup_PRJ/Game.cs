@@ -36,7 +36,13 @@ namespace OOP2_Major_mockup_PRJ
         }
 
         private void Game_Load(object sender, EventArgs e)
-        {//After? taking input for Player name etc.(TODO) or have it be part of the first scene?
+        {
+            //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
+            //Also how would we reference the names? It would probably have to be inserted into Data.cs instead of Player.cs for this.
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 1, 3);
+            player.Name = playerInfo[0];
+            player.ShipName = playerInfo[1];
+
             BeginTurn(1); //starts the first scripted scene to be the intro
         }
 
@@ -197,7 +203,7 @@ namespace OOP2_Major_mockup_PRJ
          //will become more useful later when inventory gets implemented
 
             //SUGGESTION - Could be simplified. Instead of a loop, start off with a string of max value, 
-            //and use substring to change size. +++++++ to string.Substring(0, health - 1).
+            //and use substring to change size. +++++++ to string.Substring(0, health - 1). This would be an issue if max values ever change.
 
             //Update Health
             string output = string.Empty;
