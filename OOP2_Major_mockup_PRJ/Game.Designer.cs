@@ -56,7 +56,7 @@
             this.btnOptionFour = new System.Windows.Forms.Button();
             this.btnOptionFive = new System.Windows.Forms.Button();
             this.NextTurn = new System.Windows.Forms.Button();
-            this.Menu = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.Dis_Embark = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblLocation = new System.Windows.Forms.Label();
@@ -408,19 +408,19 @@
             this.NextTurn.UseVisualStyleBackColor = false;
             this.NextTurn.Click += new System.EventHandler(this.NextTurn_Click);
             // 
-            // Menu
+            // btnMenu
             // 
-            this.Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.Menu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Menu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.Menu.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Menu.Location = new System.Drawing.Point(12, 483);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(158, 56);
-            this.Menu.TabIndex = 39;
-            this.Menu.Text = "Menu";
-            this.Menu.UseVisualStyleBackColor = false;
-            this.Menu.Click += new System.EventHandler(this.Menu_Click);
+            this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.btnMenu.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnMenu.Location = new System.Drawing.Point(12, 483);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(158, 56);
+            this.btnMenu.TabIndex = 39;
+            this.btnMenu.Text = "Menu";
+            this.btnMenu.UseVisualStyleBackColor = false;
+            this.btnMenu.Click += new System.EventHandler(this.Menu_Click);
             // 
             // Dis_Embark
             // 
@@ -491,7 +491,7 @@
             this.ClientSize = new System.Drawing.Size(971, 555);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Dis_Embark);
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.NextTurn);
             this.Controls.Add(this.fpnlChoices);
             this.Controls.Add(this.pnlInventory);
@@ -547,7 +547,7 @@
         private System.Windows.Forms.Button btnOptionFive;
         private System.Windows.Forms.PictureBox pbxInventory1;
         private System.Windows.Forms.Button NextTurn;
-        private System.Windows.Forms.Button Menu;
+        private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Button Dis_Embark;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;

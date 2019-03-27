@@ -6,56 +6,91 @@ using System.Threading.Tasks;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    class InputController:Controller
+    class InputController : Controller
     {
         private InputDialog frmInputDialog = new InputDialog();
 
-        //Input getting and validation
-        public string GetInput(string title, string directions, int type)
+        public string GetInput(string title, string directions, string buttonText, int type)
         {
-            //Type 1 = Letters only, Type 2 = Numbers only, Type 3, Letters and Numbers only, Type 4, All Characters Allowed
+            //Single String Input
+            frmInputDialog.SetStyle(1);
             string input = string.Empty;
 
             frmInputDialog.SetTitle(title);
             frmInputDialog.SetDirections(directions);
+            frmInputDialog.SetButton(buttonText);
 
-            //Input validation
-            StatusOk = false;
-            while (!StatusOk)
-            {
+            do {
                 frmInputDialog.ShowDialog();
                 input = frmInputDialog.GetResult();
-                
-                if(input.Length > 0 && ((type == 1 && IsAllLetters(input)) || (type == 2 && IsAllNumbers(input)) || (type == 3 && IsAllLettersNumbers(input)) || (type == 4)))
-                {
-                    StatusOk = true;
-                }
-                else
-                {
-                    switch (type)
-                    {
-                        case 1:
-                            frmInputDialog.ShowWarning("Invalid Input, must contain letters only.");
-                            break;
-                        case 2:
-                            frmInputDialog.ShowWarning("Invalid Input, must contain numbers only.");
-                            break;
-                        case 3:
-                            frmInputDialog.ShowWarning("Invalid Input, must contain letters and numbers only.");
-                            break;
-                        case 4:
-                            frmInputDialog.ShowWarning("Invalid Input, must not be empty.");
-                            break;
-                        default:
-                            throw new Exception("Invalid input type " + type);
-                    }
-                }
-            }
-            
+            } while (!ValidateInput(input, type));
+
             return input;
         }
 
-        public bool IsAllLetters(string input)
+        public string[] GetInput(string title, string direction1, string direction2, string buttonText, int type, int style = 2)
+        {
+            //Two String Input
+            
+            //If style is set to an invalid style
+            if(style == 1 || style > 3)
+            {
+                style = 2;
+            }
+
+            frmInputDialog.SetStyle(style);
+            string[] input = null;
+
+            frmInputDialog.SetTitle(title);
+            frmInputDialog.SetDirections(direction1, direction2);
+            frmInputDialog.SetButton(buttonText);
+
+            do
+            {
+                frmInputDialog.ShowDialog();
+                input = frmInputDialog.GetResults();
+                
+            } while (!input.All(value => ValidateInput(value, type)));
+
+            return input;
+        }
+
+        private bool ValidateInput(string input, int type)
+        {
+            //Type 1 = Letters only, Type 2 = Numbers only, Type 3, Letters and Numbers only, Type 4, All Characters Allowed
+
+            //Input validation
+            if (input.Length > 0 && ((type == 1 && IsAllLetters(input)) || (type == 2 && IsAllNumbers(input)) || (type == 3 && IsAllLettersNumbers(input)) || (type == 4)))
+            {
+                return true;
+            }
+            else
+            {
+                switch (type)
+                {
+                    
+                    case 1:
+                        frmInputDialog.ShowWarning("Invalid Input, must contain letters only.");
+                        break;
+                    case 2:
+                        frmInputDialog.ShowWarning("Invalid Input, must contain numbers only.");
+                        break;
+                    case 3:
+                        frmInputDialog.ShowWarning("Invalid Input, must contain letters and numbers only.");
+                        break;
+                    case 4:
+                        frmInputDialog.ShowWarning("Invalid Input, must not be empty.");
+                        break;
+                    default:
+                        throw new Exception("Invalid input type " + type);
+                }
+            }
+            return false;
+        }
+        //return
+
+
+        private bool IsAllLetters(string input)
         {
             foreach (char c in input)
             {
@@ -68,7 +103,7 @@ namespace OOP2_Major_mockup_PRJ
 
             return true;
         }
-        public bool IsAllNumbers(string input)
+        private bool IsAllNumbers(string input)
         {
             foreach (char c in input)
             {
@@ -81,7 +116,7 @@ namespace OOP2_Major_mockup_PRJ
 
             return true;
         }
-        public bool IsAllLettersNumbers(string input)
+        private bool IsAllLettersNumbers(string input)
         {
             foreach (char c in input)
             {

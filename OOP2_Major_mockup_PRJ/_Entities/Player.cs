@@ -13,12 +13,10 @@ namespace OOP2_Major_mockup_PRJ
         private const int MAX_SHIPHEALTH = 6;
         private const int MAX_FUEL = 7;
         private const int MAX_ITEMS = 6;
-
        
         private int health = MAX_HEALTH; //temporary change to public to demonstrate the refrences
         private int shipHealth = MAX_SHIPHEALTH;
         private int money = 0;
-        private int distance = 0;
         private int fuel = MAX_FUEL;
         //Item[] inventory = new Item[MAX_ITEMS]
 
@@ -60,11 +58,12 @@ namespace OOP2_Major_mockup_PRJ
         }
         public int Money { get { return money; }
             set
-            {//check if money would go below 0, if it would, don't change it. 
-                //checked for ability to pay elswhere in calling code 
-                int temp = money;
-                money = value;
-                if (money < 0) money = temp;
+            {
+                if (value >= 0)
+                {
+                    money = value;
+                }
+                //Else do nothing
             }
         }
         public int Distance { get; set; }
