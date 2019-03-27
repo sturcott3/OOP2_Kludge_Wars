@@ -12,6 +12,8 @@ namespace OOP2_Major_mockup_PRJ
 {
     public partial class InputDialog : Form
     {
+        private Timer t = new Timer();
+
         public InputDialog()
         {
             InitializeComponent();
@@ -59,10 +61,10 @@ namespace OOP2_Major_mockup_PRJ
             sblWarning.Text = warning;
             sblWarning.Visible = true;
 
-            Timer t = new Timer
-            {
-                Interval = Convert.ToInt32(seconds * 1000)
-            };
+            //Reset the timer each run incase message already being shown
+            t.Stop();
+
+            t.Interval = Convert.ToInt32(seconds * 1000);
 
             t.Tick += (s, e) =>
             {

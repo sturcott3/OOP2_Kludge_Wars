@@ -18,6 +18,7 @@ namespace OOP2_Major_mockup_PRJ
         InputController input;
         ScenarioController scene;
         Option[] currentOptions;
+        Timer t = new Timer();
         private int sceneType;
 
         //<temp>
@@ -39,7 +40,7 @@ namespace OOP2_Major_mockup_PRJ
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
             //Temporarily set to input type 5, so you can type whatever for now
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
             Data.PlayerName = playerInfo[0];
             Data.ShipName = playerInfo[1];
 
@@ -368,10 +369,10 @@ namespace OOP2_Major_mockup_PRJ
             sblWarning.Text = message;
             sblWarning.Visible = true;
 
-            Timer t = new Timer
-            {
-                Interval = Convert.ToInt32(seconds * 1000)
-            };
+            //Reset the timer each run incase message already being shown
+            t.Stop();
+
+            t.Interval = Convert.ToInt32(seconds * 1000);
 
             t.Tick += (s, e) =>
             {
