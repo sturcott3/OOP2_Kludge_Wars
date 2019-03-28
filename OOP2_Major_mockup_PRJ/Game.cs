@@ -17,6 +17,7 @@ namespace OOP2_Major_mockup_PRJ
         Player player;
         InputController input;
         ScenarioController scene;
+        Timer t = new Timer();
         Option[] currentOptions;
         private int sceneType;
 
@@ -38,9 +39,9 @@ namespace OOP2_Major_mockup_PRJ
         private void Game_Load(object sender, EventArgs e)
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
-            //Temporarily set to input type 5, so you can type whatever for now
 
             //<temp comment out for debug>
+            //Temporarily set to input type 5, so you don't have to type anything for now
             //string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
             //Data.PlayerName = playerInfo[0];
             //Data.ShipName = playerInfo[1];
@@ -335,8 +336,7 @@ namespace OOP2_Major_mockup_PRJ
             tltToolTip.SetToolTip(btnInventory4, (player.Inventory[3] != null) ? player.Inventory[3].Name + " - " + player.Inventory[3].Description : string.Empty);
             tltToolTip.SetToolTip(btnInventory5, (player.Inventory[4] != null) ? player.Inventory[4].Name + " - " + player.Inventory[4].Description : string.Empty);
 
-            //Update location info 
-            //WIP, location name is not included, but we may remove to lower complexity. (We would need to make and assign an array thats parallel to Data.Locations)
+            //Update location info
             if (player.IsOnShip)
             {
                 lblShipBoard.Text = "Shipboard";
@@ -431,10 +431,9 @@ namespace OOP2_Major_mockup_PRJ
             srpWarning.BackColor = Color.Salmon;
             sblWarning.ForeColor = Color.Black;
 
-            Timer t = new Timer
-            {
-                Interval = Convert.ToInt32(seconds * 1000)
-            };
+            t.Stop();
+            t.Interval = Convert.ToInt32(seconds * 1000);
+
 
             t.Tick += (s, e) =>
             {
