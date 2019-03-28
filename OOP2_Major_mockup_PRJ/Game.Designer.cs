@@ -60,9 +60,9 @@
             this.btnMenu = new System.Windows.Forms.Button();
             this.Dis_Embark = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblLocation = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblPlaceName = new System.Windows.Forms.Label();
             this.lblShipBoard = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.tltToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.srpWarning = new System.Windows.Forms.StatusStrip();
             this.sblWarning = new System.Windows.Forms.ToolStripStatusLabel();
@@ -77,8 +77,9 @@
             // pbxViewScreen
             // 
             this.pbxViewScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pbxViewScreen.Image = global::OOP2_Major_mockup_PRJ.Properties.Resources.LogoGameWide_2;
             this.pbxViewScreen.Location = new System.Drawing.Point(16, 70);
-            this.pbxViewScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxViewScreen.Margin = new System.Windows.Forms.Padding(4);
             this.pbxViewScreen.Name = "pbxViewScreen";
             this.pbxViewScreen.Size = new System.Drawing.Size(1268, 252);
             this.pbxViewScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -111,7 +112,7 @@
             this.pnlHUD.Controls.Add(this.label2);
             this.pnlHUD.Controls.Add(this.label1);
             this.pnlHUD.Location = new System.Drawing.Point(16, 15);
-            this.pnlHUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHUD.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHUD.Name = "pnlHUD";
             this.pnlHUD.Size = new System.Drawing.Size(1267, 43);
             this.pnlHUD.TabIndex = 29;
@@ -251,7 +252,7 @@
             this.pnlInventory.Controls.Add(this.btnInventory5);
             this.pnlInventory.Controls.Add(this.btnInventory6);
             this.pnlInventory.Location = new System.Drawing.Point(13, 337);
-            this.pnlInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlInventory.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInventory.Name = "pnlInventory";
             this.pnlInventory.Size = new System.Drawing.Size(467, 82);
             this.pnlInventory.TabIndex = 33;
@@ -262,7 +263,7 @@
             this.btnInventory1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventory1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory1.Location = new System.Drawing.Point(8, 10);
-            this.btnInventory1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory1.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory1.Name = "btnInventory1";
             this.btnInventory1.Size = new System.Drawing.Size(67, 62);
             this.btnInventory1.TabIndex = 46;
@@ -275,7 +276,7 @@
             this.btnInventory2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventory2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory2.Location = new System.Drawing.Point(85, 10);
-            this.btnInventory2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory2.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory2.Name = "btnInventory2";
             this.btnInventory2.Size = new System.Drawing.Size(67, 62);
             this.btnInventory2.TabIndex = 45;
@@ -288,7 +289,7 @@
             this.btnInventory3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventory3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory3.Location = new System.Drawing.Point(163, 10);
-            this.btnInventory3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory3.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory3.Name = "btnInventory3";
             this.btnInventory3.Size = new System.Drawing.Size(67, 62);
             this.btnInventory3.TabIndex = 44;
@@ -301,7 +302,7 @@
             this.btnInventory4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventory4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory4.Location = new System.Drawing.Point(240, 10);
-            this.btnInventory4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory4.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory4.Name = "btnInventory4";
             this.btnInventory4.Size = new System.Drawing.Size(67, 62);
             this.btnInventory4.TabIndex = 43;
@@ -314,7 +315,7 @@
             this.btnInventory5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventory5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory5.Location = new System.Drawing.Point(315, 10);
-            this.btnInventory5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory5.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory5.Name = "btnInventory5";
             this.btnInventory5.Size = new System.Drawing.Size(67, 62);
             this.btnInventory5.TabIndex = 42;
@@ -327,7 +328,7 @@
             this.btnInventory6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventory6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory6.Location = new System.Drawing.Point(392, 10);
-            this.btnInventory6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory6.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory6.Name = "btnInventory6";
             this.btnInventory6.Size = new System.Drawing.Size(67, 62);
             this.btnInventory6.TabIndex = 41;
@@ -346,7 +347,7 @@
             this.fpnlChoices.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpnlChoices.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.fpnlChoices.Location = new System.Drawing.Point(491, 500);
-            this.fpnlChoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fpnlChoices.Margin = new System.Windows.Forms.Padding(4);
             this.fpnlChoices.Name = "fpnlChoices";
             this.fpnlChoices.Size = new System.Drawing.Size(791, 164);
             this.fpnlChoices.TabIndex = 34;
@@ -359,7 +360,7 @@
             this.btnOptionOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnOptionOne.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnOptionOne.Location = new System.Drawing.Point(4, 4);
-            this.btnOptionOne.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOptionOne.Margin = new System.Windows.Forms.Padding(4);
             this.btnOptionOne.Name = "btnOptionOne";
             this.btnOptionOne.Size = new System.Drawing.Size(760, 47);
             this.btnOptionOne.TabIndex = 36;
@@ -376,7 +377,7 @@
             this.btnOptionTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnOptionTwo.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnOptionTwo.Location = new System.Drawing.Point(4, 59);
-            this.btnOptionTwo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOptionTwo.Margin = new System.Windows.Forms.Padding(4);
             this.btnOptionTwo.Name = "btnOptionTwo";
             this.btnOptionTwo.Size = new System.Drawing.Size(760, 47);
             this.btnOptionTwo.TabIndex = 37;
@@ -393,7 +394,7 @@
             this.btnOptionThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnOptionThree.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnOptionThree.Location = new System.Drawing.Point(4, 114);
-            this.btnOptionThree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOptionThree.Margin = new System.Windows.Forms.Padding(4);
             this.btnOptionThree.Name = "btnOptionThree";
             this.btnOptionThree.Size = new System.Drawing.Size(760, 47);
             this.btnOptionThree.TabIndex = 38;
@@ -410,7 +411,7 @@
             this.btnOptionFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnOptionFour.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnOptionFour.Location = new System.Drawing.Point(4, 169);
-            this.btnOptionFour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOptionFour.Margin = new System.Windows.Forms.Padding(4);
             this.btnOptionFour.Name = "btnOptionFour";
             this.btnOptionFour.Size = new System.Drawing.Size(760, 47);
             this.btnOptionFour.TabIndex = 39;
@@ -427,7 +428,7 @@
             this.btnOptionFive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnOptionFive.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnOptionFive.Location = new System.Drawing.Point(4, 224);
-            this.btnOptionFive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOptionFive.Margin = new System.Windows.Forms.Padding(4);
             this.btnOptionFive.Name = "btnOptionFive";
             this.btnOptionFive.Size = new System.Drawing.Size(760, 47);
             this.btnOptionFive.TabIndex = 40;
@@ -444,7 +445,7 @@
             this.NextTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.NextTurn.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.NextTurn.Location = new System.Drawing.Point(16, 427);
-            this.NextTurn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NextTurn.Margin = new System.Windows.Forms.Padding(4);
             this.NextTurn.Name = "NextTurn";
             this.NextTurn.Size = new System.Drawing.Size(211, 71);
             this.NextTurn.TabIndex = 38;
@@ -459,7 +460,7 @@
             this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.btnMenu.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnMenu.Location = new System.Drawing.Point(16, 594);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(211, 69);
             this.btnMenu.TabIndex = 39;
@@ -474,7 +475,7 @@
             this.Dis_Embark.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.Dis_Embark.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.Dis_Embark.Location = new System.Drawing.Point(17, 510);
-            this.Dis_Embark.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dis_Embark.Margin = new System.Windows.Forms.Padding(4);
             this.Dis_Embark.Name = "Dis_Embark";
             this.Dis_Embark.Size = new System.Drawing.Size(211, 71);
             this.Dis_Embark.TabIndex = 40;
@@ -485,52 +486,53 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.lblLocation);
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.lblPlaceName);
             this.panel1.Controls.Add(this.lblShipBoard);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(244, 430);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(227, 234);
             this.panel1.TabIndex = 35;
             // 
-            // lblLocation
+            // lblDate
             // 
-            this.lblLocation.BackColor = System.Drawing.Color.Black;
-            this.lblLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.lblLocation.ForeColor = System.Drawing.Color.MintCream;
-            this.lblLocation.Location = new System.Drawing.Point(11, 36);
-            this.lblLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblLocation.Name = "lblLocation";
-            this.lblLocation.Size = new System.Drawing.Size(205, 63);
-            this.lblLocation.TabIndex = 39;
-            this.lblLocation.Text = " Earth";
-            this.lblLocation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDate.BackColor = System.Drawing.Color.Black;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.lblDate.ForeColor = System.Drawing.Color.MintCream;
+            this.lblDate.Location = new System.Drawing.Point(11, 158);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(205, 63);
+            this.lblDate.TabIndex = 40;
+            this.lblDate.Text = "2037 AD";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPlaceName
+            // 
+            this.lblPlaceName.BackColor = System.Drawing.Color.Black;
+            this.lblPlaceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
+            this.lblPlaceName.ForeColor = System.Drawing.Color.MintCream;
+            this.lblPlaceName.Location = new System.Drawing.Point(11, 12);
+            this.lblPlaceName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPlaceName.Name = "lblPlaceName";
+            this.lblPlaceName.Size = new System.Drawing.Size(205, 63);
+            this.lblPlaceName.TabIndex = 39;
+            this.lblPlaceName.Text = " Earth";
+            this.lblPlaceName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblShipBoard
             // 
             this.lblShipBoard.BackColor = System.Drawing.Color.Black;
             this.lblShipBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
             this.lblShipBoard.ForeColor = System.Drawing.Color.MintCream;
-            this.lblShipBoard.Location = new System.Drawing.Point(11, 103);
+            this.lblShipBoard.Location = new System.Drawing.Point(11, 84);
             this.lblShipBoard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblShipBoard.Name = "lblShipBoard";
             this.lblShipBoard.Size = new System.Drawing.Size(205, 63);
             this.lblShipBoard.TabIndex = 38;
             this.lblShipBoard.Text = "Planetside";
             this.lblShipBoard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label5.Location = new System.Drawing.Point(36, 6);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(156, 20);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Current Location:";
             // 
             // srpWarning
             // 
@@ -573,7 +575,7 @@
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.pbxViewScreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Game";
             this.Text = "Kludge Wars: The Kludge Awakens";
             this.Load += new System.EventHandler(this.Game_Load);
@@ -583,7 +585,6 @@
             this.pnlInventory.ResumeLayout(false);
             this.fpnlChoices.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.srpWarning.ResumeLayout(false);
             this.srpWarning.PerformLayout();
             this.ResumeLayout(false);
@@ -616,8 +617,7 @@
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Button Dis_Embark;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblLocation;
+        private System.Windows.Forms.Label lblPlaceName;
         private System.Windows.Forms.Label lblShipBoard;
         private System.Windows.Forms.Button btnInventory6;
         private System.Windows.Forms.Button btnInventory1;
@@ -628,6 +628,7 @@
         private System.Windows.Forms.ToolTip tltToolTip;
         private System.Windows.Forms.StatusStrip srpWarning;
         private System.Windows.Forms.ToolStripStatusLabel sblWarning;
+        private System.Windows.Forms.Label lblDate;
     }
 }
 

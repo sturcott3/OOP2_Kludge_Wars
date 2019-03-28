@@ -57,9 +57,9 @@ namespace OOP2_Major_mockup_PRJ
 
             //Get random location, description, entity, and image
             Location = Data.Locations[Data.Rand.Next(seed, endIndex)];
-           
+            PlaceName = Data.RandomPlaceNames[Data.Rand.Next(seed, endIndex)];
             Image = Data.Images[Data.Rand.Next(seed, endIndex)];
-
+            Date = Data.RandomDates[Data.Rand.Next(seed, endIndex)];
             //Get on-foot, or on-ship
             if (onFoot)
             {
@@ -88,7 +88,7 @@ namespace OOP2_Major_mockup_PRJ
 
             //Format description ... could build a logic tree around this to give more flixibility,
             //would likely be part of the planetside/space/station tracking and binding to images
-            Description = "You are " + Location + " when " + Description + " it's a " + Entity.GetName() + ", " + (Type == 1 ? "prepare for combat!" : "you approach the merchant.");
+            Description = "You come to your senses while " + Location + " when " + Description + " it's a " + Entity.GetName() + ", " + (Type == 1 ? "prepare for combat!" : "you approach the merchant.");
         }
     }
 }

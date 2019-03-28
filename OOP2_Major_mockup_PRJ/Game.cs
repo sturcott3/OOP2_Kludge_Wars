@@ -39,9 +39,13 @@ namespace OOP2_Major_mockup_PRJ
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
             //Temporarily set to input type 5, so you can type whatever for now
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
-            Data.PlayerName = playerInfo[0];
-            Data.ShipName = playerInfo[1];
+
+            //<temp comment out for debug>
+            //string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
+            //Data.PlayerName = playerInfo[0];
+            //Data.ShipName = playerInfo[1];
+            //</temp comment out>
+
 
             BeginTurn(1); //starts the first scripted scene to be the intro
 
@@ -56,17 +60,16 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
         { 
-            if (player.IsOnShip) {
-                //<temp>
+            if (player.IsOnShip) {          
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
-                    ShowWarning("More Episodes Coming soon. Please continue to enjoy randomly generated scenes until your character dies horribly.", 2.5);
+                    //can remove now, or leave both. I like both, then we can cut down to just jokes and thanking the player in the script
+                    ShowWarning("Story unavailable, initializing 100% procedural scenarios.", 2.5);
                     sceneType = 5;
                     messageShown = true;
                 }
                 else if (messageShown) { sceneType = 5; }
                 else { sceneType = Data.Rand.Next(1, 11); }
-                //</temp>
 
                 //the number passed to BeginTurn controls the chance of the next scripted scene occuring. 
                 //hardcode to 1 to run only scripted , change to 5 to run only randoms  
@@ -79,9 +82,8 @@ namespace OOP2_Major_mockup_PRJ
             //Not on ship
             else
             {
-                //We can make this better
+                //We can make this better. added a little, could do a lot more with colours....
                 ShowWarning("Unable to warp, you must be on your ship.", 2.5);
-
             }
         }
 
@@ -95,8 +97,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[0].ResultDescription + currentOptions[0].PostClickText;
-                ChangeButtons();
+                lblOutput.Text = currentOptions[0].ResultDescription;
+                ChangeButtons(0);
                 UpdateHUD(0);
             }
         }
@@ -105,8 +107,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[1].ResultDescription + currentOptions[1].PostClickText;
-                ChangeButtons();
+                lblOutput.Text = currentOptions[1].ResultDescription;
+                ChangeButtons(1);
                 UpdateHUD(1);
             }
         }
@@ -115,8 +117,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[2].ResultDescription + currentOptions[2].PostClickText;
-                ChangeButtons();
+                lblOutput.Text = currentOptions[2].ResultDescription;
+                ChangeButtons(2);
                 UpdateHUD(2);
             }
         }
@@ -125,8 +127,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[3].ResultDescription + currentOptions[3].PostClickText;
-                ChangeButtons();
+                lblOutput.Text = currentOptions[3].ResultDescription;
+                ChangeButtons(3);
                 UpdateHUD(3);
             }
         }
@@ -135,8 +137,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[4].ResultDescription + currentOptions[4].PostClickText;
-                ChangeButtons();
+                lblOutput.Text = currentOptions[4].ResultDescription;
+                ChangeButtons(4);
                 UpdateHUD(4);
             }
         }
@@ -150,20 +152,25 @@ namespace OOP2_Major_mockup_PRJ
 
             int[] index = { 0, 1, 2, 3, 4 };
             player.HasMadeChoice = false;
-
-
+          
             //decide scenario type
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
                 scene.StartScenario(true);
                 currentOptions = scene.ScriptScene.GetOptions(index,scene.StoryCounter);
                 lblOutput.Text = scene.ScriptScene.Description;
+                lblPlaceName.Text = scene.ScriptScene.PlaceName;
+                lblDate.Text = scene.ScriptScene.Date;
+                ShowButtons(Data.ScriptedVisibilities[scene.StoryCounter]);
             }
             else
             {//or random here
                 scene.StartScenario();
                 currentOptions = scene.RandScene.GetOptions(index, scene.RandScene.Type);
                 lblOutput.Text = scene.RandScene.Description;
+                lblPlaceName.Text = scene.RandScene.PlaceName;
+                lblDate.Text = scene.RandScene.Date;
+                ShowButtons(Data.Rand.Next(3, 6));
             }
 
             //If scene type is not in space, disembark
@@ -172,10 +179,7 @@ namespace OOP2_Major_mockup_PRJ
             //change the image
             pbxViewScreen.Image = scene.GetScenarioImage();
             
-            //set the text for each button
-
-            //SUGGESTION - Instead of erasing button text when its not an option, instead use Hide() so it limits button size, 
-            //and eliminates scroll bar with random scenarios.
+            //set the text for each button SUGGESTION implemented
             btnOptionOne.Text = currentOptions[0].ButtonText;
             btnOptionTwo.Text = currentOptions[1].ButtonText;
             btnOptionThree.Text = currentOptions[2].ButtonText;
@@ -184,16 +188,73 @@ namespace OOP2_Major_mockup_PRJ
         }
         /*_-_-_-_-_End of Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
 
-        private void ChangeButtons()
-        {//removes text and execution ability from buttons, 
-            //so that there is no chance of double ups on results, and to help the user realize the passage of events
+        private void ChangeButtons(int clickedButton)
+        {//Refactored to control button visibility instead, as discussed
+            // for choice made, hides them all and shows the correct one again.
+            btnOptionOne.Hide();
+            btnOptionTwo.Hide();
+            btnOptionThree.Hide();
+            btnOptionFour.Hide();
+            btnOptionFive.Hide();
 
-            btnOptionOne.Text = string.Empty;
-            btnOptionTwo.Text = string.Empty;
-            btnOptionThree.Text = string.Empty;
-            btnOptionFour.Text = string.Empty;
-            btnOptionFive.Text = string.Empty;
+            switch (clickedButton)
+            {
+                case 0:
+                    btnOptionOne.Show();
+                    btnOptionOne.Text = currentOptions[0].PostClickText;
+                    break;
+                case 1:
+                    btnOptionTwo.Show();
+                    btnOptionTwo.Text = currentOptions[1].PostClickText;
+                    break;
+                case 2:
+                    btnOptionThree.Show();
+                    btnOptionThree.Text = currentOptions[2].PostClickText;
+                    break;
+                case 3:
+                    btnOptionFour.Show();
+                    btnOptionFour.Text = currentOptions[3].PostClickText;
+                    break;
+                case 4:
+                    btnOptionFive.Show();
+                    btnOptionFive.Text = currentOptions[4].PostClickText;
+                    break;
+            }
             player.HasMadeChoice = true;
+        }
+
+        private void ShowButtons(int numberOfButtons)
+        {//shows a number of options, forces at least one
+            btnOptionOne.Show();
+            btnOptionTwo.Show();
+            btnOptionThree.Show();
+            btnOptionFour.Show();
+            btnOptionFive.Show();
+            switch (numberOfButtons)
+            {
+                case 2:
+                    btnOptionThree.Hide();
+                    btnOptionFour.Hide();
+                    btnOptionFive.Hide();
+                    break;
+                case 3:
+                    btnOptionFour.Hide();
+                    btnOptionFive.Hide();
+                    break;
+                case 4:
+                    btnOptionFive.Hide();
+                    break;
+                case 5:
+                    break;
+                default:
+                    btnOptionTwo.Hide();
+                    btnOptionThree.Hide();
+                    btnOptionFour.Hide();
+                    btnOptionFive.Hide();
+                    break;
+
+            }
+
         }
 
         private void UpdateHUD(ref Item item)
@@ -367,6 +428,8 @@ namespace OOP2_Major_mockup_PRJ
         {
             sblWarning.Text = message;
             sblWarning.Visible = true;
+            srpWarning.BackColor = Color.Salmon;
+            sblWarning.ForeColor = Color.Black;
 
             Timer t = new Timer
             {
@@ -376,6 +439,7 @@ namespace OOP2_Major_mockup_PRJ
             t.Tick += (s, e) =>
             {
                 sblWarning.Visible = false;
+                srpWarning.BackColor =Color.FromArgb(0,0,64);
                 t.Stop();
             };
 

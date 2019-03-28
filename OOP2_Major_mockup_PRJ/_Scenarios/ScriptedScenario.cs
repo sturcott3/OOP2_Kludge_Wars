@@ -12,9 +12,11 @@ namespace OOP2_Major_mockup_PRJ
     {
         public override void GenerateScenario(int sceneTracker)
         {//here seed is used to track which episode we are on
-            Description = Data.CampaignDescriptions[sceneTracker];
-            Image = Data.CampaignImages[sceneTracker];
-            LocationType = Data.CampaignLocationType[sceneTracker];
+            Description = Data.ScriptedDescriptions[sceneTracker];
+            Image = Data.ScriptedImages[sceneTracker];
+            LocationType = Data.ScriptedLocationType[sceneTracker];
+            PlaceName = Data.ScriptedPlaceNames[sceneTracker];
+            Date = Data.ScriptedDates[sceneTracker];
         }
 
     public override Option[] GetOptions(int[] buttons, int sceneTracker)

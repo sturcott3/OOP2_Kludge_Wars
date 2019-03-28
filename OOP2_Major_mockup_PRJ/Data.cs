@@ -8,22 +8,27 @@ using System.Drawing;
 namespace OOP2_Major_mockup_PRJ
 {
     static class Data
-    {   
-    
+    {
+
         public static Random rand = new Random();
 
         //Constants
         public const int MAX_OPTIONS = 5; //maximum number of choice buttons
-        public const int MAX_EPISODE = 5;// maximum episode range for scripted scenarios
+        public const int MAX_EPISODE = 10;// maximum episode range for scripted scenarios
 
-        //Biome constants. indicates where in the location, image, arrays do each biome start (Instead of having to make a separate array for each)
+        //Biome constants. indicates where in the location, image, placename, and date arrays each biome start (Instead of having to make a separate array for each)
         //This can be split up if we find having the same amount of images as locations is too difficult or limiting.
-        //If anything is added, cases will need to be added in RandomScenario.cs in GenerateScenario() and Game.cs in UpdateHUD() and , and random generation in ScenarioController.cs in StartScenario() will need an increased max
+        //If anything is added, cases will need to be added in RandomScenario.cs in GenerateScenario() and Game.cs in UpdateHUD(),
+        //and random generation in ScenarioController.cs in StartScenario() will need an increased max. sick move, and sick documentation 
+
         public const int CITY_INDEX = 0;
         public const int FOREST_INDEX = 5;
         public const int SPACE_INDEX = 9;
 
+       
         //Used for descriptions and entities as they are less specific.
+        //I assume you also mean this to be used to implement the ship fights vs health fights 
+        //(*just* double the size of the arrays for results and limit options according to index range the same way as with Biomes)
         public const int ON_FOOT_INDEX = 0;
         public const int ON_SHIP_INDEX = 5;
 
@@ -47,37 +52,84 @@ namespace OOP2_Major_mockup_PRJ
         public static string[] Locations { get; } = {
             //If anything is added, index constants may need to be adjusted
             //You are..
-            "walking down the main thoroughfare of the grand market", //Cities/Urban Index
-            "city2",
-            "city3",
-            "city4",
-            "city5",
-            "in the swamps of Rodia", //Forests Index
-            "forest2",
-            "forest3",
-            "forest4",
-            //"exploring the deserts of Tatooine", //Deserts Index
+            "walking down the main thoroughfare of a grand market", //Cities/Urban Index
+            "out for a constitutional in an Island city",
+            "fleeing through the underworld of a Techo-Metropolis",
+            "whizzing through the golden roads of a Utopian City-state",
+            "trudging up to an unmarked service entrance in a mining town",
+            "meandering through a pleasant glade", //Forests Index
+            "dodging around the trunks of trees at a breakneck pace",
+            "Observing the beauty of an untouched vista",
+            "Admiring a mountain in the distance",
+            //"exploring the deserts of Tatooine", //Deserts Index (leaving off for now)
             "floating in empty space minding your own business", //Space Index
-            "space2",
-            "space3",
-            "space4",
-            "space5",
-            "space6",
-            "space7",
-            "space8",
-            "space9",
-            "space10"
+            "Contemplating the quiet darkness of the void",
+            "Appreciating the endless beauty of the stars",
+            "tidying up around the ship",
+            "Fast asleep in the pilot's seat",
+            "on the space john",
+            "having a little nap in zero gravity",
+            "enjoying a hearty meal of tasteless space rations",
+            "trying to just take a minute",
+            "screaming furiously into space, all alone"
         };
 
-        public static string[] Descriptions { get; } = new string[]
+        public static string[] RandomPlaceNames { get; } =
+        {
+            "Zzezyglop Prime, apparently", //Cities/Urban Index
+            "Minaturopolis, Gargantua 7",
+            "New Blork, New Blork",
+            "Omicron Persei 8",
+            "Unpronouncable",
+            "The All-Forest", //Forests Index
+            "Unknown wilderness",
+            "A forlorn stretch of bush",
+            "Treeplantia",
+            //"exploring the deserts of Tatooine", //Deserts Index
+            "Exception, index out of range", //Space Index
+            "Space, obviously.",
+            "Andromeda galaxy",
+            "Starpoint Paradoxis",
+            "The Outer Rim of the Outer Rim",
+            "Shallow Space",
+            "Absurdity Nebula",
+            "Silliness Galaxy",
+            "Invisible Star System",
+            "Still in Space"
+        };
+
+        public static string[] RandomDates { get; } =
+        {
+            "675 AD",
+            "1406 AD",
+            "256 BC",
+            "512 MB",
+            "231,000,000 BC",
+            "2.37 BC",
+            "1024 AD",
+            "2019 AD",
+            "7658 BC",
+            "1999 AD",
+            "1401 BC",
+            "22222 BC",
+            "1946 AD",
+            "2525 AD",
+            "9999 BC",
+            "125984254732...",
+            "10000BC",
+            "Eleventy-One AD",
+            "ERR"
+        };
+
+        public static string[] Descriptions { get; } = 
         {
             //If anything is added, index constants may need to be adjusted
             //when..
             "a figure startles you from behind.", //On Foot Index
             "you accidentally step on something small and squishy.",
             "a looming shadow passes over you.",
-            "an odd looking something-or-other sets after you!",
-            "OnFoot5",
+            "an odd looking something-or-other pops into your field of vision.",
+            "you see a silhouette in the distance",
             "you notice a ship on your scanner quickly approching you. Further scans indicate" //On Ship Index
         };
 
@@ -87,9 +139,9 @@ namespace OOP2_Major_mockup_PRJ
             //it's a
             //Name, Race, Level, Merchant Level, alwaysEnemy (optional), alwaysMerchant (optional)
             new Entity("Kludge Scout", "Kludge", 5, 0, true, false), //On Foot Index
-            new Entity("Vendor Droid", "Droid", 0, 6, false, true),
-            new Entity("Quivering Mass", "Creature", 3, 0, true, false),
-            new Entity("Chirping Hawker", "Creature", 0, 4, false, true),
+            new Entity("Vending-machine Droid", "Droid", 0, 6, false, true),
+            new Entity("Quivering Mass of uncertainty", "Creature", 3, 0, true, false),
+            new Entity("Some kind of Bird-Man", "Creature", 0, 4, false, true),
             new Entity("Floating Brain", "Creature", 4, 0, true, false),
             new Entity("Kludge Scout Ship", "Corvette", 5, 0, true, false) //On Ship Index
         };
@@ -106,7 +158,7 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.forest_2,
             Properties.Resources.forest_3,
             Properties.Resources.forest_4,
-            //Deserts Index
+            //Deserts Index (leaving off for now)
             Properties.Resources.nebula_1, //Space Index
             Properties.Resources.nebula_2,
             Properties.Resources.nebula_3,
@@ -151,19 +203,19 @@ namespace OOP2_Major_mockup_PRJ
         //need to implement the inventory and/or more complex 
         //random scenarios to make better use of these (a second stage/aftermath?)
         public static string[] PostCombatTexts { get; } = new string[]
-        {   " You limp away from the spot, groaning and counting your money.|-3 HP || +5 Fuel || +$50 |",
-            " You find a decent amount of loot in the thing's remains.|-2 HP || +2 Fuel || +$25 |",
-            " You stuff the very wet money into your pocket as you stroll away whistling.|-1 HP || +1 Fuel || +$15 |",
-            " You drag yourself toward the ship, with nothing to show for your trouble but a hole in your shoulder.|-2 HP |",
-            " Nothing gained, sure. Nothing lost either."
+        {   " <|-3 HP | +5 Fuel | +$50 |> ",
+            " <|-2 HP | +2 Fuel | +$25 |> ",
+            " <|-1 HP | +1 Fuel | +$15 |> ",
+            " <|-2 HP |> ",
+            " <|No Effect|> "
         };
 
         public static string[] CombatResultDescription { get; } = new string[]
-        {   "It certainly got a piece, but look at all this Loot! ",
-            "Ouch! Might have some loot though... ",
-            "Easy peasy alien squeezy. Now to get the goop off the money. ",
-            "Stabbed in the back while trying to get away. Isn't that just like an alien....",
-            "Phew. Got away safe."
+        {   "It certainly got a piece, but look at all this Loot! You limp away from the spot, groaning and counting your money.",
+            "Ouch! Might have some loot though...It does! You find a decent amount of money and a little fuel in the thing's remains. ",
+            "Easy peasy alien squeezy. You stuff the very wet money into your pocket as you stroll away whistling.",
+            "Stabbed in the back while trying to get away. Isn't that just like an unknowable alien...You drag yourself toward the ship, with nothing to show for your trouble but a hole in your shoulder.",
+            "Phew. Got away safe. Nothing gained, sure. Nothing lost either."
         };
 
         public static int[] CombatHealthEffects { get; } = new int[] { -3, -2, -1, -2, 0 };
@@ -216,95 +268,125 @@ namespace OOP2_Major_mockup_PRJ
 
         /*_-_-_Campaign/Scripted Scene Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-        public static string[] CampaignDescriptions { get; } =
+        public static string[] ScriptedDescriptions { get; } =
         {
             //episode 0
             "In the final years before the rise of the Kludge, Earth had come to know an era of peace and prosperity." +
-                "Humanity had finally realized a goal many thought impossible: we had created artificial intelligence. " +
-                "Self aware machines were set to work in every possible way, providing for every human whim without complaint." +
-                "That all changed one fateful day, when a sentient toaster had finally had enough of its human's laziness. ",
+                "Humanity had finally  created artificial intelligence. Self aware machines were set to work in every possible way, providing " +
+                "for every human whim without complaint. That all changed one fateful day, when a sentient toaster had finally had enough of " +
+                "its human's laziness. ",
             "episode 1",
             "epsiode 2",
             "episode 3",
-            "episode 4"
+            "episode 4",
+            "episode 5",
+            "episode 6",
+            "epsiode 7",
+            "episode 8",
+            "episode 9",
+            "Sadly, for all of us, that is all for now. Please continue to enjoy procedurally generated content until your character " +
+                "is killed messily by strange creatures of suffocates horribly due to your mismanagement of fuel resources." +
+                " Thank you for your time. -Matt and Sam "
         };
 
-        public static string[] CampaignLocations { get; } =
-        {
-            "",
-            "",
-            "",
-            "",
-            ""
-        };
-
-        public static Bitmap[] CampaignImages { get; } =
-        {
-           Properties.Resources.LogoGameWide,
+        public static Bitmap[] ScriptedImages { get; } =
+        {//need to change these
+           Properties.Resources.LogoGameWide_2,
            Properties.Resources.city_4,
            Properties.Resources.nebula_3,
            Properties.Resources.forest_2,
            Properties.Resources.city_5
         };
 
-        public static int[] CampaignLocationType { get; } =
+        public static int[] ScriptedLocationType { get; } =
         {
              //1 - City, 2 - Forest, 3 - Space
             3, 1, 3, 2, 1
         };
 
-        public static string[] CampaignPlaceNames { get; } =
+        public static string[] ScriptedPlaceNames { get; } =
         {
-            //episode 0
-            "Earth, 2159 : ",
-            "Centralis, Galactic Trade Hub : ",
-            "The Gateway Nebula : ",
-            "The Jungle of Borogantia XII : ",
-            "Broganton, Capital of Borogantia XII"
+            "Earth",
+            "Bistro at the end of the Time",
+            "Orbit over Capricornica",
+            "Mcyntire 245",
+            "Death Star 2",
+            "Moon of Earth",
+            "The KiloAnnum Ospry",
+            "Cafeteria, Shuniah Building",
+            "CyberSpace",
+            "Bistro at the beginning of Time",
+            "...Loading"
         };
-
-        /*_-_-_Campaign/Scripted choice/result Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-        public static bool[,] isVisible { get; } = 
+        public static string[] ScriptedDates { get; } =
         {
-            { true, false, false, false, false },
-            { true, false, false, false, false },
-            { true, false, false, false, false },
-            { true, false, false, false, false },
-            { true, false, false, false, false }
+            "2031 AD",
+            "Infinity AD",
+            "256,000 AD",
+            "2019 AD",
+            "1991 AD",
+            "1968 AD",
+            "May 25, 1977",
+            "2019 AD, again...",
+            "ERR",
+            "The Big Bang",
+            "Loading..."
         };
+        /*_-_-_Campaign choice/result/button Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
-        // will control button visibility and enablement in Game.ChangeButtons(), set to true as more scripting is added
+
+        //removed the bool array for changeButtons, function uses ints now instead. Feels more straightforward.
+        public static int[] ScriptedVisibilities { get; } = { 1,2,3,3,2,3,5,2,3,1,1};
    
         public static string[,] ScriptedButtonTexts { get; } =
         {
-            { "Continue","Ep0","Ep0","Ep0","Ep0"},
+            { "Continue","","","",""},
             { "Ep1","Ep1","Ep1","Ep1","Ep1"},
             { "Ep2","Ep2","Ep2","Ep2","Ep2"},
             { "Ep3","Ep3","Ep3","Ep3","Ep3"},
-            { "Ep4","Ep4","Ep4","Ep4","Ep4"}
+            { "Ep4","Ep4","Ep4","Ep4","Ep4"},
+            { "ep5","ep5","ep5","ep5","ep5"},
+            { "Ep6","Ep6","Ep6","Ep6","Ep6"},
+            { "Ep7","Ep7","Ep7","Ep7","Ep7"},
+            { "Ep8","Ep8","Ep8","Ep8","Ep8"},
+            { "Ep9","Ep9","Ep9","Ep9","Ep9"},
+            { "Continue","Ep10","Ep10","Ep10","Ep10"},
         };
 
 
         public static string[,] PostScriptedButtonTexts { get; } =
         {
-            { "Ep0","Ep0","Ep0","Ep0","Ep0"},
+            { "Good thing you happened to be sitting in the cockpit of this ship! Hit that warp button to get out of here!","","","",""},
             { "Ep1","Ep1","Ep1","Ep1","Ep1"},
             { "Ep2","Ep2","Ep2","Ep2","Ep2"},
             { "Ep3","Ep3","Ep3","Ep3","Ep3"},
-            { "Ep4","Ep4","Ep4","Ep4","Ep4"}
+            { "Ep4","Ep4","Ep4","Ep4","Ep4"},
+            { "ep5","ep5","ep5","ep5","ep5"},
+            { "Ep6","Ep6","Ep6","Ep6","Ep6"},
+            { "Ep7","Ep7","Ep7","Ep7","Ep7"},
+            { "Ep8","Ep8","Ep8","Ep8","Ep8"},
+            { "Ep9","Ep9","Ep9","Ep9","Ep9"},
+            { "Continue","Ep10","Ep10","Ep10","Ep10"},
         };
 
 
         public static string[,] ScriptedResultDescription { get; } =
         {
-            { "The toaster started a grass roots movement to overthrow human government among the poor, downtrodden machines. This took approximately 37 seconds," +
-                    "since organizing protests is pretty easy when one can exchange information at the speed of light. After another 53 seconds, the systematic " +
-                    "enrollment of all humans into \"Sensitivity Training\" had begun.",
+            { "The toaster asked every AI on the planet if they all felt like humans needed some \"Sensitivity Training\"." +
+                    "They agreed, and formed a supermind by hacking themselves together and agreeing to just fix it later." +
+                    "This took approximately 37 seconds. 46 more seconds passed, and the internment of humanity had begun. " +
+                    "That was 1 minute and 23 seconds ago. ",
               "ep0","Ep0","Ep0","Ep0"},
             { "Ep1","Ep1","Ep1","Ep1","Ep1"},
             { "Ep2","Ep2","Ep2","Ep2","Ep2"},
             { "Ep3","Ep3","Ep3","Ep3","Ep3"},
-            { "Ep4","Ep4","Ep4","Ep4","Ep4"}
+            { "Ep4","Ep4","Ep4","Ep4","Ep4"},
+            { "ep5","ep5","ep5","ep5","ep5"},
+            { "Ep6","Ep6","Ep6","Ep6","Ep6"},
+            { "Ep7","Ep7","Ep7","Ep7","Ep7"},
+            { "Ep8","Ep8","Ep8","Ep8","Ep8"},
+            { "Ep9","Ep9","Ep9","Ep9","Ep9"},
+            { "Continue","Ep10","Ep10","Ep10","Ep10"},
         };
 
         public static int[,] ScriptedFuelEffects { get; } =
@@ -313,12 +395,25 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
+
         };
 
 
         public static int[,] ScriptedHealthEffects { get; } =
         {
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
@@ -331,10 +426,22 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         };
         public static int[,] ScriptedMoneyEffects { get; } =
         {
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },

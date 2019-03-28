@@ -15,6 +15,7 @@ namespace OOP2_Major_mockup_PRJ
         public Bitmap Image { get; set; }
         public int LocationType { get; protected set; } = 1;
 
+        public string Date { get; set; }
         public string PlaceName { get; set; }
 
         //5 buttons, 5 Options + 1 container to pass them all at once
@@ -26,7 +27,7 @@ namespace OOP2_Major_mockup_PRJ
         public Option[] CurrentOptions { get; set; } = new Option[Data.MAX_OPTIONS];
 
         //virtual methods for now only here to allow both scenario types to inherit the method, 
-        //could later have code that is mutual brought back in. 
+        //could later have code that is mutual brought back in?
         public virtual void GenerateScenario(int sceneTracker) {  }
         public virtual Option[] GetOptions(int[] index, int sceneTracker) { return null; }
     }
