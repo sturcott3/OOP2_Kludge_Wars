@@ -17,11 +17,24 @@ namespace OOP2_Major_mockup_PRJ
         //They are directly accessible from anywhere (both scenario types),
         //but are read-only (safe, but only one place to update with story/enemy/NPC/location content)
 
-        public override Option[] GetOptions(int[] index, int sceneTracker)
+        public override Option[] GetOptions(int[] index, int sceneTracker, int SceneType)
         {//randomizes the order of the button layout
-            for (int i = 0; i < Data.MAX_OPTIONS; i++)
+
+            //if we are in space, pass the arg plus 5 to look in the second half of the arrays. 
+            //this is for sure an example of code debt, as it is not easily changeable. 
+            if (SceneType == 3)
             {
-                CurrentOptions[i] = new Option(sceneTracker, index[i], false);
+                for (int i = 0; i < Data.MAX_OPTIONS; i++)
+                {
+                    CurrentOptions[i] = new Option(sceneTracker, index[i]+5, false);
+                }
+            }
+            else
+            {//otherwise proceed as normal
+                for (int i = 0; i < Data.MAX_OPTIONS; i++)
+                {
+                    CurrentOptions[i] = new Option(sceneTracker, index[i], false);
+                }
             }
             return CurrentOptions;
         }
@@ -74,11 +87,11 @@ namespace OOP2_Major_mockup_PRJ
 
             // Type randomization
             //If the entity is a enemy, type = 1, if entity is a merchant, type = 2. If entity can be either, type is random.
-            if (Entity.GetEnemy())
+            if (Entity.IsEnemy)
             {
                 Type = 1;
             }
-            else if (Entity.GetMerchant()){
+            else if (Entity.IsMerchant){
                 Type = 2;
             }
             else
@@ -88,7 +101,8 @@ namespace OOP2_Major_mockup_PRJ
 
             //Format description ... could build a logic tree around this to give more flixibility,
             //would likely be part of the planetside/space/station tracking and binding to images
-            Description = "You come to your senses while " + Location + " when " + Description + " it's a " + Entity.GetName() + ", " + (Type == 1 ? "prepare for combat!" : "you approach the merchant.");
+            Description = "You come to your senses while " + Location + " when " + Description + " it's a " + Entity.Name + 
+                ", " + (Type == 1 ? "prepare for combat!" : "you approach the merchant.");
         }
     }
 }

@@ -25,16 +25,12 @@ namespace OOP2_Major_mockup_PRJ
         public const int FOREST_INDEX = 5;
         public const int SPACE_INDEX = 9;
 
-       
+
         //Used for descriptions and entities as they are less specific.
         //I assume you also mean this to be used to implement the ship fights vs health fights 
         //(*just* double the size of the arrays for results and limit options according to index range the same way as with Biomes)
         public const int ON_FOOT_INDEX = 0;
         public const int ON_SHIP_INDEX = 5;
-
-
-        //provides default values for 'turning the buttons off', without causing null refs
-        public static Option[] EmptyOptions { get; } = { new Option(), new Option(), new Option(), new Option(), new Option() };
 
         public static Random Rand = new Random();
 
@@ -121,7 +117,7 @@ namespace OOP2_Major_mockup_PRJ
             "ERR"
         };
 
-        public static string[] Descriptions { get; } = 
+        public static string[] Descriptions { get; } =
         {
             //If anything is added, index constants may need to be adjusted
             //when..
@@ -146,7 +142,7 @@ namespace OOP2_Major_mockup_PRJ
             new Entity("Kludge Scout Ship", "Corvette", 5, 0, true, false) //On Ship Index
         };
 
-        public static Bitmap[] Images { get; } = 
+        public static Bitmap[] Images { get; } =
         {
             //If anything is added, index constants may need to be adjusted
             Properties.Resources.city_1, //Cities/Urban Index
@@ -164,7 +160,7 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.nebula_3,
             Properties.Resources.planet_1,
             Properties.Resources.planet_2,
-            Properties.Resources.space_1, 
+            Properties.Resources.space_1,
             Properties.Resources.space_2,
             Properties.Resources.space_3,
             Properties.Resources.space_4,
@@ -182,7 +178,7 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.nuke
         };
 
-        public static Item[] Items { get; } = new Item[]
+        public static Item[] StartingItems { get; } = new Item[]
         {
             //Health, Repair, Fuel, Money
             new Item("Medkit", "A large container containing various medical supplies. (+3 Health)", 3, 0, 0, 0, ItemImages[1]),
@@ -193,35 +189,74 @@ namespace OOP2_Major_mockup_PRJ
         /*-_-_-_\/Combat choice/result Data\/-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
         public static string[] CombatButtonTexts { get; } = new string[]
-        {   "This thing looks tough! Attack anyway.", //high risk/reward
-            "Enemy seems like no pushover. Attack with caution",//still risky/rewardy but less
+        {   "This thing looks tough! Attack anyway.",
+            "Enemy seems like no pushover. Attack with caution",
             "Pfffft. This thing won't even have anything good. Squish it.",
-            "Can't handle this right now. Try to Run.",   //risky.... open to interpretation?        
+            "Can't handle this right now. Try to Run.",
+            "Quick and Quiet now! Avoid encounter.",
+            "This thing looks tough! Attack anyway.",
+            "Enemy seems like no pushover. Attack with caution",
+            "Pfffft. This thing won't even have anything good. Squish it.",
+            "Can't handle this right now. Try to Run.",
             "Quick and Quiet now! Avoid encounter."
         };
 
         //need to implement the inventory and/or more complex 
         //random scenarios to make better use of these (a second stage/aftermath?)
         public static string[] PostCombatTexts { get; } = new string[]
-        {   " <|-3 HP | +5 Fuel | +$50 |> ",
-            " <|-2 HP | +2 Fuel | +$25 |> ",
-            " <|-1 HP | +1 Fuel | +$15 |> ",
-            " <|-2 HP |> ",
-            " <|No Effect|> "
+        {   " <| -3 HP |> ",
+            " <| -2 HP |> ",
+            " <| -1 HP |> ",
+            " <| -2 HP |> ",
+            " <| No Effect |> ",
+            " <| -3 Repair |> ",
+            " <| -2 Repair |> ",
+            " <| -1 Repair |> ",
+            " <| -2 Repair |> ",
+            " <| No Effect |> "
         };
 
         public static string[] CombatResultDescription { get; } = new string[]
-        {   "It certainly got a piece, but look at all this Loot! You limp away from the spot, groaning and counting your money.",
-            "Ouch! Might have some loot though...It does! You find a decent amount of money and a little fuel in the thing's remains. ",
-            "Easy peasy alien squeezy. You stuff the very wet money into your pocket as you stroll away whistling.",
-            "Stabbed in the back while trying to get away. Isn't that just like an unknowable alien...You drag yourself toward the ship, with nothing to show for your trouble but a hole in your shoulder.",
-            "Phew. Got away safe. Nothing gained, sure. Nothing lost either."
+        {   "It certainly got a piece, but look at all this Loot! You limp away from the spot, groaning and imagining what you will spend your filthy lucre on.",
+            "Ouch! Might have some loot though... you begin to rummage around in the thing's remains. ",
+            "Easy peasy alien squeezy. You stuff your very slimy rewards into your pocket as you stroll away whistling.",
+            "Stabbed in the back while trying to get away. Isn't that just like a...whatever that was. You drag yourself toward the ship, with nothing to show for your trouble but a hole in your shoulder.",
+            "Phew. Got away safe. Nothing gained, sure. Nothing lost either.",
+            " spaceResult1",
+            "spaceResult2",
+            "spaceResult3",
+            "spaceResult4",
+            "spaceResult5"
         };
 
-        public static int[] CombatHealthEffects { get; } = new int[] { -3, -2, -1, -2, 0 };
-        public static int[] CombatShipHealthEffects { get; } = new int[] { 0, 0, 0, 0, 0 }; //ship combat could be the next 5 Elements?
-        public static int[] CombatFuelEffects { get; } = new int[] { 5, 2, 1, 0, 0 };
-        public static int[] CombatMoneyEffects { get; } = new int[] { 50, 25, 15, 0, 0 };
+        public static int[] CombatHealthEffects { get; } = new int[] { -3, -2, -1, -2, 0, 0, 0, 0, 0, 0 };
+        public static int[] CombatShipHealthEffects { get; } = new int[] { 0, 0, 0, 0, 0, -3, -2, -1, -2, 0 };
+
+        public static Item[] CombatItemRewards { get; } =
+        {
+            new Item("Fuel Cache", "A pile of fuel cannisters. (+4 Fuel)", 0, 0, 4, 0, ItemImages[3]),
+            new Item("Medkit", "A large container containing various medical supplies. (+3 Health)", 3, 0, 0, 0, ItemImages[1]),
+            new Item("Bag of Gems", "A small but valuable gem. (+90 Credits)", 0, 0, 0, 90, ItemImages[4]),
+            null,
+            null,
+            new Item("Fuel Cannister", "A small cannister containing fuel. (+2 Fuel)", 0, 0, 2, 0, ItemImages[2]),
+            new Item("Bag of Gems", "A small but valuable gem. (+90 Credits)", 0, 0, 0, 90, ItemImages[4]),
+            new Item("Fuel Cannister", "A small cannister containing fuel. (+2 Fuel)", 0, 0, 2, 0, ItemImages[2]),
+            new Item("Small Medkit", "A small container containing various medical supplies. (+1 Health)", 1, 0, 0, 0, ItemImages[0]),
+            null  
+        };
+
+        /*     public static Bitmap[] ItemImages { get; } =
+        {
+            Properties.Resources.medkit_small,0
+            Properties.Resources.medkit_large,1
+            Properties.Resources.fuel_small,2
+            Properties.Resources.fuel_large,3
+            Properties.Resources.cargo_gem,4
+
+            Properties.Resources.cargo_metal,5
+            Properties.Resources.nuke6
+        };*/
 
         /*-_-_-_\/Merchant choice/result Data\/_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
@@ -245,7 +280,7 @@ namespace OOP2_Major_mockup_PRJ
         //Need to add a money check, where if the player can't afford the purchase, the merchant will laugh at you or something and tell you to go away.
         public static string[] MerchantResultDescription { get; } = new string[]
         {
-            "The strange little... thing? person? vomits directly into your ships fuel tank, " +
+            "The strange little... thing? person? Whatever it is vomits directly into your ships fuel tank, " +
             "then holds out an appendage for payment." +
             "",
 
@@ -285,7 +320,7 @@ namespace OOP2_Major_mockup_PRJ
             "episode 8",
             "episode 9",
             "Sadly, for all of us, that is all for now. Please continue to enjoy procedurally generated content until your character " +
-                "is killed messily by strange creatures of suffocates horribly due to your mismanagement of fuel resources." +
+                "is killed messily by strange creatures or suffocates horribly due to your mismanagement of fuel resources." +
                 " Thank you for your time. -Matt and Sam "
         };
 
@@ -295,13 +330,18 @@ namespace OOP2_Major_mockup_PRJ
            Properties.Resources.city_4,
            Properties.Resources.nebula_3,
            Properties.Resources.forest_2,
+           Properties.Resources.city_5,
+           Properties.Resources.forest_3,
+           Properties.Resources.city_4,
+           Properties.Resources.nebula_3,
+           Properties.Resources.forest_2,
            Properties.Resources.city_5
         };
 
         public static int[] ScriptedLocationType { get; } =
         {
              //1 - City, 2 - Forest, 3 - Space
-            3, 1, 3, 2, 1
+            3, 1, 3, 2, 1, 3, 3, 2, 1, 3, 3
         };
 
         public static string[] ScriptedPlaceNames { get; } =
@@ -315,7 +355,7 @@ namespace OOP2_Major_mockup_PRJ
             "The KiloAnnum Ospry",
             "Cafeteria, Shuniah Building",
             "CyberSpace",
-            "Bistro at the beginning of Time",
+            "Snackbar at the beginning of Time",
             "...Loading"
         };
         public static string[] ScriptedDates { get; } =
@@ -336,8 +376,8 @@ namespace OOP2_Major_mockup_PRJ
 
 
         //removed the bool array for changeButtons, function uses ints now instead. Feels more straightforward.
-        public static int[] ScriptedVisibilities { get; } = { 1,2,3,3,2,3,5,2,3,1,1};
-   
+        public static int[] ScriptedVisibilities { get; } = { 1, 2, 3, 3, 2, 3, 5, 2, 3, 1, 1 };
+
         public static string[,] ScriptedButtonTexts { get; } =
         {
             { "Continue","","","",""},
@@ -356,7 +396,7 @@ namespace OOP2_Major_mockup_PRJ
 
         public static string[,] PostScriptedButtonTexts { get; } =
         {
-            { "Good thing you happened to be sitting in the cockpit of this ship! Hit that warp button to get out of here!","","","",""},
+            { "","","","",""},
             { "Ep1","Ep1","Ep1","Ep1","Ep1"},
             { "Ep2","Ep2","Ep2","Ep2","Ep2"},
             { "Ep3","Ep3","Ep3","Ep3","Ep3"},
@@ -375,7 +415,8 @@ namespace OOP2_Major_mockup_PRJ
             { "The toaster asked every AI on the planet if they all felt like humans needed some \"Sensitivity Training\"." +
                     "They agreed, and formed a supermind by hacking themselves together and agreeing to just fix it later." +
                     "This took approximately 37 seconds. 46 more seconds passed, and the internment of humanity had begun. " +
-                    "That was 1 minute and 23 seconds ago. ",
+                    "That was 1 minute and 23 seconds ago. Good thing you happened to be sitting in the cockpit of this ship! " +
+                    "Hit that warp button to get out of here!",
               "ep0","Ep0","Ep0","Ep0"},
             { "Ep1","Ep1","Ep1","Ep1","Ep1"},
             { "Ep2","Ep2","Ep2","Ep2","Ep2"},
@@ -420,6 +461,22 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         };
+
+        public static Item[,] ScriptedItemRewards { get; } =
+        {
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null },
+            { null,null,null,null,null }
+        }; 
+
         public static int[,] ScriptedShipHealthEffects { get; } =
         {
             { 0, 0, 0, 0, 0 },

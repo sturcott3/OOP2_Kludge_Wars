@@ -10,7 +10,7 @@ namespace OOP2_Major_mockup_PRJ
 {
     class ScriptedScenario: Scenario
     {
-        public override void GenerateScenario(int sceneTracker)
+    public override void GenerateScenario(int sceneTracker)
         {//here seed is used to track which episode we are on
             Description = Data.ScriptedDescriptions[sceneTracker];
             Image = Data.ScriptedImages[sceneTracker];
@@ -19,7 +19,7 @@ namespace OOP2_Major_mockup_PRJ
             Date = Data.ScriptedDates[sceneTracker];
         }
 
-    public override Option[] GetOptions(int[] buttons, int sceneTracker)
+    public override Option[] GetOptions(int[] buttons, int sceneTracker, int scenType)
         {//randomizes the order of the button layout
             for (int i = 0; i < Data.MAX_OPTIONS; i++)
             {

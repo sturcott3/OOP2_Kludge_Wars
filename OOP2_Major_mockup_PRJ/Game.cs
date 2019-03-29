@@ -18,7 +18,7 @@ namespace OOP2_Major_mockup_PRJ
         InputController input;
         ScenarioController scene;
         Timer t = new Timer();
-        Option[] currentOptions;
+        
         private int sceneType;
 
         //<temp>
@@ -47,20 +47,13 @@ namespace OOP2_Major_mockup_PRJ
             //Data.ShipName = playerInfo[1];
             //</temp comment out>
 
-
+            for (int i = 0; i < Data.StartingItems.Length; i++)
+            {//just add or remove items to the starting items array if testing is needed
+                player.Inventory.Add(Data.StartingItems[i]);
+            }
+            
             BeginTurn(1); //starts the first scripted scene to be the intro
 
-
-            //Just for testing purposes, later on Option and Data can be modified to include adding items
-            player.Inventory.Add(Data.Items[0]); //this is great!
-            player.Inventory.Add(Data.Items[1]);
-            player.Inventory.Add(Data.Items[2]);
-            player.Inventory.Add(Data.Items[1]);
-            player.Inventory.Add(Data.Items[2]);
-            player.Inventory.Add(Data.Items[0]);
-            player.Inventory.Add(Data.Items[2]);
-            player.Inventory.Add(Data.Items[1]);
-            player.Inventory.Add(Data.Items[0]);
             UpdateHUD();
         }
 
@@ -71,7 +64,7 @@ namespace OOP2_Major_mockup_PRJ
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
                     //can remove now, or leave both. I like both, then we can cut down to just jokes and thanking the player in the script
-                    ShowWarning("Story unavailable, initializing 100% procedural scenarios.", 2.5);
+                    ShowWarning("Story unavailable, initializing 100% procedural scenarios.", 2, Color.Salmon);
                     sceneType = 5;
                     messageShown = true;
                 }
@@ -90,14 +83,14 @@ namespace OOP2_Major_mockup_PRJ
             else
             {
                 //We can make this better. added a little, could do a lot more with colours....
-                ShowWarning("Unable to warp, you must be on your ship.", 2.5);
+                ShowWarning("Unable to warp, you must be on your ship.", 2 , Color.Salmon);
             }
         }
 
         private void Dis_Embark_Click(object sender, EventArgs e)
         {
             if (scene.LocationType == 3) {
-                ShowWarning("Can't disembark in space!",1.5);
+                ShowWarning("Can't disembark in space!", 2 ,Color.Salmon);
             }
             else
             player.IsOnShip = !player.IsOnShip;
@@ -108,9 +101,17 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[0].ResultDescription;
-                ChangeButtons(0);
-                UpdateHUD(0);
+                lblOutput.Text = scene.CurrentOptions[0].ResultDescription;
+                ShowWarning(scene.CurrentOptions[0].PostClickText, 2 , Color.Gold);
+
+                if (scene.CurrentOptions[0].CombatReward != null)
+                {
+                    lblOutput.Text += "You found a " + scene.CurrentOptions[0].CombatReward.Name;
+                    player.Inventory.Add(scene.CurrentOptions[0].CombatReward);
+                }
+
+                HideButtons(0);
+                UpdateHUD(0); 
             }
         }
 
@@ -118,8 +119,14 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[1].ResultDescription;
-                ChangeButtons(1);
+                ShowWarning(scene.CurrentOptions[1].PostClickText, 2, Color.Gold);
+                lblOutput.Text = scene.CurrentOptions[1].ResultDescription;
+                if (scene.CurrentOptions[1].CombatReward != null)
+                {
+                    lblOutput.Text += "You found a " + scene.CurrentOptions[1].CombatReward.Name;
+                    player.Inventory.Add(scene.CurrentOptions[1].CombatReward);
+                }
+                HideButtons(1);
                 UpdateHUD(1);
             }
         }
@@ -128,8 +135,14 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[2].ResultDescription;
-                ChangeButtons(2);
+                ShowWarning(scene.CurrentOptions[2].PostClickText, 2, Color.Gold);
+                lblOutput.Text = scene.CurrentOptions[2].ResultDescription;
+                if (scene.CurrentOptions[2].CombatReward != null)
+                {
+                    lblOutput.Text += "You found a " + scene.CurrentOptions[2].CombatReward.Name;
+                    player.Inventory.Add(scene.CurrentOptions[2].CombatReward);
+                }
+                HideButtons(2);
                 UpdateHUD(2);
             }
         }
@@ -138,8 +151,14 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[3].ResultDescription;
-                ChangeButtons(3);
+                ShowWarning(scene.CurrentOptions[3].PostClickText, 2, Color.Gold);
+                lblOutput.Text = scene.CurrentOptions[3].ResultDescription;
+                if (scene.CurrentOptions[3].CombatReward != null)
+                {
+                    lblOutput.Text += "You found a " + scene.CurrentOptions[3].CombatReward.Name;
+                    player.Inventory.Add(scene.CurrentOptions[3].CombatReward);
+                }
+                HideButtons(3);
                 UpdateHUD(3);
             }
         }
@@ -148,8 +167,14 @@ namespace OOP2_Major_mockup_PRJ
         {
             if (!player.HasMadeChoice)
             {
-                lblOutput.Text = currentOptions[4].ResultDescription;
-                ChangeButtons(4);
+                ShowWarning(scene.CurrentOptions[4].PostClickText, 2, Color.Gold);
+                lblOutput.Text = scene.CurrentOptions[4].ResultDescription;
+                if (scene.CurrentOptions[4].CombatReward != null)
+                {
+                    lblOutput.Text += "You found a " + scene.CurrentOptions[4].CombatReward.Name;
+                    player.Inventory.Add(scene.CurrentOptions[4].CombatReward);
+                }
+                HideButtons(4);
                 UpdateHUD(4);
             }
         }
@@ -161,14 +186,13 @@ namespace OOP2_Major_mockup_PRJ
         private void BeginTurn(int sceneType)
         {//call to start a new turn
 
-            int[] index = { 0, 1, 2, 3, 4 };
+            
             player.HasMadeChoice = false;
           
             //decide scenario type
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
                 scene.StartScenario(true);
-                currentOptions = scene.ScriptScene.GetOptions(index,scene.StoryCounter);
                 lblOutput.Text = scene.ScriptScene.Description;
                 lblPlaceName.Text = scene.ScriptScene.PlaceName;
                 lblDate.Text = scene.ScriptScene.Date;
@@ -177,7 +201,6 @@ namespace OOP2_Major_mockup_PRJ
             else
             {//or random here
                 scene.StartScenario();
-                currentOptions = scene.RandScene.GetOptions(index, scene.RandScene.Type);
                 lblOutput.Text = scene.RandScene.Description;
                 lblPlaceName.Text = scene.RandScene.PlaceName;
                 lblDate.Text = scene.RandScene.Date;
@@ -188,49 +211,48 @@ namespace OOP2_Major_mockup_PRJ
             if(scene.LocationType != 3) player.IsOnShip = false;
 
             //change the image
-            pbxViewScreen.Image = scene.GetScenarioImage();
+            pbxViewScreen.Image = scene.ScenarioImage;
             
             //set the text for each button SUGGESTION implemented
-            btnOptionOne.Text = currentOptions[0].ButtonText;
-            btnOptionTwo.Text = currentOptions[1].ButtonText;
-            btnOptionThree.Text = currentOptions[2].ButtonText;
-            btnOptionFour.Text = currentOptions[3].ButtonText;
-            btnOptionFive.Text = currentOptions[4].ButtonText;
+            btnOptionOne.Text = scene.CurrentOptions[0].ButtonText;
+            btnOptionTwo.Text = scene.CurrentOptions[1].ButtonText;
+            btnOptionThree.Text = scene.CurrentOptions[2].ButtonText;
+            btnOptionFour.Text = scene.CurrentOptions[3].ButtonText;
+            btnOptionFive.Text = scene.CurrentOptions[4].ButtonText;
         }
         /*_-_-_-_-_End of Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
 
-        private void ChangeButtons(int clickedButton)
-        {//Refactored to control button visibility instead, as discussed
+        private void HideButtons(int clickedButton)
+        {//Changed to control button visibility instead, as discussed
             // for choice made, hides them all and shows the correct one again.
             btnOptionOne.Hide();
             btnOptionTwo.Hide();
             btnOptionThree.Hide();
             btnOptionFour.Hide();
-            btnOptionFive.Hide();
-
-            switch (clickedButton)
-            {
-                case 0:
-                    btnOptionOne.Show();
-                    btnOptionOne.Text = currentOptions[0].PostClickText;
-                    break;
-                case 1:
-                    btnOptionTwo.Show();
-                    btnOptionTwo.Text = currentOptions[1].PostClickText;
-                    break;
-                case 2:
-                    btnOptionThree.Show();
-                    btnOptionThree.Text = currentOptions[2].PostClickText;
-                    break;
-                case 3:
-                    btnOptionFour.Show();
-                    btnOptionFour.Text = currentOptions[3].PostClickText;
-                    break;
-                case 4:
-                    btnOptionFive.Show();
-                    btnOptionFive.Text = currentOptions[4].PostClickText;
-                    break;
-            }
+            btnOptionFive.Hide(); 
+            //switch (clickedButton)
+            //{
+            //    case 0:
+            //        btnOptionOne.Show();
+            //        btnOptionOne.Text = currentOptions[0].PostClickText;
+            //        break;
+            //    case 1:
+            //        btnOptionTwo.Show();
+            //        btnOptionTwo.Text = currentOptions[1].PostClickText;
+            //        break;
+            //    case 2:
+            //        btnOptionThree.Show();
+            //        btnOptionThree.Text = currentOptions[2].PostClickText;
+            //        break;
+            //    case 3:
+            //        btnOptionFour.Show();
+            //        btnOptionFour.Text = currentOptions[3].PostClickText;
+            //        break;
+            //    case 4:
+            //        btnOptionFive.Show();
+            //        btnOptionFive.Text = currentOptions[4].PostClickText;
+            //        break;
+            //}
             player.HasMadeChoice = true;
         }
 
@@ -288,15 +310,15 @@ namespace OOP2_Major_mockup_PRJ
             //and will update the player's 
             //data according to the contents of the corresponding option object
 
-            player.Health += currentOptions[button].PlayerHealthEffect;
-            player.ShipHealth += currentOptions[button].ShipHealthEffect;
-            player.Fuel += currentOptions[button].FuelEffect;
-            player.Money += currentOptions[button].MoneyEffect;
+            player.Health += scene.CurrentOptions[button].PlayerHealthEffect;
+            player.ShipHealth += scene.CurrentOptions[button].ShipHealthEffect;
+            player.Fuel += scene.CurrentOptions[button].FuelEffect;
+            player.Money += scene.CurrentOptions[button].MoneyEffect;
 
             UpdateHUD();
         }
 
-        private void UpdateHUD()
+        private void UpdateHUD() 
         {
             //Update Health
             string output = string.Empty;
@@ -375,11 +397,11 @@ namespace OOP2_Major_mockup_PRJ
             }
         }
 
-        public void ShowWarning(string message, double seconds)
+        public void ShowWarning(string message, double seconds, Color color)
         {
             sblWarning.Text = message;
             sblWarning.Visible = true;
-            srpWarning.BackColor = Color.Salmon;
+            srpWarning.BackColor = color;
             sblWarning.ForeColor = Color.Black;
 
             t.Stop();
@@ -433,7 +455,7 @@ namespace OOP2_Major_mockup_PRJ
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
-            ShowWarning("Menu not implemented.", 2.5);
+            ShowWarning("Menu not implemented.", 2 ,Color.Yellow);
         }
 
         //Inventory interaction

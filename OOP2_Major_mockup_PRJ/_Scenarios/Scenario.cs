@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    class Scenario
+    abstract class Scenario
     {
         //properties
         public string Description { get; set; }
@@ -28,7 +28,7 @@ namespace OOP2_Major_mockup_PRJ
 
         //virtual methods for now only here to allow both scenario types to inherit the method, 
         //could later have code that is mutual brought back in?
-        public virtual void GenerateScenario(int sceneTracker) {  }
-        public virtual Option[] GetOptions(int[] index, int sceneTracker) { return null; }
+        public abstract void GenerateScenario(int sceneTracker);
+        public abstract Option[] GetOptions(int[] index, int sceneTracker, int sceneType);
     }
 }

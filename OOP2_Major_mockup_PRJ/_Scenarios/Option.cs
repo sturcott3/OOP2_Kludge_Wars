@@ -17,24 +17,16 @@ namespace OOP2_Major_mockup_PRJ
         public int ShipHealthEffect { get; set; }
         public int FuelEffect { get; set; }
         public int MoneyEffect { get; set; }
-
+        public Item CombatReward { get; set; }
 
         //constructor allows type of encounter to get relevant data from Data class
-
-
-        public Option() { }//no arg constructor allows piece by piece construction of these later, 
-                           //in the scripted scenarios(from player input at runtime or other possible functionality)
 
 
         //seed tracks which episode we are on when Scripted is true. When Scripted is false, sceneTracker tracks 
         public Option(int sceneTracker, int button, bool Scripted)
         {
-
             if (Scripted)
-            {
-                //HA! this was still that huge switch from before the first time we refactored this constructor, 
-                //broke all that out to a private method down below 
-                sceneTracker -= 1;
+            { 
                 PopulateScriptedFields(sceneTracker, button);
             }
 
@@ -42,23 +34,11 @@ namespace OOP2_Major_mockup_PRJ
             {
                 if (sceneTracker == 1)
                 {
-                    ButtonText = Data.CombatButtonTexts[button];
-                    PostClickText = Data.PostCombatTexts[button];
-                    ResultDescription = Data.CombatResultDescription[button];
-                    PlayerHealthEffect = Data.CombatHealthEffects[button];
-                    ShipHealthEffect = Data.CombatShipHealthEffects[button];
-                    FuelEffect = Data.CombatFuelEffects[button];
-                    MoneyEffect = Data.CombatMoneyEffects[button];
+                    PopulateCombatFields(button);
                 }
                 else if (sceneTracker == 2)
                 {
-                    ButtonText = Data.MerchantButtonTexts[button];
-                    PostClickText = Data.PostMerchantTexts[button];
-                    ResultDescription = Data.MerchantResultDescription[button];
-                    PlayerHealthEffect = Data.MerchantHealthEffects[button];
-                    ShipHealthEffect = Data.MerchantShipHealthEffects[button];
-                    FuelEffect = Data.MerchantFuelEffects[button];
-                    MoneyEffect = Data.MerchantMoneyEffects[button];
+                    PopulateMerchantFields(button);
                 }
             }
         }
@@ -71,6 +51,28 @@ namespace OOP2_Major_mockup_PRJ
             ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
             FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
             MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
+            CombatReward = Data.ScriptedItemRewards[sceneTracker, button];
+        }
+
+        private void PopulateCombatFields(int button)
+        {
+            ButtonText = Data.CombatButtonTexts[button];
+            PostClickText = Data.PostCombatTexts[button];
+            ResultDescription = Data.CombatResultDescription[button];
+            PlayerHealthEffect = Data.CombatHealthEffects[button];
+            ShipHealthEffect = Data.CombatShipHealthEffects[button];
+            CombatReward = Data.CombatItemRewards[button];
+        }
+
+        private void PopulateMerchantFields(int button)
+        {
+            ButtonText = Data.MerchantButtonTexts[button];
+            PostClickText = Data.PostMerchantTexts[button];
+            ResultDescription = Data.MerchantResultDescription[button];
+            PlayerHealthEffect = Data.MerchantHealthEffects[button];
+            ShipHealthEffect = Data.MerchantShipHealthEffects[button];
+            FuelEffect = Data.MerchantFuelEffects[button];
+            MoneyEffect = Data.MerchantMoneyEffects[button];
         }
     }
 }

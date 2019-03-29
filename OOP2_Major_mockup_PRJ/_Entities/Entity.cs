@@ -9,45 +9,24 @@ namespace OOP2_Major_mockup_PRJ
     class Entity
     {
         //Define fields
-        private string name, race;
-        private int level, merchantLevel;
-        private bool alwaysEnemy, alwaysMerchant;
+        public string Name { get; set; }
+        public string Race { get; set; }
+        public int Level { get; set; }
+        public int MerchantLevel { get; set; }     
+        public bool IsEnemy { get; set; }
+        public bool IsMerchant { get; set; }
 
         //Entity creation constructor
-        public Entity(string name, string race, int level, int merchantLevel, bool alwaysEnemy = false, bool alwaysMerchant = false)
+        public Entity(string name, string race, int level, int merchantLevel, bool isEnemy = false, bool isMerchant = false)
         {
-            this.name = name;
-            this.race = race;
-            this.level = level;
-            this.merchantLevel = merchantLevel;
-            this.alwaysEnemy = alwaysEnemy;
-            this.alwaysMerchant = alwaysMerchant;
+            Name = name;
+            Race = race;
+            Level = level;
+            MerchantLevel = merchantLevel;
+            IsEnemy = isEnemy;
+            IsMerchant = isMerchant;
         }
 
-        //Getters
-        public string GetName()
-        {
-            return name;
-        }
-        public string GetRace()
-        {
-            return race;
-        }
-        public int GetLevel()
-        {
-            return level;
-        }
-        public int GetMerchantLevel()
-        {
-            return merchantLevel;
-        }
-        public bool GetEnemy()
-        {
-            return alwaysEnemy;
-        }
-        public bool GetMerchant()
-        {
-            return alwaysMerchant;
-        }
+
     }
 }
