@@ -52,9 +52,15 @@ namespace OOP2_Major_mockup_PRJ
 
 
             //Just for testing purposes, later on Option and Data can be modified to include adding items
-            player.Inventory[0] = Data.Items[0];
-            player.Inventory[1] = Data.Items[1];
-            player.Inventory[2] = Data.Items[2];
+            player.Inventory.Add(Data.Items[0]);
+            player.Inventory.Add(Data.Items[1]);
+            player.Inventory.Add(Data.Items[2]);
+            player.Inventory.Add(Data.Items[1]);
+            player.Inventory.Add(Data.Items[2]);
+            player.Inventory.Add(Data.Items[0]);
+            player.Inventory.Add(Data.Items[2]);
+            player.Inventory.Add(Data.Items[1]);
+            player.Inventory.Add(Data.Items[0]);
             UpdateHUD();
         }
 
@@ -258,7 +264,7 @@ namespace OOP2_Major_mockup_PRJ
 
         }
 
-        private void UpdateHUD(ref Item item)
+        private void UpdateHUD(Item item)
         {
             //Item version will use the item and apply it's effects
             //May need to modify if we want to prevent players from using an item if its stat is full (Using a medkit at full health)
@@ -268,11 +274,10 @@ namespace OOP2_Major_mockup_PRJ
             player.Fuel += item.effects[2];
             player.Money += item.effects[3];
 
-            //Using the byref, will set the item in the inventory to be equal to null, updating the hud will remove that item from inventory and remove its effects
-            item = null;
-
             UpdateHUD();
+            
         }
+
         private void UpdateHUD(int button)
         {
             //int version keeps results corresponding to the button/option, 
@@ -322,19 +327,21 @@ namespace OOP2_Major_mockup_PRJ
             //Update Distance
             lblDistance.Text = player.Distance + " LY";
 
+            int rowIndex = (player.InventoryRow - 1) * 5;
+
             //Update Inventory Icons
-            btnInventory1.BackgroundImage = (player.Inventory[0] != null) ? player.Inventory[0].Icon : null;
-            btnInventory2.BackgroundImage = (player.Inventory[1] != null) ? player.Inventory[1].Icon : null;
-            btnInventory3.BackgroundImage = (player.Inventory[2] != null) ? player.Inventory[2].Icon : null;
-            btnInventory4.BackgroundImage = (player.Inventory[3] != null) ? player.Inventory[3].Icon : null;
-            btnInventory5.BackgroundImage = (player.Inventory[4] != null) ? player.Inventory[4].Icon : null;
+            btnInventory1.BackgroundImage = (player.Inventory.ElementAtOrDefault(rowIndex) != null) ? player.Inventory[rowIndex].Icon : null;
+            btnInventory2.BackgroundImage = (player.Inventory.ElementAtOrDefault(rowIndex + 1) != null) ? player.Inventory[rowIndex + 1].Icon : null;
+            btnInventory3.BackgroundImage = (player.Inventory.ElementAtOrDefault(rowIndex + 2) != null) ? player.Inventory[rowIndex + 2].Icon : null;
+            btnInventory4.BackgroundImage = (player.Inventory.ElementAtOrDefault(rowIndex + 3) != null) ? player.Inventory[rowIndex + 3].Icon : null;
+            btnInventory5.BackgroundImage = (player.Inventory.ElementAtOrDefault(rowIndex + 4) != null) ? player.Inventory[rowIndex + 4].Icon : null;
 
             //Update Inventory Tooltips
-            tltToolTip.SetToolTip(btnInventory1, (player.Inventory[0] != null) ? player.Inventory[0].Name + " - " + player.Inventory[0].Description : string.Empty);
-            tltToolTip.SetToolTip(btnInventory2, (player.Inventory[1] != null) ? player.Inventory[1].Name + " - " + player.Inventory[1].Description : string.Empty);
-            tltToolTip.SetToolTip(btnInventory3, (player.Inventory[2] != null) ? player.Inventory[2].Name + " - " + player.Inventory[2].Description : string.Empty);
-            tltToolTip.SetToolTip(btnInventory4, (player.Inventory[3] != null) ? player.Inventory[3].Name + " - " + player.Inventory[3].Description : string.Empty);
-            tltToolTip.SetToolTip(btnInventory5, (player.Inventory[4] != null) ? player.Inventory[4].Name + " - " + player.Inventory[4].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory1, (player.Inventory.ElementAtOrDefault(rowIndex) != null) ? player.Inventory[rowIndex].Name + " - " + player.Inventory[rowIndex].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory2, (player.Inventory.ElementAtOrDefault(rowIndex + 1) != null) ? player.Inventory[rowIndex + 1].Name + " - " + player.Inventory[rowIndex + 1].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory3, (player.Inventory.ElementAtOrDefault(rowIndex + 2) != null) ? player.Inventory[rowIndex + 2].Name + " - " + player.Inventory[rowIndex + 2].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory4, (player.Inventory.ElementAtOrDefault(rowIndex + 3) != null) ? player.Inventory[rowIndex + 3].Name + " - " + player.Inventory[rowIndex + 3].Description : string.Empty);
+            tltToolTip.SetToolTip(btnInventory5, (player.Inventory.ElementAtOrDefault(rowIndex + 4) != null) ? player.Inventory[rowIndex + 4].Name + " - " + player.Inventory[rowIndex + 4].Description : string.Empty);
 
             //Update location info
             if (player.IsOnShip)
@@ -364,6 +371,27 @@ namespace OOP2_Major_mockup_PRJ
             }
         }
 
+        public void ShowWarning(string message, double seconds)
+        {
+            sblWarning.Text = message;
+            sblWarning.Visible = true;
+            srpWarning.BackColor = Color.Salmon;
+            sblWarning.ForeColor = Color.Black;
+
+            t.Stop();
+            t.Interval = Convert.ToInt32(seconds * 1000);
+
+
+            t.Tick += (s, e) =>
+            {
+                sblWarning.Visible = false;
+                srpWarning.BackColor = Color.FromArgb(0, 0, 64);
+                t.Stop();
+            };
+
+            t.Start();
+        }
+
         private void GameOver(string reason)
         {
             //DISABLED death for debug purposes.
@@ -387,6 +415,17 @@ namespace OOP2_Major_mockup_PRJ
             */
         }
 
+        public void UseInventoryItem(int slot)
+        {
+            int rowIndex = ((player.InventoryRow - 1) * 5) + (slot - 1);
+            if (player.Inventory.ElementAtOrDefault(rowIndex) != null)
+            {
+                Item item = player.Inventory[rowIndex];
+                player.Inventory.RemoveAt(rowIndex);
+                UpdateHUD(item);
+            }
+        }
+
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
@@ -396,53 +435,40 @@ namespace OOP2_Major_mockup_PRJ
         //Inventory interaction
         private void btnInventory1_Click(object sender, EventArgs e)
         {
-            if (player.Inventory[0] != null) UpdateHUD(ref player.Inventory[0]);
+            //You can't pass list elements like you can array elements.
+            UseInventoryItem(1);
         }
 
         private void btnInventory2_Click(object sender, EventArgs e)
         {
-            if (player.Inventory[1] != null) UpdateHUD(ref player.Inventory[1]);
+            UseInventoryItem(2);
         }
 
         private void btnInventory3_Click(object sender, EventArgs e)
         {
-            if (player.Inventory[2] != null) UpdateHUD(ref player.Inventory[2]);
+            UseInventoryItem(3);
         }
 
         private void btnInventory4_Click(object sender, EventArgs e)
         {
-            if (player.Inventory[3] != null) UpdateHUD(ref player.Inventory[3]);
+            UseInventoryItem(4);
         }
 
         private void btnInventory5_Click(object sender, EventArgs e)
         {
-            if (player.Inventory[4] != null) UpdateHUD(ref player.Inventory[4]);
+            UseInventoryItem(5);
         }
 
-        private void btnInventory6_Click(object sender, EventArgs e)
+        private void btnInventoryDown_Click(object sender, EventArgs e)
         {
-            if (player.Inventory[5] != null) UpdateHUD(ref player.Inventory[5]);
+            player.InventoryRow--;
+            UpdateHUD();
         }
 
-        public void ShowWarning(string message, double seconds)
+        private void btnInventoryUp_Click(object sender, EventArgs e)
         {
-            sblWarning.Text = message;
-            sblWarning.Visible = true;
-            srpWarning.BackColor = Color.Salmon;
-            sblWarning.ForeColor = Color.Black;
-
-            t.Stop();
-            t.Interval = Convert.ToInt32(seconds * 1000);
-
-
-            t.Tick += (s, e) =>
-            {
-                sblWarning.Visible = false;
-                srpWarning.BackColor =Color.FromArgb(0,0,64);
-                t.Stop();
-            };
-
-            t.Start();
+            player.InventoryRow++;
+            UpdateHUD();
         }
     }
 }

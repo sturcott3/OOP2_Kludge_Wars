@@ -13,19 +13,32 @@ namespace OOP2_Major_mockup_PRJ
         public const int MAX_SHIPHEALTH = 6;
         public const int MAX_FUEL = 7;
         public const int MAX_ITEMS = 6;
-       
-        private int health = MAX_HEALTH; //temporary change to public to demonstrate the refrences
+
+        private int health = MAX_HEALTH;
         private int shipHealth = MAX_SHIPHEALTH;
         private int money = 0;
         private int fuel = MAX_FUEL;
+        private int inventoryRow = 1;
 
-        public Item[] Inventory { get; set; } = new Item[MAX_ITEMS];
-
+        
         //Properties
+        public List<Item> Inventory { get; set; } = new List<Item>();
+        public int InventoryRow
+        {
+            get { return inventoryRow; }
+            set
+            {
+                double maxRows = Math.Ceiling(Inventory.Count / 5.0) + 1;
+                if (value >= 1 & value <= maxRows) inventoryRow = value;
+            }
+        }
+
+
         public int Health
         {
-            get{return health;}
-            set{
+            get { return health; }
+            set
+            {
                 //Use += for incremental differences
                 health = value;
                 //Check max/min
@@ -53,18 +66,16 @@ namespace OOP2_Major_mockup_PRJ
                 //Use += for incremental differences
                 fuel = value;
                 //Check max/min
-                if(fuel < 0) fuel = 0;
+                if (fuel < 0) fuel = 0;
                 if (fuel > MAX_FUEL) fuel = MAX_FUEL;
             }
         }
-        public int Money { get { return money; }
+        public int Money
+        {
+            get { return money; }
             set
             {
-                if (value >= 0)
-                {
-                    money = value;
-                }
-                //Else do nothing
+                if (value >= 0) money = value;
             }
         }
         public int Distance { get; set; }
