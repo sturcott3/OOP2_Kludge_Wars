@@ -528,6 +528,8 @@
             // 
             this.srpWarning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.srpWarning.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.srpWarning.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sblWarning});
             this.srpWarning.Location = new System.Drawing.Point(0, 546);
             this.srpWarning.Name = "srpWarning";
             this.srpWarning.Size = new System.Drawing.Size(971, 22);
@@ -612,10 +614,10 @@
         private System.Windows.Forms.Button btnInventory5;
         private System.Windows.Forms.ToolTip tltToolTip;
         private System.Windows.Forms.StatusStrip srpWarning;
-        private System.Windows.Forms.ToolStripStatusLabel sblWarning;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Button btnInventoryUp;
         private System.Windows.Forms.Button btnInventoryDown;
+        private System.Windows.Forms.ToolStripStatusLabel sblWarning;
     }
 }
 
