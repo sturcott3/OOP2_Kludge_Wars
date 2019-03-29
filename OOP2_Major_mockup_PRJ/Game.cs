@@ -52,7 +52,7 @@ namespace OOP2_Major_mockup_PRJ
 
 
             //Just for testing purposes, later on Option and Data can be modified to include adding items
-            player.Inventory.Add(Data.Items[0]);
+            player.Inventory.Add(Data.Items[0]); //this is great!
             player.Inventory.Add(Data.Items[1]);
             player.Inventory.Add(Data.Items[2]);
             player.Inventory.Add(Data.Items[1]);
@@ -96,6 +96,10 @@ namespace OOP2_Major_mockup_PRJ
 
         private void Dis_Embark_Click(object sender, EventArgs e)
         {
+            if (scene.LocationType == 3) {
+                ShowWarning("Can't disembark in space!",1.5);
+            }
+            else
             player.IsOnShip = !player.IsOnShip;
             UpdateHUD();
         }

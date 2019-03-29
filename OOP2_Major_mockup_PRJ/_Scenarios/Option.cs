@@ -25,63 +25,19 @@ namespace OOP2_Major_mockup_PRJ
         public Option() { }//no arg constructor allows piece by piece construction of these later, 
                            //in the scripted scenarios(from player input at runtime or other possible functionality)
 
-        
+
         //seed tracks which episode we are on when Scripted is true. When Scripted is false, sceneTracker tracks 
-        public Option(int sceneTracker, int button , bool Scripted)
+        public Option(int sceneTracker, int button, bool Scripted)
         {
-            if (Scripted) {
 
+            if (Scripted)
+            {
+                //HA! this was still that huge switch from before the first time we refactored this constructor, 
+                //broke all that out to a private method down below 
                 sceneTracker -= 1;
-
-                switch (button)
-                {
-                    case 0:
-                        ButtonText = Data.ScriptedButtonTexts[sceneTracker,button];
-                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
-                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
-                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
-                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
-                        break;
-                    case 1:
-                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
-                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
-                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
-                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
-                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
-                        break;
-                    case 2:
-                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
-                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
-                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
-                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
-                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
-                        break;
-                    case 3:
-                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
-                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
-                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
-                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
-                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
-                        break;
-                    case 4:
-                        ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
-                        PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
-                        ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
-                        PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
-                        ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
-                        FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
-                        MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
-                        break;
-                }
+                PopulateScriptedFields(sceneTracker, button);
             }
+
             else
             {
                 if (sceneTracker == 1)
@@ -105,6 +61,16 @@ namespace OOP2_Major_mockup_PRJ
                     MoneyEffect = Data.MerchantMoneyEffects[button];
                 }
             }
+        }
+        private void PopulateScriptedFields(int sceneTracker, int button)
+        {
+            ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
+            PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+            ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
+            PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
+            ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
+            FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
+            MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
         }
     }
 }
