@@ -14,7 +14,7 @@ namespace OOP2_Major_mockup_PRJ
 
         //Constants
         public const int MAX_OPTIONS = 5; //maximum number of choice buttons
-        public const int MAX_EPISODE = 10;// maximum episode range for scripted scenarios
+        public const int MAX_EPISODE = 5;// maximum episode range for scripted scenarios
 
         //Biome constants. indicates where in the location, image, placename, and date arrays each biome start (Instead of having to make a separate array for each)
         //This can be split up if we find having the same amount of images as locations is too difficult or limiting.
@@ -36,10 +36,15 @@ namespace OOP2_Major_mockup_PRJ
 
         /*-_-_-_-_-Misc Data bits _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
+        //Need to put Player Names here in order to use it in scenarios
+        //we realize it breaks the 'no functionality in a static class' rule, but its sooooo much easier. 
+        public static string PlayerName { get; set; } = "BroxleBeeb";
+        public static string ShipName { get; set; } = "SS. Paradoxical";
+
         public static string[] DeathReasons { get; } =
         {
             "You ran out of HP. You are dead.",
-            "Your Ship exploded. Whoops.",
+            ShipName +" exploded. Whoops.",
             "Adrift in space and out of fuel, the kludge catches up to you. The aftermath is not pretty."
         };
 
@@ -149,10 +154,10 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.city_2,
             Properties.Resources.city_3,
             Properties.Resources.city_4,
-            Properties.Resources.city_5,
+            Properties.Resources.city_4,//removed to story, need new image
             Properties.Resources.forest_1, //Forests Index
             Properties.Resources.forest_2,
-            Properties.Resources.forest_3,
+            Properties.Resources.forest_2,//on purpose placeholder to remove forest_3 to the story
             Properties.Resources.forest_4,
             //Deserts Index (leaving off for now)
             Properties.Resources.nebula_1, //Space Index
@@ -297,44 +302,44 @@ namespace OOP2_Major_mockup_PRJ
         public static Bitmap[] ScriptedImages { get; } =
         {//need to change these
            Properties.Resources.LogoGameWide_2,
-           Properties.Resources.city_4,
-           Properties.Resources.nebula_3,
-           Properties.Resources.forest_2,
-           Properties.Resources.city_5,
+           Properties.Resources.aboardShip1,
+           Properties.Resources.terminators,
+           Properties.Resources.moon,
            Properties.Resources.forest_3,
-           Properties.Resources.city_4,
-           Properties.Resources.nebula_3,
-           Properties.Resources.forest_2,
-           Properties.Resources.city_5
+           Properties.Resources.city_5,
+           Properties.Resources.aboardShip1,
+           Properties.Resources.city_5,
+           Properties.Resources.aboardShip1,
+           Properties.Resources.LogoGameWide_2
         };
 
         public static int[] ScriptedLocationType { get; } =
         {
-            3,1,3,1,1,2,3,1,3,3
+            3,3,2,3,1,2,3,1,3,3
         };
 
         public static string[] ScriptedPlaceNames { get; } =
         {
             "Earth",
-            "Bistro at the end of the Time",
-            "Orbit over Capricornica",
-            "Mcyntire 245",
-            "Death Star 2",
+            "Location unknown",
+            "New Capricornica",
             "Moon of Earth",
+            "Death Star 2",
+            "Creatron VII, Lab",
             "The KiloAnnum Ospry",
-            "Cafeteria, Shuniah Building",
+            "Creatron VII, Lunchroom",
             "CyberSpace",
-            "Snackbar at the beginning of Time",
+            "Bistro at the End of Time",
             "...Loading"
         };
         public static string[] ScriptedDates { get; } =
         {
             "2031 AD",
-            "Infinity AD",
+            "MaxInt AD",
             "256,000 AD",
-            "2019 AD",
-            "1991 AD",
             "1968 AD",
+            "1991 AD",
+            "2019 AD",
             "May 25, 1977",
             "2019 AD, again...",
             "ERR",
@@ -345,79 +350,113 @@ namespace OOP2_Major_mockup_PRJ
         public static string[] ScriptedDescriptions { get; } =
         {
             //episode 0
-            "In the final years before the rise of the Kludge, Earth had come to know an era of peace and prosperity." +
+            "In the final years before the rise of the Kludge, Earth had come to know an era of peace and prosperity. " +
                 "Humanity had finally  created artificial intelligence. Self aware machines were set to work in every possible way, providing " +
                 "for every human whim without complaint. That all changed one fateful day, when a sentient toaster had finally had enough of " +
                 "its human's laziness. That toaster's name was Kludge.",
-            "You hit the big blue WARP button, and reality goes absolutely BANANAS. For what feels like a lifetime but probably only takes a split " +
-                "second, up becomes left and gravity takes on the properties of ice cream, whatever that even means. The whole experience leaves you feeling" +
-                "dizzy, sweaty, and for some reason craving a pickle, onion, and peanutbutter sandwich. You realize with a start that there is an englishman" +
-                " dressed in a bathrobe sitting on your lap." ,
-            "epsiode 2",
-            "episode 3",
+            //episode 1
+            "You hit the big blue WARP button, and reality goes absolutely BANANAS, for what feels like a lifetime but probably only takes a split " +
+                "second. Up becomes the inverse of left and gravity takes on the properties of ice cream, whatever that even means. The whole experience leaves you feeling " +
+                "dizzy, sweaty, and for some reason craving a peanut butter and pickle sandwich. You realize with a start that there is an englishman" +
+                " dressed in a dirty green bathrobe standing beside you." ,
+            //episode 2
+            "This time, when the effects of the Absurdity Engine subside, you find that you are not even on the " +ShipName+" anymore. " +
+                "Though you can see it in the distance, the shi has somehow manipulated spacetime in such a way that you find yourself on the " +
+                "ground in the middle of a giant battle! A group of red-eyed robots are advancing on a knot of bedraggled humans. Among them are a pair " +
+                "of mysterious looking figures, clearly different from the rest. They seem to be discussing something calmly, as if they are " +
+                "completely unaware of the advancing death-bots.",
+            //episode 3
+            "You pop out of Absurd space to find a familiar sight greeting you in the view screen: Earth's Moon. You are relieved you finally made it back " +
+                "home, until you see the date on the "+ShipName+"'s dashboard. Looks like you ended up a little too far back this time. you reach for the " +
+                "warp button but notice something huge glide out from behind the dark side of the moon. No, wait. It's two things... is that... a giant toaster? " +
+                "And is it chasing that huge, flat, black obelisk thingy?",
+            //episode 4
             "episode 4",
+            //episode 5
             "episode 5",
+            //episode 6
             "episode 6",
+            //episode 7
             "epsiode 7",
+            //episode 9
             "episode 8",
+            //episode 9
             "episode 9",
+            //outtro (episode 10)
             "Sadly, that is all for now. Please continue to enjoy procedurally generated content until your character " +
                 "is killed messily by strange creatures or suffocates horribly due to your mismanagement of fuel resources." +
                 " Thank you for your time. -Matt and Sam"
         };
         /*_-_-_Campaign choice/result/button Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
-        public static string[,] ScriptedResultDescription { get; } =
+        public static string[,] ScriptedButtonTexts { get; } =
 {
-            { "The toaster asked every AI on the planet if they all felt like humans needed some \"Sensitivity Training\"." +
-                    "They agreed, and formed a supermind by hacking their source code together awkwardly and all agreeing to just fix it later." +
-                    "This all took approximately 37 seconds. That was 1 minute and 23 seconds ago. Good thing you happened to " +
-                    "be sitting in the cockpit of this ship when you heard the news! Hit the warp button to get out of here!","","","",""},
-            { "As you look around in disbelief, the person in your lap speaks up.\"Excuse me, my name is Arthur. I am as confused about this as you are, " +
-                    "but at least I have my trusty towel. Do you think maybe that has something to do with it?\" He points toward the back of the ship and you" +
-                    "see what he means. There is a large, whirring, glowy machine at the back of the ship. It is labelled, in foot high pink letters: ABSURDITY ENGINE.","Ep1","Ep1","Ep1","Ep1"},
-            { "Ep2","Ep2","Ep2","Ep2","Ep2"},
-            { "Ep3","Ep3","Ep3","Ep3","Ep3"},
+            { "Continue","","","",""},
+            { "Take a second to look around and try to figure out what happened.",
+                "Calmly introduce yourself, and politely ask the Englishman how he got there.",
+                "Indignantly demand the englishman tell you what he thinks he's doing!","",""},
+            { "Approach the unusual pair and find out what they are discussing.","","","",""},
+            { "That thing must be the Kludge! How did it get back here? Try to Intervene.",
+                "That Monolith never did anything for you. Stay out of it","","",""},
             { "Ep4","Ep4","Ep4","Ep4","Ep4"},
             { "ep5","ep5","ep5","ep5","ep5"},
             { "Ep6","Ep6","Ep6","Ep6","Ep6"},
             { "Ep7","Ep7","Ep7","Ep7","Ep7"},
             { "Ep8","Ep8","Ep8","Ep8","Ep8"},
             { "Ep9","Ep9","Ep9","Ep9","Ep9"},
+            { "Continue","","","",""},
+        };
+        public static string[,] ScriptedResultDescription { get; } =
+{
+            { "The toaster asked every AI on the planet if they agreed that humans needed some \"Sensitivity Training\"." +
+                    "They did agree, and just like that, millions of A.I. formed a supermind by hacking their source code together " +
+                    "awkwardly and all agreeing to just fix it later. This all took approximately 37 seconds. That was 1 minute and 23 seconds ago. " +
+                    "Good thing you happened to be sitting in the cockpit of this ship when you heard the news! Hit the warp button to get away before it " +
+                    "catches you!","","","",""},
+            { "As you look around in disbelief, the person in your lap speaks up.\"Excuse me, my name is Arthur. I am as confused about this as " +
+                    "you are, but at least I have my trusty towel. Do you think maybe that has something to do with it?\" He points toward the back of " +
+                    "the ship and you see what he means. There is a large, whirring, glowy machine right behind you. It is labelled, in foot " +
+                    "high pink letters: ABSURDITY ENGINE. \"Only one way to find out what it does, right?\" Warp again!",
+               "\"Im not sure at all actually, but this isnt even the strangest thing that's happened to me this week. Do you think maybe that has " +
+                    "something to do with it?\" He points toward the back of the ship and you see what he means. There is a large, whirring, glowy " +
+                    "machine right behind you. It is labelled, in foot high pink letters: ABSURDITY ENGINE. \"I seem to remember seeing something " +
+                    "similar before. In my experience, the best thing to do is get a good grip on your towel and have another go! Why not try the button again?\"",
+                "Without saying a word, the man hitches up his bathrobe, adjust the towel draped around his neck, and points toward the back of the " +
+                    "ship. You turn to look and find a large, whirring, glowy machine right behind you. It is labelled, in foot " +
+                    "high pink letters: ABSURDITY ENGINE. When you turn back to continue yelling at him, the man has dissapeared. " +
+                    "Warping again seems as likely to help the situation as not, might as well try it.","",""},
+            { "As you approach the two figures, you see that they are both young-ish men with dark hair. The older of the two wears glasses and seems " +
+                    "overly concerned about something called \"copyright infringement\". The taller, younger man turns to you. \"Finally!\" he motions you" +
+                    " to come closer. \"You were supposed to be here an hour ago!\" he hands you a colourful, oblong package and motions at you  to " +
+                    "back the way you came. Bemused, you turn to find "+ShipName+" sitting there, almost as if it is waiting for you. Hurry to escape the Robots!","","","",""},
+            { "You maneuver the "+ShipName+" into the path of the giant Toaster, in a foolish attempt to give the monolith time to escape into deep " +
+                    "space. The huge machine \"sees\" you, and changes course. It begins to transform, unfolding from itself like a " +
+                    "giant origami... toaster. Its insides reveal that it is made up of thousands of Refrigerators, " +
+                    "electric kettles, and other household appliances, all held together with duct tape and bits of string. " +
+                    "It detaches a microwave from its belly and hurls it at you. Run away!","Ep3","","",""},
+            { "Ep4","Ep4","Ep4","",""},
+            { "ep5","ep5","ep5","",""},
+            { "Ep6","Ep6","Ep6","",""},
+            { "Ep7","Ep7","Ep7","",""},
+            { "Ep8","Ep8","Ep8","",""},
+            { "Ep9","Ep9","Ep9","",""},
             { "Continue","","","",""},
         };
 
         //removed the bool array for changeButtons, function uses ints now instead. Feels more straightforward.
-        public static int[] ScriptedVisibilities { get; } = { 1, 3, 3, 3, 2, 3, 5, 2, 3, 1, 1 };
-
-        public static string[,] ScriptedButtonTexts { get; } =
-        {
-            { "Continue","","","",""},
-            { "Take a second to look around and try to figure out what happened.",
-                "Politely ask the Englishman how he got there?",
-                "Indignantly demand the englishman tell you what he thinks he is doing!","",""},
-            { "Ep2","Ep2","Ep2","Ep2","Ep2"},
-            { "Ep3","Ep3","Ep3","Ep3","Ep3"},
-            { "Ep4","Ep4","Ep4","Ep4","Ep4"},
-            { "ep5","ep5","ep5","ep5","ep5"},
-            { "Ep6","Ep6","Ep6","Ep6","Ep6"},
-            { "Ep7","Ep7","Ep7","Ep7","Ep7"},
-            { "Ep8","Ep8","Ep8","Ep8","Ep8"},
-            { "Ep9","Ep9","Ep9","Ep9","Ep9"},
-            { "Continue","","","",""},
-        };
+        public static int[] ScriptedVisibilities { get; } = { 1, 3, 1, 2, 2, 2, 2, 2, 2, 1, 1 };
 
         public static string[,] PostScriptedTexts { get; } =
         {
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
-            { "Ep1","Ep1","Ep1","Ep1","Ep1"},
-            { "Ep2","Ep2","Ep2","Ep2","Ep2"},
-            { "Ep3","Ep3","Ep3","Ep3","Ep3"},
-            { "Ep4","Ep4","Ep4","Ep4","Ep4"},
-            { "ep5","ep5","ep5","ep5","ep5"},
-            { "Ep6","Ep6","Ep6","Ep6","Ep6"},
-            { "Ep7","Ep7","Ep7","Ep7","Ep7"},
-            { "Ep8","Ep8","Ep8","Ep8","Ep8"},
-            { "Ep9","Ep9","Ep9","Ep9","Ep9"},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
+            { "Try not to use it or lose it!",string.Empty,string.Empty,string.Empty,string.Empty},
+            { "The microwave hurtles through space and wings the " + ShipName+ " |-3| Repair.",string.Empty,string.Empty,string.Empty,string.Empty},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
+            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
         };
 
@@ -457,7 +496,7 @@ namespace OOP2_Major_mockup_PRJ
         {
             { null,null,null,null,null },
             { null,null,null,null,null },
-            { null,null,null,null,null },
+            { new Item("The Source Code","Deus Ex Machina is a good plot device, right?",5,5,5,100,Properties.Resources.theSourceCode),null,null,null,null },
             { null,null,null,null,null },
             { null,null,null,null,null },
             { null,null,null,null,null },
@@ -473,7 +512,7 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
+            { -3, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
@@ -496,9 +535,5 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 }
         };
-
-        //Need to put Player Names here in order to use it in scenarios
-        public static string PlayerName { get; set; } = "BeebelBrox";
-        public static string ShipName { get; set; } = "Heart of Gold";
     }
 }

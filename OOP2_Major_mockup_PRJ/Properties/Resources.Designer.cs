@@ -73,6 +73,16 @@ namespace OOP2_Major_mockup_PRJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap aboardShip1 {
+            get {
+                object obj = ResourceManager.GetObject("aboardShip1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cargo_gem {
             get {
                 object obj = ResourceManager.GetObject("cargo_gem", resourceCulture);
@@ -283,6 +293,16 @@ namespace OOP2_Major_mockup_PRJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap moon {
+            get {
+                object obj = ResourceManager.GetObject("moon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nebula_1 {
             get {
                 object obj = ResourceManager.GetObject("nebula_1", resourceCulture);
@@ -343,6 +363,26 @@ namespace OOP2_Major_mockup_PRJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap repairKitLarge {
+            get {
+                object obj = ResourceManager.GetObject("repairKitLarge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap repairKitSmall {
+            get {
+                object obj = ResourceManager.GetObject("repairKitSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap screen {
             get {
                 object obj = ResourceManager.GetObject("screen", resourceCulture);
@@ -396,6 +436,26 @@ namespace OOP2_Major_mockup_PRJ.Properties {
         internal static System.Drawing.Bitmap space_5 {
             get {
                 object obj = ResourceManager.GetObject("space_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap terminators {
+            get {
+                object obj = ResourceManager.GetObject("terminators", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap theSourceCode {
+            get {
+                object obj = ResourceManager.GetObject("theSourceCode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

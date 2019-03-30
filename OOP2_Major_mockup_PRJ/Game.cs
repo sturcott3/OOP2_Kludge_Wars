@@ -39,60 +39,71 @@ namespace OOP2_Major_mockup_PRJ
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
 
-            //<temp comment out for debug>
+            //<temp comment out to skip input for debu purposes>
             //Temporarily set to input type 5, so you don't have to type anything for now
-            //string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
-            //Data.PlayerName = playerInfo[0];
-            //Data.ShipName = playerInfo[1];
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
+            Data.PlayerName = playerInfo[0];
+            Data.ShipName = playerInfo[1];
             //</temp comment out>
 
             for (int i = 0; i < Data.StartingItems.Length; i++)
             {//just add or remove items to the starting items array if testing is needed
                 player.Inventory.Add(Data.StartingItems[i]);
             }
-            
+        
             BeginTurn(scene.StoryCounter); //starts the first scripted scene to be the intro
-
+            
             UpdateHUD();
         }
 
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
         { //(WARP button)
-            if (player.IsOnShip) {          
+            if (player.IsOnShip && player.HasMadeChoice)
+            {
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
-                    //can remove now, or leave both. I like both, then we can cut down to just jokes and thanking the player in the script
-                    ShowWarning("Story unavailable, initializing 100% procedural scenarios.", 2, Color.Salmon);
+                    ShowWarning("Further story unavailable, initializing 100% procedural scenarios.", 2, Color.White);
                     sceneType = 5;
                     messageShown = true;
                 }
+                //or, if we have told them already, just keep playing randoms
                 else if (messageShown) { sceneType = 5; }
-                else { sceneType = Data.Rand.Next(1, 11); }
-
-                //the number passed to BeginTurn controls the chance of the next scripted scene occuring. 
-                //hardcode to 1 to run only scripted , change to 5 to run only randoms  
-                BeginTurn(sceneType);  //runs scripted scenes roughly 4 in 10
+                else
+                {//but if none of the above is true
+                    if (scene.StoryCounter <= 2)
+                    {//play the first three scripted scenes, 
+                        sceneType = 1;
+                    }
+                    //then start the randoms
+                    else { sceneType = Data.Rand.Next(1, 11); }
+                }
+                //the number passed to BeginTurn controls the type of scene that will start 
+                BeginTurn(sceneType);  //runs scripted scenes roughly 4 in 10, after the first three have played as a short intro to the mechanics
 
                 player.Fuel -= 1;//amount of fuel per turn could be changed to random or be based on circumstances
                 player.Distance += 1;
                 UpdateHUD();
             }
             //Not on ship
-            else
+            else if (!player.IsOnShip && player.HasMadeChoice)
             {
                 //We can make this better. added a little, could do a lot more with colours....
-                ShowWarning("Unable to warp, you must be on your ship.", 2 , Color.Salmon);
+                ShowWarning("Unable to warp, you must be on your ship.", 2.5, Color.Gold);
             }
+            else if(player.IsOnShip && !player.HasMadeChoice) { ShowWarning("Unable to end turn until dialog has proceeded", 2.5, Color.Gold); }
         }
 
         private void Dis_Embark_Click(object sender, EventArgs e)
         {//(Board Ship/ Leave ship button)
-            if (scene.LocationType == 3) {
-                ShowWarning("Can't disembark in space!", 2 ,Color.Salmon);
+            if (scene.LocationType == 3)
+            {
+                ShowWarning("Can't disembark in space!", 2.5, Color.Gold);
             }
             else
-            player.IsOnShip = !player.IsOnShip;
+            {
+                player.IsOnShip = !player.IsOnShip;
+            }
             UpdateHUD();
         }
 
@@ -128,21 +139,22 @@ namespace OOP2_Major_mockup_PRJ
         private void BeginTurn(int sceneType)
         {//call to start a new turn
 
-            
             player.HasMadeChoice = false;
           
             //decide scenario type
             if (sceneType <= 4)
             {//40%-ish chance to run scripted here
                 scene.StartScenario(true);
+                lblOutput.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Regular);
                 lblOutput.Text = scene.ScriptScene.Description;
                 lblPlaceName.Text = scene.ScriptScene.PlaceName;
                 lblDate.Text = scene.ScriptScene.Date;
-                ShowButtons(Data.ScriptedVisibilities[scene.StoryCounter]);
+                ShowButtons(Data.ScriptedVisibilities[scene.StoryCounter -1]);
             }
             else
             {//or random here
                 scene.StartScenario();
+                lblOutput.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
                 lblOutput.Text = scene.RandScene.Description;
                 lblPlaceName.Text = scene.RandScene.PlaceName;
                 lblDate.Text = scene.RandScene.Date;
@@ -236,14 +248,14 @@ namespace OOP2_Major_mockup_PRJ
             {
                 if (scene.CurrentOptions[buttonIdx].PostClickText != string.Empty)
                 {
-                    ShowWarning(scene.CurrentOptions[buttonIdx].PostClickText, 2, Color.Gold);
+                    ShowWarning(scene.CurrentOptions[buttonIdx].PostClickText, 4, Color.Green);
                 }
 
                 lblOutput.Text = scene.CurrentOptions[buttonIdx].ResultDescription;
 
                 if (scene.CurrentOptions[buttonIdx].CombatReward != null)
                 {
-                    lblOutput.Text += " You found a " + scene.CurrentOptions[buttonIdx].CombatReward.Name;
+                    lblOutput.Text += "You got " + scene.CurrentOptions[buttonIdx].CombatReward.Name + "!";
                     player.Inventory.Add(scene.CurrentOptions[buttonIdx].CombatReward);
                 }
                 HideButtons(buttonIdx);
@@ -333,7 +345,7 @@ namespace OOP2_Major_mockup_PRJ
             //Update location info
             if (player.IsOnShip)
             {
-                lblShipBoard.Text = "Aboard "+Data.ShipName;
+                lblShipBoard.Text = Data.ShipName;
                 Dis_Embark.Text = "Disembark";
             }
             else
@@ -415,7 +427,7 @@ namespace OOP2_Major_mockup_PRJ
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
-            ShowWarning("Menu not implemented.", 2, Color.Yellow);
+            ShowWarning("Menu not implemented.", 2.5, Color.Gold);
         }
         //Inventory interaction
         private void btnInventory1_Click(object sender, EventArgs e)

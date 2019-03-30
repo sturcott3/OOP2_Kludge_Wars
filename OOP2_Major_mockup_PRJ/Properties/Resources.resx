@@ -130,14 +130,23 @@
   <data name="nuke" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nuke.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="theSourceCode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\theSourceCode.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="forest_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forest_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forest_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forest_4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="repairKitSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\repairKitSmall.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aboardShip1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aboardShip1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cargo_metal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cargo_metal.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="repairKitLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\repairKitLarge.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="planet_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planet_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,11 +172,14 @@
   <data name="space_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\space_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="game_over_planetside" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\game_over_planetside.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forest_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forest_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="forest_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forest_4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="terminators" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\terminators.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="space_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\space_3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,6 +189,9 @@
   </data>
   <data name="LogoGame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoGame.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogoGameWide_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoGameWide_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fuel_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fuel_small.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +205,14 @@
   <data name="city_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\city_4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="game_over_space.jpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\game_over_space.jpg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_over_planetside" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\game_over_planetside.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="city_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\city_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,16 +232,13 @@
   <data name="city_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\city_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="forest_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forest_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="947454_outer-space-wallpaper-dark-hd-wallpapers_1920x1200_h" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\947454_outer-space-wallpaper-dark-hd-wallpapers_1920x1200_h.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LogoGameWide_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LogoGameWide_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

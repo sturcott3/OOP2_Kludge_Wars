@@ -211,5 +211,23 @@
   <ItemGroup>
     <None Include="Resources\Up.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aboardShip1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repairKitLarge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repairKitSmall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\theSourceCode.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\terminators.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
