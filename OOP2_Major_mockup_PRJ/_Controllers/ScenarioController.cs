@@ -15,6 +15,7 @@ namespace OOP2_Major_mockup_PRJ
 
         public ScriptedScenario ScriptScene { get; set; } = new ScriptedScenario();
 
+        //index is legacy, from when RandomUniques() was in use, leaving in case we put randomUniques back in
         private int[] index  = { 0,1,2,3,4};
 
         //to keep track of game flow between the two scenario types

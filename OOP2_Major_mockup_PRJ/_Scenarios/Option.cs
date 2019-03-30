@@ -45,7 +45,7 @@ namespace OOP2_Major_mockup_PRJ
         private void PopulateScriptedFields(int sceneTracker, int button)
         {
             ButtonText = Data.ScriptedButtonTexts[sceneTracker, button];
-            PostClickText = Data.PostScriptedButtonTexts[sceneTracker, button];
+            PostClickText = Data.PostScriptedTexts[sceneTracker, button];
             ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
             PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
             ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];

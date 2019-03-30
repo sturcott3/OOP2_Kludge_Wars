@@ -69,7 +69,7 @@ namespace OOP2_Major_mockup_PRJ
             }
 
             //Get random location, description, entity, and image
-            Location = Data.Locations[Data.Rand.Next(seed, endIndex)];
+            LocationVerb = Data.Locations[Data.Rand.Next(seed, endIndex)];
             PlaceName = Data.RandomPlaceNames[Data.Rand.Next(seed, endIndex)];
             Image = Data.Images[Data.Rand.Next(seed, endIndex)];
             Date = Data.RandomDates[Data.Rand.Next(seed, endIndex)];
@@ -99,10 +99,9 @@ namespace OOP2_Major_mockup_PRJ
                 Type = Data.Rand.Next(1, 3);//can use this to expand to more random encounter types later
             }
 
-            //Format description ... could build a logic tree around this to give more flixibility,
-            //would likely be part of the planetside/space/station tracking and binding to images
-            Description = "You come to your senses while " + Location + " when " + Description + " it's a " + Entity.Name + 
-                ", " + (Type == 1 ? "prepare for combat!" : "you approach the merchant.");
+            //Format description ... could build a logic tree around this to give more flixibilit
+            Description = "You shake off the fuzziness created by the Absurdity Engine to find yourself " + LocationVerb + " when suddenly " + Description + " it's a " + Entity.Name + 
+                ", " + (Type == 1 ? "Prepare for combat!" : " so you approach them, rummaging in your pockets for coins and gems.");
         }
     }
 }

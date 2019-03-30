@@ -11,7 +11,7 @@ namespace OOP2_Major_mockup_PRJ
     {
         //properties
         public string Description { get; set; }
-        public string Location { get; set; } 
+        public string LocationVerb { get; set; } 
         public Bitmap Image { get; set; }
         public int LocationType { get; protected set; } = 1;
 

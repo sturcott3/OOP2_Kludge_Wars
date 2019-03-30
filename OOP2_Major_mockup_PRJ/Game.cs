@@ -14,19 +14,18 @@ namespace OOP2_Major_mockup_PRJ
     {
         /*fields here -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
+        //object fields that actually do all the work
         Player player;
         InputController input;
         ScenarioController scene;
         Timer t = new Timer();
-        
-        private int sceneType;
 
-        //<temp>
-        bool messageShown = false;
-        //</temp>
+        //simple fields for tracking persistent game state
+        private bool messageShown = false;
+        private int sceneType;
         
         /*end fields -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
-        
+
         public Game() // constructor for form; use this to instantiate all objects,
                       //and use form load below to start the game loop/initialze properties 
         {
@@ -52,14 +51,14 @@ namespace OOP2_Major_mockup_PRJ
                 player.Inventory.Add(Data.StartingItems[i]);
             }
             
-            BeginTurn(1); //starts the first scripted scene to be the intro
+            BeginTurn(scene.StoryCounter); //starts the first scripted scene to be the intro
 
             UpdateHUD();
         }
 
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
-        { 
+        { //(WARP button)
             if (player.IsOnShip) {          
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
@@ -88,7 +87,7 @@ namespace OOP2_Major_mockup_PRJ
         }
 
         private void Dis_Embark_Click(object sender, EventArgs e)
-        {
+        {//(Board Ship/ Leave ship button)
             if (scene.LocationType == 3) {
                 ShowWarning("Can't disembark in space!", 2 ,Color.Salmon);
             }
@@ -99,90 +98,33 @@ namespace OOP2_Major_mockup_PRJ
 
         private void OptionOne_Click(object sender, EventArgs e)
         {
-            if (!player.HasMadeChoice)
-            {
-                lblOutput.Text = scene.CurrentOptions[0].ResultDescription;
-                ShowWarning(scene.CurrentOptions[0].PostClickText, 2 , Color.Gold);
-
-                if (scene.CurrentOptions[0].CombatReward != null)
-                {
-                    lblOutput.Text += "You found a " + scene.CurrentOptions[0].CombatReward.Name;
-                    player.Inventory.Add(scene.CurrentOptions[0].CombatReward);
-                }
-
-                HideButtons(0);
-                UpdateHUD(0); 
-            }
+            MakeChoice(0);
         }
 
         private void OptionTwo_Click(object sender, EventArgs e)
         {
-            if (!player.HasMadeChoice)
-            {
-                ShowWarning(scene.CurrentOptions[1].PostClickText, 2, Color.Gold);
-                lblOutput.Text = scene.CurrentOptions[1].ResultDescription;
-                if (scene.CurrentOptions[1].CombatReward != null)
-                {
-                    lblOutput.Text += "You found a " + scene.CurrentOptions[1].CombatReward.Name;
-                    player.Inventory.Add(scene.CurrentOptions[1].CombatReward);
-                }
-                HideButtons(1);
-                UpdateHUD(1);
-            }
+            MakeChoice(1);
+        
         }
 
         private void OptionThree_Click(object sender, EventArgs e)
         {
-            if (!player.HasMadeChoice)
-            {
-                ShowWarning(scene.CurrentOptions[2].PostClickText, 2, Color.Gold);
-                lblOutput.Text = scene.CurrentOptions[2].ResultDescription;
-                if (scene.CurrentOptions[2].CombatReward != null)
-                {
-                    lblOutput.Text += "You found a " + scene.CurrentOptions[2].CombatReward.Name;
-                    player.Inventory.Add(scene.CurrentOptions[2].CombatReward);
-                }
-                HideButtons(2);
-                UpdateHUD(2);
-            }
+            MakeChoice(2);
         }
 
         private void OptionFour_Click(object sender, EventArgs e)
         {
-            if (!player.HasMadeChoice)
-            {
-                ShowWarning(scene.CurrentOptions[3].PostClickText, 2, Color.Gold);
-                lblOutput.Text = scene.CurrentOptions[3].ResultDescription;
-                if (scene.CurrentOptions[3].CombatReward != null)
-                {
-                    lblOutput.Text += "You found a " + scene.CurrentOptions[3].CombatReward.Name;
-                    player.Inventory.Add(scene.CurrentOptions[3].CombatReward);
-                }
-                HideButtons(3);
-                UpdateHUD(3);
-            }
+            MakeChoice(3);
         }
 
         private void OptionFive_Click(object sender, EventArgs e)
         {
-            if (!player.HasMadeChoice)
-            {
-                ShowWarning(scene.CurrentOptions[4].PostClickText, 2, Color.Gold);
-                lblOutput.Text = scene.CurrentOptions[4].ResultDescription;
-                if (scene.CurrentOptions[4].CombatReward != null)
-                {
-                    lblOutput.Text += "You found a " + scene.CurrentOptions[4].CombatReward.Name;
-                    player.Inventory.Add(scene.CurrentOptions[4].CombatReward);
-                }
-                HideButtons(4);
-                UpdateHUD(4);
-            }
+            MakeChoice(4);
         }
         /*_-_-_-_-_End Buttons_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_-_-_-_-_*/
 
 
         /*_-_-_-_-_Begin Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
-
         private void BeginTurn(int sceneType)
         {//call to start a new turn
 
@@ -285,9 +227,28 @@ namespace OOP2_Major_mockup_PRJ
                     btnOptionFour.Hide();
                     btnOptionFive.Hide();
                     break;
-
             }
+        }
 
+        private void MakeChoice(int buttonIdx)
+        {
+            if (!player.HasMadeChoice)
+            {
+                if (scene.CurrentOptions[buttonIdx].PostClickText != string.Empty)
+                {
+                    ShowWarning(scene.CurrentOptions[buttonIdx].PostClickText, 2, Color.Gold);
+                }
+
+                lblOutput.Text = scene.CurrentOptions[buttonIdx].ResultDescription;
+
+                if (scene.CurrentOptions[buttonIdx].CombatReward != null)
+                {
+                    lblOutput.Text += " You found a " + scene.CurrentOptions[buttonIdx].CombatReward.Name;
+                    player.Inventory.Add(scene.CurrentOptions[buttonIdx].CombatReward);
+                }
+                HideButtons(buttonIdx);
+                UpdateHUD(buttonIdx);
+            }
         }
 
         private void UpdateHUD(Item item)
@@ -372,7 +333,7 @@ namespace OOP2_Major_mockup_PRJ
             //Update location info
             if (player.IsOnShip)
             {
-                lblShipBoard.Text = "Shipboard";
+                lblShipBoard.Text = "Aboard "+Data.ShipName;
                 Dis_Embark.Text = "Disembark";
             }
             else
@@ -380,15 +341,15 @@ namespace OOP2_Major_mockup_PRJ
                 Dis_Embark.Text = "Board Ship";
                 switch (scene.LocationType)
                 {
-                    //1 - City, 2 - Forest, 3 - Space
+                    //1 - City, 2 - Forest, 3 - Space, 4 Scripted   
                     case 1:
-                        lblShipBoard.Text = "In City";
+                        lblShipBoard.Text = "City streets";
                         break;
                     case 2:
-                        lblShipBoard.Text = "In Wilderness";
+                        lblShipBoard.Text = "Wilderness";
                         break;
                     case 3:
-                        lblShipBoard.Text = "In Exosuit";
+                        lblShipBoard.Text = "In Exosuit";//unused right now, leaving becasue useful
                         break;
                     default:
                         lblShipBoard.Text = "Planetside";
@@ -442,7 +403,7 @@ namespace OOP2_Major_mockup_PRJ
         }
 
         public void UseInventoryItem(int slot)
-        {
+        {//nice one matt!
             int rowIndex = ((player.InventoryRow - 1) * 5) + (slot - 1);
             if (player.Inventory.ElementAtOrDefault(rowIndex) != null)
             {
@@ -451,13 +412,11 @@ namespace OOP2_Major_mockup_PRJ
                 UpdateHUD(item);
             }
         }
-
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
-            ShowWarning("Menu not implemented.", 2 ,Color.Yellow);
+            ShowWarning("Menu not implemented.", 2, Color.Yellow);
         }
-
         //Inventory interaction
         private void btnInventory1_Click(object sender, EventArgs e)
         {
