@@ -15,7 +15,7 @@ namespace OOP2_Major_mockup_PRJ
 
         public ScriptedScenario ScriptScene { get; set; } = new ScriptedScenario();
 
-        private int[] index;
+        private int[] index  = { 0,1,2,3,4};
 
         //to keep track of game flow between the two scenario types
         public int StoryCounter { get; set; }
@@ -41,8 +41,6 @@ namespace OOP2_Major_mockup_PRJ
         public void StartScenario(bool Scripted = false)
         {//called from Game to progress the game state, episode control/random scene type control is done here
 
-            index = RandomUniques(5);
-
             if ((Scripted) && (StoryCounter <= Data.MAX_EPISODE))
             {
                 ScriptScene.GenerateScenario(StoryCounter);
@@ -58,27 +56,27 @@ namespace OOP2_Major_mockup_PRJ
             this.isScripted = Scripted;
         }
 
-        public int[] RandomUniques(int numberOfValues)
-        {//returns a set of randomly ordered sequential values, up to and including the arg
-            //wrote it to prevent having the same option appear in multiple buttons,
-            //but can be used to reorder the scripted scenarios each playthrough
+        //public int[] RandomUniques(int numberOfValues)
+        //{//returns a set of randomly ordered sequential values, up to and including the arg
+        //    //wrote it to prevent having the same option appear in multiple buttons,
+        //    //but can be used to reorder the scripted scenarios each playthrough
 
-            //the thing to return, in collection form
-            List<int> values = new List<int>(numberOfValues);
+        //    //the thing to return, in collection form
+        //    List<int> values = new List<int>(numberOfValues);
 
-            //the values to be reordered
-            List<int> possibleValues = new List<int>(numberOfValues);
+        //    //the values to be reordered
+        //    List<int> possibleValues = new List<int>(numberOfValues);
 
-            for (int i = 0; i <= numberOfValues - 1; i++) { possibleValues.Add(i); }
-            for (int i = 0; i <= numberOfValues - 1; i++)
-            {
-                int index = Data.Rand.Next(0, possibleValues.Count);
-                values.Add(possibleValues[index]);
-                possibleValues.RemoveAt(index);
-            }
-            int[] returnValues = values.ToArray();
-            return returnValues;
-        }
+        //    for (int i = 0; i <= numberOfValues - 1; i++) { possibleValues.Add(i); }
+        //    for (int i = 0; i <= numberOfValues - 1; i++)
+        //    {
+        //        int index = Data.Rand.Next(0, possibleValues.Count);
+        //        values.Add(possibleValues[index]);
+        //        possibleValues.RemoveAt(index);
+        //    }
+        //    int[] returnValues = values.ToArray();
+        //    return returnValues;
+        //}
 
 
 
