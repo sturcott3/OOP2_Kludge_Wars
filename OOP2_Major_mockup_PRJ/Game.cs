@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace OOP2_Major_mockup_PRJ
 
             //<temp comment out to skip input for debu purposes>
             //Temporarily set to input type 5, so you don't have to type anything for now
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 5, 3);
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
             Data.PlayerName = playerInfo[0];
             Data.ShipName = playerInfo[1];
             //</temp comment out>
@@ -368,6 +369,9 @@ namespace OOP2_Major_mockup_PRJ
                         break;
                 }
             }
+
+            //Update Highscore
+            sblHighscore.Text = "Highscore: " + SetHighscore();
         }
 
         public void ShowWarning(string message, double seconds, Color color)
@@ -376,6 +380,8 @@ namespace OOP2_Major_mockup_PRJ
             sblWarning.Visible = true;
             srpWarning.BackColor = color;
             sblWarning.ForeColor = Color.Black;
+            sblHighscore.BackColor = color;
+            sblHighscore.ForeColor = Color.Black;
 
             t.Stop();
             t.Interval = Convert.ToInt32(seconds * 1000);
@@ -385,6 +391,9 @@ namespace OOP2_Major_mockup_PRJ
             {
                 sblWarning.Visible = false;
                 srpWarning.BackColor = Color.FromArgb(0, 0, 64);
+                sblHighscore.BackColor = Color.FromArgb(0, 0, 64);
+                sblHighscore.ForeColor = SystemColors.MenuHighlight;
+
                 t.Stop();
             };
 
@@ -412,6 +421,8 @@ namespace OOP2_Major_mockup_PRJ
                 lblOutput.Text = Data.DeathReasons[2];
             }
             */
+
+
         }
 
         public void UseInventoryItem(int slot)
@@ -467,5 +478,43 @@ namespace OOP2_Major_mockup_PRJ
             player.InventoryRow++;
             UpdateHUD();
         }
+
+
+        private string SetHighscore()
+        {
+            //Could run into issues with read/write permissions.
+
+            string highScore = "No Score - 0 LY";
+            try
+            {
+                //Get High Score
+                if (File.Exists("Highscore.txt"))
+                {
+                    StreamReader reader = new StreamReader("Highscore.txt");
+                    highScore = reader.ReadLine();
+                    reader.Close();
+                }
+
+                int score = int.Parse(highScore.Substring(highScore.Length - 4, 1));
+                
+
+                //If highscore is lower than current score or highscore is not set
+                if(score < player.Distance || score == 0)
+                {
+                    highScore = Data.PlayerName + " - " + player.Distance + " LY";
+
+                    //Uses File.WriteAllText instead of a writer so it overrides any text already in document.
+                    File.WriteAllText("Highscore.txt", highScore);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                ShowWarning("Unable to Set High Score: " + ex.Message, 3, Color.Red);
+            }
+
+            return highScore;
+        }
+
     }
 }
