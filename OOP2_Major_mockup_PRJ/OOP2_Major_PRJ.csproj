@@ -54,7 +54,6 @@
     <Compile Include="_Scenarios\Scenario.cs" />
     <Compile Include="_Controllers\ScenarioController.cs" />
     <Compile Include="_Scenarios\ScriptedScenario.cs" />
-    <Compile Include="_Controllers\Controller.cs" />
     <Compile Include="_Entities\Entity.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>

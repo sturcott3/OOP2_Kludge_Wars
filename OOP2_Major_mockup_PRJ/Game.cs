@@ -178,36 +178,12 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_End of Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
 
         private void HideButtons(int clickedButton)
-        {//Changed to control button visibility instead, as discussed
-            // for choice made, hides them all and shows the correct one again.
+        {//hide the buttons after the player makes a choice.
             btnOptionOne.Hide();
             btnOptionTwo.Hide();
             btnOptionThree.Hide();
             btnOptionFour.Hide();
             btnOptionFive.Hide(); 
-            //switch (clickedButton)
-            //{
-            //    case 0:
-            //        btnOptionOne.Show();
-            //        btnOptionOne.Text = currentOptions[0].PostClickText;
-            //        break;
-            //    case 1:
-            //        btnOptionTwo.Show();
-            //        btnOptionTwo.Text = currentOptions[1].PostClickText;
-            //        break;
-            //    case 2:
-            //        btnOptionThree.Show();
-            //        btnOptionThree.Text = currentOptions[2].PostClickText;
-            //        break;
-            //    case 3:
-            //        btnOptionFour.Show();
-            //        btnOptionFour.Text = currentOptions[3].PostClickText;
-            //        break;
-            //    case 4:
-            //        btnOptionFive.Show();
-            //        btnOptionFive.Text = currentOptions[4].PostClickText;
-            //        break;
-            //}
             player.HasMadeChoice = true;
         }
 

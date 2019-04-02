@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    class ScenarioController:Controller
+    class ScenarioController
     {
         public Option[] CurrentOptions { get; set; }
 

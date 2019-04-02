@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP2_Major_mockup_PRJ
 {
-    class InputController : Controller
+    class InputController
     {
         private InputDialog frmInputDialog = new InputDialog();
+        private bool StatusOk { get; set; } = true;
 
         public string GetInput(string title, string directions, string buttonText, int type)
         {
