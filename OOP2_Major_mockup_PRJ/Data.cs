@@ -180,6 +180,8 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.fuel_large,
             Properties.Resources.cargo_gem,
             Properties.Resources.cargo_metal,
+            Properties.Resources.repairKitSmall,
+            Properties.Resources.repairKitLarge,
             Properties.Resources.nuke
         };
 
@@ -188,7 +190,8 @@ namespace OOP2_Major_mockup_PRJ
             //Health, Repair, Fuel, Money
             new Item("Medkit", "A large container containing various medical supplies. (+3 Health)", 3, 0, 0, 0, ItemImages[1]),
             new Item("Fuel Cannister", "A small cannister containing fuel. (+2 Fuel)", 0, 0, 2, 0, ItemImages[2]),
-            new Item("Bag of Gems", "A small bag containing valuable gems. (+45 Credits)", 0, 0, 0, 45, ItemImages[4])
+            new Item("Bag of Gems", "A small bag containing valuable gems. (+45 Credits)", 0, 0, 0, 45, ItemImages[4]),
+            new Item("Small Repair Kit", "A small container of tools and minor ship components (+1 Ship Health)", 0, 1, 0, 0, ItemImages[6])
         };
 
         /*-_-_-_\/Combat choice/result Data\/-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
