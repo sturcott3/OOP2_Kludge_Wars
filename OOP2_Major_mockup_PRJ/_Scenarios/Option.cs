@@ -15,9 +15,9 @@ namespace OOP2_Major_mockup_PRJ
         public string ResultDescription { get; set; }
         public int PlayerHealthEffect { get; set; }
         public int ShipHealthEffect { get; set; }
-        public int FuelEffect { get; set; }
         public int MoneyEffect { get; set; }
-        public Item CombatReward { get; set; }
+        public Item Reward { get; set; }
+        
 
         //constructor allows type of encounter to get relevant data from Data class
 
@@ -49,9 +49,8 @@ namespace OOP2_Major_mockup_PRJ
             ResultDescription = Data.ScriptedResultDescription[sceneTracker, button];
             PlayerHealthEffect = Data.ScriptedHealthEffects[sceneTracker, button];
             ShipHealthEffect = Data.ScriptedShipHealthEffects[sceneTracker, button];
-            FuelEffect = Data.ScriptedFuelEffects[sceneTracker, button];
             MoneyEffect = Data.ScriptedMoneyEffects[sceneTracker, button];
-            CombatReward = Data.ScriptedItemRewards[sceneTracker, button];
+            Reward = Data.ScriptedItemRewards[sceneTracker, button];
         }
 
         private void PopulateCombatFields(int button)
@@ -61,7 +60,7 @@ namespace OOP2_Major_mockup_PRJ
             ResultDescription = Data.CombatResultDescription[button];
             PlayerHealthEffect = Data.CombatHealthEffects[button];
             ShipHealthEffect = Data.CombatShipHealthEffects[button];
-            CombatReward = Data.CombatItemRewards[button];
+            Reward = Data.CombatItemRewards[button];
         }
 
         private void PopulateMerchantFields(int button)
@@ -69,9 +68,7 @@ namespace OOP2_Major_mockup_PRJ
             ButtonText = Data.MerchantButtonTexts[button];
             PostClickText = Data.PostMerchantTexts[button];
             ResultDescription = Data.MerchantResultDescription[button];
-            PlayerHealthEffect = Data.MerchantHealthEffects[button];
-            ShipHealthEffect = Data.MerchantShipHealthEffects[button];
-            FuelEffect = Data.MerchantFuelEffects[button];
+            Reward = Data.MerchantItemRewards[button];
             MoneyEffect = Data.MerchantMoneyEffects[button];
         }
     }

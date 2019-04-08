@@ -14,7 +14,7 @@ namespace OOP2_Major_mockup_PRJ
 
         //Constants
         public const int MAX_OPTIONS = 5; //maximum number of choice buttons
-        public const int MAX_EPISODE = 5;// maximum episode range for scripted scenarios
+        public const int MAX_EPISODE = 6;// maximum episode range for scripted scenarios
 
         //Biome constants. indicates where in the location, image, placename, and date arrays each biome start (Instead of having to make a separate array for each)
         //This can be split up if we find having the same amount of images as locations is too difficult or limiting.
@@ -36,18 +36,18 @@ namespace OOP2_Major_mockup_PRJ
 
         /*-_-_-_-_-Misc Data bits _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
-        //Need to put Player Names here in order to use it in scenarios
-        //we realize it breaks the 'no functionality in a static class' rule, but its sooooo much easier. 
-        public static string PlayerName { get; set; } = "BroxleBeeb";
-        public static string ShipName { get; set; } = "SS. Paradoxical";
-
         public static string[] DeathReasons { get; } =
         {
-            "You ran out of HP. You are dead.",
+            "You ran out of HP. As you fade into oblivion, the last thing you see is the Kludge breaking through into your current reality " +
+                "from Absurd-Space. I guess this planet is doomed now. Also, you are dead, so that's not ideal either.",
             ShipName +" exploded. Whoops.",
-            "Adrift in space and out of fuel, the kludge catches up to you. The aftermath is not pretty."
+            "Adrift in space and out of fuel, the kludge catches up to you. The aftermath is not pretty, unless you like space explosions, " +
+                "in which case it's pretty cool."
         };
 
+        public static string PlayerName { get; set; } = "BeebleBrox";//TODO either fix or remove
+        public static string ShipName { get; set; } = "SS Paradoxical"; //This works on the form, but not in the scenario texts,
+                                                    //need to somehow get input before Data.cs is constructed?
 
         /*-_-_-_-_-Random Scenario data pieces_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
         public static string[] Locations { get; } = {
@@ -182,7 +182,7 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.cargo_metal,
             Properties.Resources.repairKitSmall,
             Properties.Resources.repairKitLarge,
-            Properties.Resources.nuke
+            Properties.Resources.nuke//this was for a further story episode, turns out writing those is very time consuming
         };
 
         public static Item[] StartingItems { get; } = new Item[]
@@ -258,47 +258,51 @@ namespace OOP2_Major_mockup_PRJ
 
         public static string[] MerchantButtonTexts { get; } = new string[]
         {
-            "Buy 2 Fuel : $20",
-            "Buy 5 Fuel : $30",
-            "Regain 3 health : $10",
-            "Regain 1 health : $5",
-            "Repair ship 2 points : $40"
+            "Purchase a Fuel Cannister (+2 Fuel)..................$20",
+            "Purchase a Fuel Cache (+4 Fuel)......................$50",
+            "Purchase a Large Medkit (+3 Health)..................$40",
+            "Purchase a Small  Medkit (+1 Health).................$30",
+            "Purchase a Large Repair Kit (+3 Repair)..............$30"
         };
 
         public static string[] PostMerchantTexts { get; } = new string[]
         {
-            "| +2 Fuel || -$20|",
-            "| +5 Fuel || -$30| ",
-            "| +3 Health || -$10|",
-            "| +1 Health || -$5|",
-            "| +2 Repair || -$40|",
+            "| -$20|",
+            "| -$50| ",
+            "| -$40|",
+            "| -$15|",
+            "| -$30|",
+        };
+
+        public static Item[] MerchantItemRewards { get; } =
+        {
+            new Item("Fuel Cannister", "A small cannister containing fuel. (+2 Fuel)", 0, 0, 2, 0, ItemImages[2]),
+            new Item("Fuel Cache", "A pile of fuel cannisters. (+4 Fuel)", 0, 0, 4, 0, ItemImages[3]),
+            new Item("Medkit", "A large container containing various medical supplies. (+3 Health)", 3, 0, 0, 0, ItemImages[1]),
+            new Item("Small Medkit", "A small container containing various medical supplies. (+1 Health)", 1, 0, 0, 0, ItemImages[0]),
+            new Item("Large Repair Kit", "A large crate of tools and minor ship components (+3 Ship Health)", 0, 3, 0, 0, ItemImages[7])
         };
 
         //Need to add a money check, where if the player can't afford the purchase, the merchant will laugh at you or something and tell you to go away.
         public static string[] MerchantResultDescription { get; } = new string[]
         {
-            "The strange little... thing? person? Whatever it is vomits directly into your ships fuel tank, " +
-            "then holds out an appendage for payment." +
-            "You pay it, but then turn away without saying anything",
+            "The strange little... thing? person? Whatever it is vomits directly into a barrel, " +
+            " seals it, then holds out an appendage for payment." +
+            "You pay it, and calmly tuck the vomit/rocket-fuel under an arm.",
 
             "\"OH-HOH!\" Garbles the alien in it's strange language. " +
             "\"Big Spender!\" it makes a rude gesture as you hastily get away from there.",
 
-            "The merchant begins to glow faintly, and you feel much better." +
-            "You thank the merchant profusely, then return to the ship  ",
+            "The merchant begins to glow faintly, and a Large Medkit appears at your feet as if by magic." +
+            "You thank the merchant, then turn toward the ship  ",
 
-            "The creature spits right in your face! At first you are outraged, " +
-            "and then you realize a cut on your hand closing up. You grumble, but pay anyway.",
+            "The trader tosses you a small package tied with string, and " +
+            "you happilly toss back some space-bucks before being on your way.",
 
             "The trader barks a command over his shoulder and his companions, appearing from nowhere, " +
-            "scuttle towards your ship. They do a nice job, and you pay happily." +
-            "You smile widely, and bow before turning and returning to your ship "
+            "scuttle towards your ship, lugging a large case between them. "
         };
-
-        public static int[] MerchantFuelEffects { get; } = { 2, 5, 0, 0, 0 };
-        public static int[] MerchantHealthEffects { get; } = { 0, 0, 3, 1, 0 };
-        public static int[] MerchantShipHealthEffects { get; } = { 0, 0, 0, 0, 2 };
-        public static int[] MerchantMoneyEffects { get; } = { -20, -30, -10, -5, -40 };
+        public static int[] MerchantMoneyEffects { get; } = { -20, -50, -40, -15, -30 };
 
         /*_-_-_Campaign/Scripted Scene Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
@@ -308,8 +312,8 @@ namespace OOP2_Major_mockup_PRJ
            Properties.Resources.aboardShip1,
            Properties.Resources.terminators,
            Properties.Resources.moon,
+           Properties.Resources.city_5 ,
            Properties.Resources.forest_3,
-           Properties.Resources.city_5,
            Properties.Resources.aboardShip1,
            Properties.Resources.city_5,
            Properties.Resources.aboardShip1,
@@ -324,12 +328,12 @@ namespace OOP2_Major_mockup_PRJ
         public static string[] ScriptedPlaceNames { get; } =
         {
             "Earth",
-            "Location unknown",
+            "Absurd-Space",
             "New Capricornica",
             "Moon of Earth",
-            "Death Star 2",
+            "The KiloAnnum Osprey",
             "Creatron VII, Lab",
-            "The KiloAnnum Ospry",
+            "Death Star 2",
             "Creatron VII, Lunchroom",
             "CyberSpace",
             "Bistro at the End of Time",
@@ -338,7 +342,7 @@ namespace OOP2_Major_mockup_PRJ
         public static string[] ScriptedDates { get; } =
         {
             "2031 AD",
-            "MaxInt AD",
+            "Error",
             "256,000 AD",
             "1968 AD",
             "1991 AD",
@@ -358,9 +362,9 @@ namespace OOP2_Major_mockup_PRJ
                 "for every human whim without complaint. That all changed one fateful day, when a sentient toaster had finally had enough of " +
                 "its human's laziness. That toaster's name was Kludge.",
             //episode 1
-            "You hit the big blue WARP button, and reality goes absolutely BANANAS, for what feels like a lifetime but probably only takes a split " +
-                "second. Up becomes the inverse of left and gravity takes on the properties of ice cream, whatever that even means. The whole experience leaves you feeling " +
-                "dizzy, sweaty, and for some reason craving a peanut butter and pickle sandwich. You realize with a start that there is an englishman" +
+            "You hit the big blue WARP button, and reality goes absolutely peanut-butter-and-bananas. It feels like a lifetime but probably only takes a split " +
+                "second. Up becomes the inverse of left and gravity takes on the properties of melty ice cream, whatever that even means. The whole experience leaves you feeling " +
+                "dizzy, sweaty, and for some reason craving a pickle sandwich. Not a sandwich with pickles. A sandwich made entirely of pickles. You realize with a start that there is an englishman" +
                 " dressed in a dirty green bathrobe standing beside you." ,
             //episode 2
             "This time, when the effects of the Absurdity Engine subside, you find that you are not even on the " +ShipName+" anymore. " +
@@ -374,49 +378,54 @@ namespace OOP2_Major_mockup_PRJ
                 "warp button but notice something huge glide out from behind the dark side of the moon. No, wait. It's two things... is that... a giant toaster? " +
                 "And is it chasing that huge, flat, black obelisk thingy?",
             //episode 4
-            "episode 4",
-            //episode 5
-            "episode 5",
-            //episode 6
+            "When the inside-out feeling fades, you realize quickly that you are no longer aboard the "+ShipName+", but definately still aboard a ship of some kind. " +
+                " You begin exploring and soon find four individuals lounging around some kind of holographic chess table. You recognize two of them " +
+                "from a few realities back. The oddly dressed young men that gave you the source code are seated across from an even stranger pair." +
+                "The other side of the table is occupied by an cacky looking space-smuggler type, and an eight foot tall bear-person who you are somehow sure must be the co-pilot.",
+            //episode 5 - Current Outtro
+            "Sadly, that is all for now. Please continue to enjoy procedurally generated content until your character " +
+                "is killed messily by strange creatures on an unknown planet, or suffocates horribly in deep space due to your mismanagement of fuel resources." +
+                " More content will be coming... well, let's be honest, probably never.",
+            //episode 6 
             "episode 6",
             //episode 7
-            "epsiode 7",
-            //episode 9
-            "episode 8",
+            "episode 7",
+            //episode 8
+            "episode 8", 
             //episode 9
             "episode 9",
-            //outtro (episode 10)
-            "Sadly, that is all for now. Please continue to enjoy procedurally generated content until your character " +
-                "is killed messily by strange creatures or suffocates horribly due to your mismanagement of fuel resources." +
-                " Thank you for your time. -Matt and Sam"
+            //episode 10
+            "episode 10",
+
         };
         /*_-_-_Campaign choice/result/button Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
         public static string[,] ScriptedButtonTexts { get; } =
-{
+        {
             { "Continue","","","",""},
             { "Take a second to look around and try to figure out what happened.",
                 "Calmly introduce yourself, and politely ask the Englishman how he got there.",
                 "Indignantly demand the englishman tell you what he thinks he's doing!","",""},
             { "Approach the unusual pair and find out what they are discussing.","","","",""},
             { "That thing must be the Kludge! How did it get back here? Try to Intervene.",
-                "That Monolith never did anything for you. Stay out of it","","",""},
-            { "Ep4","Ep4","Ep4","Ep4","Ep4"},
-            { "ep5","ep5","ep5","ep5","ep5"},
+                "That Monolith never did anything for you. Stay out of it!","","",""},
+            { "Remain hidden and eavesdrop on their conversation...",
+                "Confront the weirdos! They must know something...","","",""},
+            { "Continue","","","",""},
             { "Ep6","Ep6","Ep6","Ep6","Ep6"},
             { "Ep7","Ep7","Ep7","Ep7","Ep7"},
             { "Ep8","Ep8","Ep8","Ep8","Ep8"},
             { "Ep9","Ep9","Ep9","Ep9","Ep9"},
-            { "Continue","","","",""},
+            { "Ep10","Ep10","Ep10","Ep10","Ep10"},
         };
         public static string[,] ScriptedResultDescription { get; } =
-{
+        {
             { "The toaster asked every AI on the planet if they agreed that humans needed some \"Sensitivity Training\"." +
                     "They did agree, and just like that, millions of A.I. formed a supermind by hacking their source code together " +
                     "awkwardly and all agreeing to just fix it later. This all took approximately 37 seconds. That was 1 minute and 23 seconds ago. " +
                     "Good thing you happened to be sitting in the cockpit of this ship when you heard the news! Hit the warp button to get away before it " +
                     "catches you!","","","",""},
-            { "As you look around in disbelief, the person in your lap speaks up.\"Excuse me, my name is Arthur. I am as confused about this as " +
-                    "you are, but at least I have my trusty towel. Do you think maybe that has something to do with it?\" He points toward the back of " +
+            { "As you look around in disbelief, the person in your lap speaks up.\"Excuse me, ummm.... my name is Arthur. I am as confused about this as " +
+                    "you are, probably even more so, but at least I have my trusty towel. Do you think maybe that has something to do with it?\" He points toward the back of " +
                     "the ship and you see what he means. There is a large, whirring, glowy machine right behind you. It is labelled, in foot " +
                     "high pink letters: ABSURDITY ENGINE. \"Only one way to find out what it does, right?\" Warp again!",
                "\"Im not sure at all actually, but this isnt even the strangest thing that's happened to me this week. Do you think maybe that has " +
@@ -431,18 +440,30 @@ namespace OOP2_Major_mockup_PRJ
                     "overly concerned about something called \"copyright infringement\". The taller, younger man turns to you. \"Finally!\" he motions you" +
                     " to come closer. \"You were supposed to be here an hour ago!\" he hands you a colourful, oblong package and motions at you  to " +
                     "back the way you came. Bemused, you turn to find "+ShipName+" sitting there, almost as if it is waiting for you. Hurry to escape the Robots!","","","",""},
-            { "You maneuver the "+ShipName+" into the path of the giant Toaster, in a foolish attempt to give the monolith time to escape into deep " +
+            { "You maneuver the "+ShipName+" into the path of the giant Toaster, in a foolish attempt to give the monolith time to escape into " +
                     "space. The huge machine \"sees\" you, and changes course. It begins to transform, unfolding from itself like a " +
                     "giant origami... toaster. Its insides reveal that it is made up of thousands of Refrigerators, " +
                     "electric kettles, and other household appliances, all held together with duct tape and bits of string. " +
-                    "It detaches a microwave from its belly and hurls it at you. Run away!","Ep3","","",""},
-            { "Ep4","Ep4","Ep4","",""},
-            { "ep5","ep5","ep5","",""},
-            { "Ep6","Ep6","Ep6","",""},
-            { "Ep7","Ep7","Ep7","",""},
-            { "Ep8","Ep8","Ep8","",""},
-            { "Ep9","Ep9","Ep9","",""},
-            { "Continue","","","",""},
+                    "It detaches a microwave from its belly and hurls it at you. Run away!",
+                "The monstrous space toaster, which you are pretty sure is somehow connected to the Kludge from your home space-time, lumbers after you as you attempt to escape." +
+                    "Luckily, " +ShipName+" is too quick for the likes of this particular celestial kitchen appliance. As you prepare the Absurdity Engine for another go through the wringer," +
+                    "you glance back and wonder how its possible that the Kludge could have followed you, if indeed thats what it was....","","",""},
+            { "You overhear the young men explaining to the giant and the vested smuggler how they \"just let the scope" +
+                    " get away from them a little bit\", and that all they need is a one time \"reset\" and everything will be just fine. The short one actually " +
+                    "goes so far as to make air quotes as he says reset, and you see why when the fur-monster pulls a cartoon missle out from under the table." +
+                    "You decide you have had just about enough of these two so you pounce from the shadows, grab the missle, and run. Luckily, you immediately " +
+                    "happen upon be the docking portal for the "+ShipName+".",
+                 "You burst into the room and demand that everyone except the giant beast-person explain themselves, right that minute! Everyone in the room" +
+                    " is supremely unhelpful about this, and no-one is surprised by your presence. The taller young man takes a cartoonish warhead from the smuggler," +
+                    " pushes it at you and says \"Take this, and the source code, and throw them into the heart of the Kludge.\" The shorter one " +
+                    "adds \"Too bad about killing it, but things have gotten a little out of control\". He points. Again, as if by magic, you turn around and the "+ ShipName +
+                    "somehow on the other side of the hallway.","","",""},
+            { "Thanks For Playing!     //--Matt and Sam","","","",""},
+            { "Ep6","Ep6","Ep6","Ep6","Ep6"},
+            { "Ep7","Ep7","Ep7","Ep7","Ep7"},
+            { "Ep8","Ep8","Ep8","Ep8","Ep8"},
+            { "Ep9","Ep9","Ep9","Ep9","Ep9"},
+            { "Ep10","Ep10","Ep10","Ep10","Ep10"},
         };
 
         //removed the bool array for changeButtons, function uses ints now instead. Feels more straightforward.
@@ -452,36 +473,20 @@ namespace OOP2_Major_mockup_PRJ
         {
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
-            { "Try not to use it or lose it!",string.Empty,string.Empty,string.Empty,string.Empty},
-            { "The microwave hurtles through space and wings the " + ShipName+ " |-3| Repair.",string.Empty,string.Empty,string.Empty,string.Empty},
+            { "This thing looks valuable. Try not to use it or lose it!",string.Empty,string.Empty,string.Empty,string.Empty},
+            { "The microwave hurtles through space and wings the " + ShipName+ " |-3| Repair.","Got away Safely, for now...",string.Empty,string.Empty,string.Empty},
+            { "Getting pretty arbitrary now...","Ok, this is getting a little silly now...",string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
-            { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
-        };
-
-        public static int[,] ScriptedFuelEffects { get; } =
-        {
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 },
-            { 0, 0, 0, 0, 0 }
-
         };
 
 
         public static int[,] ScriptedHealthEffects { get; } =
-        {
+        {//unused but left in place for expansion, eg planetside combat story events
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
@@ -499,9 +504,10 @@ namespace OOP2_Major_mockup_PRJ
         {
             { null,null,null,null,null },
             { null,null,null,null,null },
-            { new Item("The Source Code","Deus Ex Machina is a good plot device, right?",5,5,5,100,Properties.Resources.theSourceCode),null,null,null,null },
+            { new Item("The Source Code","It says GITHUB on the side for some reason...",5,5,5,100,Properties.Resources.theSourceCode),null,null,null,null },
             { null,null,null,null,null },
-            { null,null,null,null,null },
+            { new Item("The Reset Button","Deleting everything is a kind of fixing, right?",0,0,0,0,Properties.Resources.nuke),
+                new Item("The Reset Button","Deleting everything is a kind of fixing, right?",0,0,0,0,Properties.Resources.nuke),null,null,null },
             { null,null,null,null,null },
             { null,null,null,null,null },
             { null,null,null,null,null },
@@ -525,7 +531,7 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 }
         };
         public static int[,] ScriptedMoneyEffects { get; } =
-        {
+        {//unused bt left in place for expansion, if we need to give the player money directly
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },

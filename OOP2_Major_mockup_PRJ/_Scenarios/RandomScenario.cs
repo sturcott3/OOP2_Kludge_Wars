@@ -39,9 +39,9 @@ namespace OOP2_Major_mockup_PRJ
             return CurrentOptions;
         }
 
-        //Random version of Scenario Generation is intended to be polymorphic against ScriptedScenario
         public override void GenerateScenario(int seed)
-        {   //Seed 1 - City, 2 - Forest, 3 - Space
+        {   //Seed 1 - City, 2 - Forest, 3 - Space || This controls which type of image is shown, as well as whether the encounter takes place 
+            //in space aboard the ship (combat damage is applied to the ship's repair) or off the ship(damage to health). 
             LocationType = seed;
 
             int endIndex;
@@ -96,11 +96,11 @@ namespace OOP2_Major_mockup_PRJ
             }
             else
             {
-                Type = Data.Rand.Next(1, 3);//can use this to expand to more random encounter types later
+                Type = Data.Rand.Next(1, 3);//can use this to expand to more random encounter types later, currently unused
             }
 
             //Format description ... could build a logic tree around this to give more flixibilit
-            Description = "You shake off the fuzziness created by the Absurdity Engine to find yourself " + LocationVerb + " when suddenly " + Description + " it's a " + Entity.Name + 
+            Description = "You shake off the brain-fuzziness created by the Absurdity Engine to find yourself " + LocationVerb + " when suddenly " + Description + " it's a " + Entity.Name + 
                 ", " + (Type == 1 ? "Prepare for combat!" : " so you approach them, rummaging in your pockets for coins and gems.");
         }
     }

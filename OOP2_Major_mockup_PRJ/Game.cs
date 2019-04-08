@@ -34,21 +34,22 @@ namespace OOP2_Major_mockup_PRJ
             player = new Player();
             scene = new ScenarioController();
             input = new InputController();
+            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
+            Data.PlayerName = playerInfo[0];
+            Data.ShipName = playerInfo[1];
         }
 
         private void Game_Load(object sender, EventArgs e)
         {
             //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
 
-            //<temp comment out to skip input for debu purposes>
-            //Temporarily set to input type 5, so you don't have to type anything for now
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
-            Data.PlayerName = playerInfo[0];
-            Data.ShipName = playerInfo[1];
+            //<temp comment out to skip input box entirely>, or you can
+            //temporarily set input type to 5, to show the input dialog but not require an entry (argument 5)
+         
             //</temp comment out>
 
             for (int i = 0; i < Data.StartingItems.Length; i++)
-            {//just add or remove items to the starting items array if testing is needed
+            {//just add or remove items to the starting items array in Data.cs if testing is needed/wanted
                 player.Inventory.Add(Data.StartingItems[i]);
             }
         
@@ -64,7 +65,7 @@ namespace OOP2_Major_mockup_PRJ
             {
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
-                    ShowWarning("Further story unavailable, initializing 100% procedural scenarios.", 2, Color.White);
+                    ShowWarning("Further story unavailable, initializing 100% procedural scenarios.", 7, Color.White);
                     sceneType = 5;
                     messageShown = true;
                 }
@@ -73,10 +74,10 @@ namespace OOP2_Major_mockup_PRJ
                 else
                 {//but if none of the above is true
                     if (scene.StoryCounter <= 2)
-                    {//play the first three scripted scenes, 
+                    {//play the first three scripted scenes every time, 
                         sceneType = 1;
                     }
-                    //then start the randoms
+                    //then allow the randoms to mix in
                     else { sceneType = Data.Rand.Next(1, 11); }
                 }
                 //the number passed to BeginTurn controls the type of scene that will start 
@@ -135,8 +136,6 @@ namespace OOP2_Major_mockup_PRJ
         }
         /*_-_-_-_-_End Buttons_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_-_-_-_-_*/
 
-
-        /*_-_-_-_-_Begin Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void BeginTurn(int sceneType)
         {//call to start a new turn
 
@@ -168,18 +167,17 @@ namespace OOP2_Major_mockup_PRJ
             //change the image
             pbxViewScreen.Image = scene.ScenarioImage;
             
-            //set the text for each button SUGGESTION implemented
+            //set the text for each button 
             btnOptionOne.Text = scene.CurrentOptions[0].ButtonText;
             btnOptionTwo.Text = scene.CurrentOptions[1].ButtonText;
             btnOptionThree.Text = scene.CurrentOptions[2].ButtonText;
             btnOptionFour.Text = scene.CurrentOptions[3].ButtonText;
             btnOptionFive.Text = scene.CurrentOptions[4].ButtonText;
         }
-        /*_-_-_-_-_End of Game Loop_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
 
-        private void HideButtons(int clickedButton)
+        private void HideButtons()
         {//hide the buttons after the player makes a choice.
-            btnOptionOne.Hide();
+            btnOptionOne.Hide(); 
             btnOptionTwo.Hide();
             btnOptionThree.Hide();
             btnOptionFour.Hide();
@@ -219,31 +217,39 @@ namespace OOP2_Major_mockup_PRJ
             }
         }
 
-        private void MakeChoice(int buttonIdx)
-        {
+        private void MakeChoice(int button)
+        {//player.HasMadeChoice prevents the player from doing more than one thing per scene whether by accidental button click or on purpose
             if (!player.HasMadeChoice)
             {
-                if (scene.CurrentOptions[buttonIdx].PostClickText != string.Empty)
+                //text and Item
+                if (scene.CurrentOptions[button].PostClickText != string.Empty && scene.CurrentOptions[button].Reward != null)
                 {
-                    ShowWarning(scene.CurrentOptions[buttonIdx].PostClickText, 4, Color.Green);
+                    ShowWarning(scene.CurrentOptions[button].PostClickText + " You got " + scene.CurrentOptions[button].Reward.Name + "!", 4, Color.Green);
+                    player.Inventory.Add(scene.CurrentOptions[button].Reward);
+                }
+                //item but no text
+                else if (scene.CurrentOptions[button].Reward != null && scene.CurrentOptions[button].PostClickText == string.Empty)
+                {
+                    ShowWarning("You got " + scene.CurrentOptions[button].Reward.Name + "!", 4, Color.Green);
+                    player.Inventory.Add(scene.CurrentOptions[button].Reward);
+                }
+                //text but no item
+                else if (scene.CurrentOptions[button].Reward == null && scene.CurrentOptions[button].PostClickText != string.Empty)
+                {
+                    ShowWarning(scene.CurrentOptions[button].PostClickText, 4, Color.Green);
                 }
 
-                lblOutput.Text = scene.CurrentOptions[buttonIdx].ResultDescription;
-
-                if (scene.CurrentOptions[buttonIdx].CombatReward != null)
-                {
-                    lblOutput.Text += "You got " + scene.CurrentOptions[buttonIdx].CombatReward.Name + "!";
-                    player.Inventory.Add(scene.CurrentOptions[buttonIdx].CombatReward);
-                }
-                HideButtons(buttonIdx);
-                UpdateHUD(buttonIdx);
+                //show the post-choice text, hide inputs appropraitely, and update the Heads Up display
+                lblOutput.Text = scene.CurrentOptions[button].ResultDescription;
+                HideButtons();
+                UpdateHUD(button);
             }
         }
 
         private void UpdateHUD(Item item)
         {
             //Item version will use the item and apply it's effects
-            //May need to modify if we want to prevent players from using an item if its stat is full (Using a medkit at full health)
+            //TODO modify this to prevent players from using an item if its stat is full (Using a medkit at full health)
             //0 - Health, 1 - Repair, 2 - Fuel, 3 - Money
             player.Health += item.effects[0];
             player.ShipHealth += item.effects[1];
@@ -262,7 +268,6 @@ namespace OOP2_Major_mockup_PRJ
 
             player.Health += scene.CurrentOptions[button].PlayerHealthEffect;
             player.ShipHealth += scene.CurrentOptions[button].ShipHealthEffect;
-            player.Fuel += scene.CurrentOptions[button].FuelEffect;
             player.Money += scene.CurrentOptions[button].MoneyEffect;
 
             UpdateHUD();
@@ -378,9 +383,9 @@ namespace OOP2_Major_mockup_PRJ
 
         private void GameOver(string reason)
         {
-            //DISABLED death for debug purposes.
-
-            /*
+            HideButtons();
+            
+            //ENABLED 'death', simply comment out **from here** 
             if (reason == "health")
             {
                 pbxViewScreen.Image = Properties.Resources.game_over_planetside;
@@ -395,14 +400,17 @@ namespace OOP2_Major_mockup_PRJ
             {
                 pbxViewScreen.Image = Properties.Resources.game_over_space_jpg;
                 lblOutput.Text = Data.DeathReasons[2];
+                lblPlaceName.Text = "ERROR";
+                lblDate.Text = "ERROR";
+                lblShipBoard.Text = Data.ShipName;
             }
-            */
 
+            //**to here** to disable
 
         }
 
         public void UseInventoryItem(int slot)
-        {//nice one matt!
+        {
             int rowIndex = ((player.InventoryRow - 1) * 5) + (slot - 1);
             if (player.Inventory.ElementAtOrDefault(rowIndex) != null)
             {
@@ -411,6 +419,7 @@ namespace OOP2_Major_mockup_PRJ
                 UpdateHUD(item);
             }
         }
+
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.

@@ -33,7 +33,6 @@ namespace OOP2_Major_mockup_PRJ
             }
         }
 
-
         public int Health
         {
             get { return health; }
@@ -81,5 +80,6 @@ namespace OOP2_Major_mockup_PRJ
         public int Distance { get; set; }
         public bool IsOnShip { get; set; } = true;
         public bool HasMadeChoice { get; set; }
+
     }
 }
