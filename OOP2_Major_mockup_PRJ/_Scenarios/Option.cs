@@ -8,8 +8,6 @@ namespace OOP2_Major_mockup_PRJ
 {
     class Option
     {
-        //Auto-implemented properties to allow them 
-        //to be built piecemeal in the scripted scenes, at least for now
         public string ButtonText { get; set; }
         public string PostClickText { get; set; }
         public string ResultDescription { get; set; }
@@ -22,7 +20,7 @@ namespace OOP2_Major_mockup_PRJ
         //constructor allows type of encounter to get relevant data from Data class
 
 
-        //seed tracks which episode we are on when Scripted is true. When Scripted is false, sceneTracker tracks 
+        //seed tracks which episode we are on when Scripted is true.
         public Option(int sceneTracker, int button, bool Scripted)
         {
             if (Scripted)

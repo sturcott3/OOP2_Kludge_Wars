@@ -251,7 +251,6 @@ namespace OOP2_Major_mockup_PRJ
         private void UpdateHUD(Item item)
         {
             //Item version will use the item and apply it's effects
-            //TODO? modify this to prevent players from using an item if its stat is full (Using a medkit at full health)
             //0 - Health, 1 - Repair, 2 - Fuel, 3 - Money
             player.Health += item.effects[0];
             player.ShipHealth += item.effects[1];
@@ -345,7 +344,7 @@ namespace OOP2_Major_mockup_PRJ
                         lblShipBoard.Text = "Wilderness";
                         break;
                     case 3:
-                        lblShipBoard.Text = "In Exosuit";//unused right now, leaving becasue useful
+                        lblShipBoard.Text = "In Exosuit"; //unused right now, leaving becasue useful
                         break;
                     default:
                         lblShipBoard.Text = "Planetside";
@@ -429,12 +428,11 @@ namespace OOP2_Major_mockup_PRJ
         private void Menu_Click(object sender, EventArgs e)
         {
             //Not implemented yet.
-            ShowWarning("Menu not implemented.", 2.5, Color.Gold);
+            ShowWarning("Stretch goal not reached. Would have been used to Save/Load.", 2.5, Color.Gold);
         }
         //Inventory interaction
         private void btnInventory1_Click(object sender, EventArgs e)
         {
-            //You can't pass list elements like you can array elements.
             UseInventoryItem(1);
         }
 
@@ -460,20 +458,19 @@ namespace OOP2_Major_mockup_PRJ
 
         private void btnInventoryDown_Click(object sender, EventArgs e)
         {
-            player.InventoryRow--;
+            player.InventoryRow++;
             UpdateHUD();
         }
 
         private void btnInventoryUp_Click(object sender, EventArgs e)
         {
-            player.InventoryRow++;
+            player.InventoryRow--;
             UpdateHUD();
         }
 
 
         private string SetHighscore()
         {
-            //Could run into issues with read/write permissions.
 
             string highScore = "No Score - 0 LY";
             try

@@ -46,7 +46,6 @@ namespace OOP2_Major_mockup_PRJ
             get { return health; }
             set
             {
-                //Use += for incremental differences
                 health = value;
                 //Check max/min
                 if (health < 0) health = 0;
@@ -58,7 +57,6 @@ namespace OOP2_Major_mockup_PRJ
             get { return shipHealth; }
             set
             {
-                //Use += for incremental differences
                 shipHealth = value;
                 //Check max/min
                 if (shipHealth < 0) shipHealth = 0;
@@ -70,7 +68,6 @@ namespace OOP2_Major_mockup_PRJ
             get { return fuel; }
             set
             {
-                //Use += for incremental differences
                 fuel = value;
                 //Check max/min
                 if (fuel < 0) fuel = 0;

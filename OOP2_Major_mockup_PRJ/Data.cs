@@ -19,7 +19,7 @@ namespace OOP2_Major_mockup_PRJ
         //Biome constants. indicates where in the location, image, placename, and date arrays each biome start (Instead of having to make a separate array for each)
         //This can be split up if we find having the same amount of images as locations is too difficult or limiting.
         //If anything is added, cases will need to be added in RandomScenario.cs in GenerateScenario() and Game.cs in UpdateHUD(),
-        //and random generation in ScenarioController.cs in StartScenario() will need an increased max. sick move, and sick documentation 
+        //and random generation in ScenarioController.cs in StartScenario() will need an increased max.
 
         public const int CITY_INDEX = 0;
         public const int FOREST_INDEX = 5;
@@ -27,8 +27,6 @@ namespace OOP2_Major_mockup_PRJ
 
 
         //Used for descriptions and entities as they are less specific.
-        //I assume you also mean this to be used to implement the ship fights vs health fights 
-        //(*just* double the size of the arrays for results and limit options according to index range the same way as with Biomes)
         public const int ON_FOOT_INDEX = 0;
         public const int ON_SHIP_INDEX = 5;
 
@@ -60,7 +58,6 @@ namespace OOP2_Major_mockup_PRJ
             "dodging around the trunks of trees at a breakneck pace",
             "observing the beauty of an untouched vista",
             "admiring a mountain in the distance",
-            //"exploring the deserts of Tatooine", //Deserts Index (leaving off for now)
             "floating in empty space minding your own business", //Space Index
             "contemplating the quiet darkness of the void",
             "appreciating the endless beauty of the stars",
@@ -84,7 +81,6 @@ namespace OOP2_Major_mockup_PRJ
             "Unknown wilderness",
             "A forlorn stretch of bush",
             "Treeplantia",
-            //"exploring the deserts of Tatooine", //Deserts Index
             "Exception, index out of range", //Space Index
             "Space, obviously.",
             "Andromeda galaxy",
@@ -152,12 +148,11 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.city_2,
             Properties.Resources.city_3,
             Properties.Resources.city_4,
-            Properties.Resources.city_4,//removed to story, need new image
+            Properties.Resources.city_4,
             Properties.Resources.forest_1, //Forests Index
             Properties.Resources.forest_2,
-            Properties.Resources.forest_2,//on purpose placeholder to remove forest_3 to the story
+            Properties.Resources.forest_2,
             Properties.Resources.forest_4,
-            //Deserts Index (leaving off for now)
             Properties.Resources.nebula_1, //Space Index
             Properties.Resources.nebula_2,
             Properties.Resources.nebula_3,
@@ -180,7 +175,7 @@ namespace OOP2_Major_mockup_PRJ
             Properties.Resources.cargo_metal,
             Properties.Resources.repairKitSmall,
             Properties.Resources.repairKitLarge,
-            Properties.Resources.nuke//this was for a further story episode, turns out writing those is very time consuming
+            Properties.Resources.nuke
         };
 
         public static Item[] StartingItems { get; } = new Item[]
@@ -207,8 +202,7 @@ namespace OOP2_Major_mockup_PRJ
             "Fighting in this strange little ship you have might not do any good. Speed away."
         };
 
-        //need to implement the inventory and/or more complex 
-        //random scenarios to make better use of these (a second stage/aftermath?)
+
         public static string[] PostCombatTexts { get; } = new string[]
         {   " <| -3 HP |> ",
             " <| -2 HP |> ",
@@ -281,7 +275,6 @@ namespace OOP2_Major_mockup_PRJ
             new Item("Large Repair Kit", "A large crate of tools and minor ship components (+3 Ship Health)", 0, 3, 0, 0, ItemImages[7])
         };
 
-        //Need to add a money check, where if the player can't afford the purchase, the merchant will laugh at you or something and tell you to go away.
         public static string[] MerchantResultDescription { get; } = new string[]
         {
             "The strange little... thing? person? Whatever it is vomits directly into a barrel, " +
@@ -305,7 +298,7 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_Campaign/Scripted Scene Data-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-*/
 
         public static Bitmap[] ScriptedImages { get; } =
-        {//need to change these
+        {
            Properties.Resources.LogoGameWide_2,
            Properties.Resources.aboardShip1,
            Properties.Resources.terminators,

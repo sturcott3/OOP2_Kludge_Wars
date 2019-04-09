@@ -11,6 +11,8 @@ namespace OOP2_Major_mockup_PRJ
         private InputDialog frmInputDialog = new InputDialog();
         private bool StatusOk { get; set; } = true;
 
+        //Was intended to be used more, but remains as a useful input validation utility.
+
         public string GetInput(string title, string directions, string buttonText, int type)
         {
             //Single String Input

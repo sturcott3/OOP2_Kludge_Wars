@@ -61,8 +61,7 @@ namespace OOP2_Major_mockup_PRJ
                     endIndex = Data.Locations.Length;
                     onFoot = false;
                     break;
-                default:
-                    //Default will give you a city or throw exception?
+                default:                    
                     seed = Data.CITY_INDEX;
                     endIndex = Data.FOREST_INDEX;
                     break;
@@ -99,7 +98,7 @@ namespace OOP2_Major_mockup_PRJ
                 Type = Data.Rand.Next(1, 3);//can use this to expand to more random encounter types later, currently unused
             }
 
-            //Format description ... could build a logic tree around this to give more flixibilit
+            //Format description ... could build a logic tree around this to give more flexibilty
             Description = "You shake off the brain-fuzziness created by the Absurdity Engine to find yourself " + LocationVerb + " when suddenly " + Description + " it's a " + Entity.Name + 
                 ", " + (Type == 1 ? "Prepare for combat!" : " so you approach them, rummaging in your pockets for coins and gems.");
         }

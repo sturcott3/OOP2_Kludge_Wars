@@ -8,7 +8,7 @@ namespace OOP2_Major_mockup_PRJ
 {
     class Entity
     {
-        //Define fields
+        //Define properties
         public string Name { get; set; }
         public string Race { get; set; }
         public int Level { get; set; }
