@@ -311,7 +311,7 @@ namespace OOP2_Major_mockup_PRJ
            Properties.Resources.terminators,
            Properties.Resources.moon,
            Properties.Resources.city_5 ,
-           Properties.Resources.forest_3,
+           Properties.Resources.LogoGameWide_2,
            Properties.Resources.aboardShip1,
            Properties.Resources.city_5,
            Properties.Resources.aboardShip1,

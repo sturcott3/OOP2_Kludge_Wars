@@ -26,6 +26,8 @@ namespace OOP2_Major_mockup_PRJ
         public string ShipName { get; set; } = "SS Paradoxical";
         public int Distance { get; set; }
         public bool IsOnShip { get; set; } = true;
+
+        public bool isDead { get; set; } = false;
         public bool HasMadeChoice { get; set; }
 
         public List<Item> Inventory { get; set; } = new List<Item>();

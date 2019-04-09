@@ -13,23 +13,25 @@ namespace OOP2_Major_mockup_PRJ
 {
     public partial class Game : Form
     {
-        /*fields here -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
+        /*fields-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
-        //object fields that actually do all the work
+        //Our classes
         Player player;
         InputController input;
         ScenarioController scene;
+       
+        //.NET timer
         Timer t = new Timer();
 
-        //simple fields for tracking persistent game state
+        //Tracking of persistent game state
         private bool messageShown = false;
         private int sceneType;
         
         /*end fields -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
 
-        public Game() // constructor for form; use this to instantiate all objects,
-                      //and use form load below to start the game loop/initialze properties 
-        {
+        public Game() 
+        {//constructor instantiates objects, and gets input from the player through 
+         //an additional form. (InputController creates the form)
             InitializeComponent();
             player = new Player();
             scene = new ScenarioController();
@@ -41,23 +43,15 @@ namespace OOP2_Major_mockup_PRJ
 
         private void Game_Load(object sender, EventArgs e)
         {
-            //Picture TEMP and could be reworked to pop up at a different time (After introduction?)
-
-            //<temp comment out to skip input box entirely>, or you can
-            //temporarily set input type to 5, to show the input dialog but not require an entry (argument 5)
-         
-            //</temp comment out>
-
             for (int i = 0; i < Data.StartingItems.Length; i++)
-            {//just add or remove items to the starting items array in Data.cs if testing is needed/wanted
+            {//populate the starting inventory
                 player.Inventory.Add(Data.StartingItems[i]);
             }
         
-            BeginTurn(scene.StoryCounter); //starts the first scripted scene to be the intro
+            BeginTurn(scene.StoryCounter); //'starts' the first scripted scene 
             
-            UpdateHUD();
+            UpdateHUD(); 
         }
-
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
         { //(WARP button)
@@ -69,6 +63,7 @@ namespace OOP2_Major_mockup_PRJ
                     sceneType = 5;
                     messageShown = true;
                 }
+
                 //or, if we have told them already, just keep playing randoms
                 else if (messageShown) { sceneType = 5; }
                 else
@@ -80,17 +75,17 @@ namespace OOP2_Major_mockup_PRJ
                     //then allow the randoms to mix in
                     else { sceneType = Data.Rand.Next(1, 11); }
                 }
-                //the number passed to BeginTurn controls the type of scene that will start 
-                BeginTurn(sceneType);  //runs scripted scenes roughly 4 in 10, after the first three have played as a short intro to the mechanics
+               
+                //the number passed to BeginTurn controls the type of scene that will start below 3 runs scripted, otherwise random
+                BeginTurn(sceneType);  
 
-                player.Fuel -= 1;//amount of fuel per turn could be changed to random or be based on circumstances
+                player.Fuel -= 1;
                 player.Distance += 1;
                 UpdateHUD();
             }
             //Not on ship
             else if (!player.IsOnShip && player.HasMadeChoice)
-            {
-                //We can make this better. added a little, could do a lot more with colours....
+            { 
                 ShowWarning("Unable to warp, you must be on your ship.", 2.5, Color.Gold);
             }
             else if(player.IsOnShip && !player.HasMadeChoice) { ShowWarning("Unable to end turn until dialog has proceeded", 2.5, Color.Gold); }
@@ -117,7 +112,6 @@ namespace OOP2_Major_mockup_PRJ
         private void OptionTwo_Click(object sender, EventArgs e)
         {
             MakeChoice(1);
-        
         }
 
         private void OptionThree_Click(object sender, EventArgs e)
@@ -137,22 +131,21 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_End Buttons_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_-_-_-_-_*/
 
         private void BeginTurn(int sceneType)
-        {//call to start a new turn
-
+        {
             player.HasMadeChoice = false;
-          
-            //decide scenario type
-            if (sceneType <= 4)
-            {//40%-ish chance to run scripted here
+         
+            
+            if (sceneType <= 3)
+            {//30%-ish chance to run scripted here
                 scene.StartScenario(true);
-                lblOutput.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Regular);
+                lblOutput.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Regular); //smaller font to allow for the wordiness of the scripted scenes 
                 lblOutput.Text = scene.ScriptScene.Description;
                 lblPlaceName.Text = scene.ScriptScene.PlaceName;
                 lblDate.Text = scene.ScriptScene.Date;
                 ShowButtons(Data.ScriptedVisibilities[scene.StoryCounter -1]);
             }
             else
-            {//or random here
+            {//or 70%-ish chance for random here
                 scene.StartScenario();
                 lblOutput.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
                 lblOutput.Text = scene.RandScene.Description;
@@ -219,28 +212,37 @@ namespace OOP2_Major_mockup_PRJ
 
         private void MakeChoice(int button)
         {//player.HasMadeChoice prevents the player from doing more than one thing per scene whether by accidental button click or on purpose
-            if (!player.HasMadeChoice)
+            if (!player.HasMadeChoice && !player.isDead)
             {
-                //text and Item
-                if (scene.CurrentOptions[button].PostClickText != string.Empty && scene.CurrentOptions[button].Reward != null)
-                {
-                    ShowWarning(scene.CurrentOptions[button].PostClickText + " You got " + scene.CurrentOptions[button].Reward.Name + "!", 4, Color.Green);
-                    player.Inventory.Add(scene.CurrentOptions[button].Reward);
-                }
-                //item but no text
-                else if (scene.CurrentOptions[button].Reward != null && scene.CurrentOptions[button].PostClickText == string.Empty)
-                {
-                    ShowWarning("You got " + scene.CurrentOptions[button].Reward.Name + "!", 4, Color.Green);
-                    player.Inventory.Add(scene.CurrentOptions[button].Reward);
-                }
-                //text but no item
-                else if (scene.CurrentOptions[button].Reward == null && scene.CurrentOptions[button].PostClickText != string.Empty)
-                {
-                    ShowWarning(scene.CurrentOptions[button].PostClickText, 4, Color.Green);
-                }
-
-                //show the post-choice text, hide inputs appropraitely, and update the Heads Up display
                 lblOutput.Text = scene.CurrentOptions[button].ResultDescription;
+
+                if (scene.CurrentOptions[button].MoneyEffect < player.Money)
+                {
+                    ShowWarning("You can't afford that!", 4, Color.Red);
+                    lblOutput.Text = "The merchant, outraged, pushes you away from their wares. You turn back toward the ship, forlorn";
+                }
+                else
+                {
+                    //text and Item
+                    if (scene.CurrentOptions[button].PostClickText != string.Empty && scene.CurrentOptions[button].Reward != null)
+                    {
+                        ShowWarning(scene.CurrentOptions[button].PostClickText + " You got " + scene.CurrentOptions[button].Reward.Name + "!", 4, Color.Green);
+                        player.Inventory.Add(scene.CurrentOptions[button].Reward);
+                    }
+                    //item but no text
+                    else if (scene.CurrentOptions[button].Reward != null && scene.CurrentOptions[button].PostClickText == string.Empty)
+                    {
+                        ShowWarning("You got " + scene.CurrentOptions[button].Reward.Name + "!", 4, Color.Green);
+                        player.Inventory.Add(scene.CurrentOptions[button].Reward);
+                    }
+                    //text but no item
+                    else if (scene.CurrentOptions[button].Reward == null && scene.CurrentOptions[button].PostClickText != string.Empty)
+                    {
+                        ShowWarning(scene.CurrentOptions[button].PostClickText, 4, Color.Green);
+                    }
+                }
+                //show the post-choice text, hide inputs appropraitely, and update the Heads Up display
+                
                 HideButtons();
                 UpdateHUD(button);
             }
@@ -249,7 +251,7 @@ namespace OOP2_Major_mockup_PRJ
         private void UpdateHUD(Item item)
         {
             //Item version will use the item and apply it's effects
-            //TODO modify this to prevent players from using an item if its stat is full (Using a medkit at full health)
+            //TODO? modify this to prevent players from using an item if its stat is full (Using a medkit at full health)
             //0 - Health, 1 - Repair, 2 - Fuel, 3 - Money
             player.Health += item.effects[0];
             player.ShipHealth += item.effects[1];
@@ -382,10 +384,14 @@ namespace OOP2_Major_mockup_PRJ
         }
 
         private void GameOver(string reason)
-        {
+        {   //to disable 'death', simply comment out **from here** 
+            //If the player dies, hide everything
             HideButtons();
-            
-            //ENABLED 'death', simply comment out **from here** 
+            player.isDead = true;
+            lblDate.Text = string.Empty;
+            lblPlaceName.Text = string.Empty;
+            lblShipBoard.Text = string.Empty;
+
             if (reason == "health")
             {
                 pbxViewScreen.Image = Properties.Resources.game_over_planetside;
