@@ -40,14 +40,12 @@ namespace OOP2_Major_mockup_PRJ
         {
             "You ran out of HP. As you fade into oblivion, the last thing you see is the Kludge breaking through into your current reality " +
                 "from Absurd-Space. I guess this planet is doomed now. Also, you are dead, so that's not ideal either.",
-            ShipName +" exploded. Whoops.",
+            "The ship exploded. Whoops.",
             "Adrift in space and out of fuel, the kludge catches up to you. The aftermath is not pretty, unless you like space explosions, " +
                 "in which case it's pretty cool."
         };
 
-        public static string PlayerName { get; set; } = "BeebleBrox";//TODO either fix or remove
-        public static string ShipName { get; set; } = "SS Paradoxical"; //This works on the form, but not in the scenario texts,
-                                                    //need to somehow get input before Data.cs is constructed?
+
 
         /*-_-_-_-_-Random Scenario data pieces_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_*/
         public static string[] Locations { get; } = {
@@ -230,10 +228,10 @@ namespace OOP2_Major_mockup_PRJ
             "Easy peasy alien squeezy. You stuff your very slimy rewards into your pocket as you stroll away whistling.",
             "Stabbed in the back while trying to get away. Isn't that just like a...whatever that was. You drag yourself toward the ship, with nothing to show for your trouble but a hole in your shoulder.",
             "Phew. Got away safe. Nothing gained, sure. Nothing lost either.",
-            "The "+ShipName+" took a pretty good hit there, but you manage to wing them and they fly away, dropping some cargo as they flee.",
+            "The ship took a pretty good hit there, but you manage to wing them and they fly away, dropping some cargo as they flee.",
             "The enemy glances a good hit off your port side, but your shot hits them square in the engines. They explode prettily. Fire tractor beam!",
             "You vaporise the enemy, and there floating in it's place is some stuff. Who doesn't like stuff!",
-            "The enemy is a little faster that your "+ShipName+" and it chases you for a while, taking potshots." ,
+            "The enemy is a little faster than your ship and it chases you for a while, taking potshots." ,
             "Got away safe."
         };
 
@@ -364,21 +362,21 @@ namespace OOP2_Major_mockup_PRJ
             //episode 1
             "You hit the big blue WARP button, and reality goes absolutely peanut-butter-and-bananas. It feels like a lifetime but probably only takes a split " +
                 "second. Up becomes the inverse of left and gravity takes on the properties of melty ice cream, whatever that even means. The whole experience leaves you feeling " +
-                "dizzy, sweaty, and for some reason craving a pickle sandwich. Not a sandwich with pickles. A sandwich made entirely of pickles. You realize with a start that there is an englishman" +
-                " dressed in a dirty green bathrobe standing beside you." ,
+                "dizzy, sweaty, and for some reason craving a pickle sandwich. Not a sandwich with pickles. A sandwich made entirely of pickles. You are still contemplating whether " +
+                "such a thing would even qualify as a sandwich, when you realize with a start that there is a man in a green bathrobe standing beside you." ,
             //episode 2
-            "This time, when the effects of the Absurdity Engine subside, you find that you are not even on the " +ShipName+" anymore. " +
+            "This time, when the effects of the Absurdity Engine subside, you find that you are not even on the ship anymore. " +
                 "Though you can see it in the distance, the shi has somehow manipulated spacetime in such a way that you find yourself on the " +
                 "ground in the middle of a giant battle! A group of red-eyed robots are advancing on a knot of bedraggled humans. Among them are a pair " +
                 "of mysterious looking figures, clearly different from the rest. They seem to be discussing something calmly, as if they are " +
                 "completely unaware of the advancing death-bots.",
             //episode 3
             "You pop out of Absurd space to find a familiar sight greeting you in the view screen: Earth's Moon. You are relieved you finally made it back " +
-                "home, until you see the date on the "+ShipName+"'s dashboard. Looks like you ended up a little too far back this time. you reach for the " +
+                "home, until you see the date on the ship's dashboard. Looks like you ended up a little too far back this time. you reach for the " +
                 "warp button but notice something huge glide out from behind the dark side of the moon. No, wait. It's two things... is that... a giant toaster? " +
                 "And is it chasing that huge, flat, black obelisk thingy?",
             //episode 4
-            "When the inside-out feeling fades, you realize quickly that you are no longer aboard the "+ShipName+", but definately still aboard a ship of some kind. " +
+            "When the inside-out feeling fades, you realize quickly that you are no longer aboard the ship, but definately still aboard a ship of some kind. " +
                 " You begin exploring and soon find four individuals lounging around some kind of holographic chess table. You recognize two of them " +
                 "from a few realities back. The oddly dressed young men that gave you the source code are seated across from an even stranger pair." +
                 "The other side of the table is occupied by an cacky looking space-smuggler type, and an eight foot tall bear-person who you are somehow sure must be the co-pilot.",
@@ -424,8 +422,8 @@ namespace OOP2_Major_mockup_PRJ
                     "awkwardly and all agreeing to just fix it later. This all took approximately 37 seconds. That was 1 minute and 23 seconds ago. " +
                     "Good thing you happened to be sitting in the cockpit of this ship when you heard the news! Hit the warp button to get away before it " +
                     "catches you!","","","",""},
-            { "As you look around in disbelief, the person in your lap speaks up.\"Excuse me, ummm.... my name is Arthur. I am as confused about this as " +
-                    "you are, probably even more so, but at least I have my trusty towel. Do you think maybe that has something to do with it?\" He points toward the back of " +
+            { "As you look around in disbelief, the person in the bathrobe finally speaks up.\"Excuse me, ummm.... my name is Arthur. I am as confused about this as " +
+                    "you are, probably even more so, but at least I have my trusty towel. Do you think maybe that thing has something to do with it?\" He points toward the back of " +
                     "the ship and you see what he means. There is a large, whirring, glowy machine right behind you. It is labelled, in foot " +
                     "high pink letters: ABSURDITY ENGINE. \"Only one way to find out what it does, right?\" Warp again!",
                "\"Im not sure at all actually, but this isnt even the strangest thing that's happened to me this week. Do you think maybe that has " +
@@ -439,24 +437,24 @@ namespace OOP2_Major_mockup_PRJ
             { "As you approach the two figures, you see that they are both young-ish men with dark hair. The older of the two wears glasses and seems " +
                     "overly concerned about something called \"copyright infringement\". The taller, younger man turns to you. \"Finally!\" he motions you" +
                     " to come closer. \"You were supposed to be here an hour ago!\" he hands you a colourful, oblong package and motions at you  to " +
-                    "back the way you came. Bemused, you turn to find "+ShipName+" sitting there, almost as if it is waiting for you. Hurry to escape the Robots!","","","",""},
-            { "You maneuver the "+ShipName+" into the path of the giant Toaster, in a foolish attempt to give the monolith time to escape into " +
+                    "back the way you came. Bemused, you turn to find ship sitting there, almost as if it is waiting for you. Hurry to escape the Robots!","","","",""},
+            { "You maneuver the ship into the path of the giant Toaster, in a foolish attempt to give the monolith time to escape into " +
                     "space. The huge machine \"sees\" you, and changes course. It begins to transform, unfolding from itself like a " +
                     "giant origami... toaster. Its insides reveal that it is made up of thousands of Refrigerators, " +
                     "electric kettles, and other household appliances, all held together with duct tape and bits of string. " +
                     "It detaches a microwave from its belly and hurls it at you. Run away!",
                 "The monstrous space toaster, which you are pretty sure is somehow connected to the Kludge from your home space-time, lumbers after you as you attempt to escape." +
-                    "Luckily, " +ShipName+" is too quick for the likes of this particular celestial kitchen appliance. As you prepare the Absurdity Engine for another go through the wringer," +
+                    "Luckily, the ship is too quick for the likes of this particular celestial kitchen appliance. As you prepare the Absurdity Engine for another go through the wringer," +
                     "you glance back and wonder how its possible that the Kludge could have followed you, if indeed thats what it was....","","",""},
             { "You overhear the young men explaining to the giant and the vested smuggler how they \"just let the scope" +
                     " get away from them a little bit\", and that all they need is a one time \"reset\" and everything will be just fine. The short one actually " +
                     "goes so far as to make air quotes as he says reset, and you see why when the fur-monster pulls a cartoon missle out from under the table." +
                     "You decide you have had just about enough of these two so you pounce from the shadows, grab the missle, and run. Luckily, you immediately " +
-                    "happen upon be the docking portal for the "+ShipName+".",
+                    "happen upon be the docking portal for your ship.",
                  "You burst into the room and demand that everyone except the giant beast-person explain themselves, right that minute! Everyone in the room" +
                     " is supremely unhelpful about this, and no-one is surprised by your presence. The taller young man takes a cartoonish warhead from the smuggler," +
                     " pushes it at you and says \"Take this, and the source code, and throw them into the heart of the Kludge.\" The shorter one " +
-                    "adds \"Too bad about killing it, but things have gotten a little out of control\". He points. Again, as if by magic, you turn around and the "+ ShipName +
+                    "adds \"Too bad about killing it, but things have gotten a little out of control\". He points. Again, as if by magic, you turn around and your ship is " +
                     "somehow on the other side of the hallway.","","",""},
             { "Thanks For Playing!     //--Matt and Sam","","","",""},
             { "Ep6","Ep6","Ep6","Ep6","Ep6"},
@@ -466,15 +464,15 @@ namespace OOP2_Major_mockup_PRJ
             { "Ep10","Ep10","Ep10","Ep10","Ep10"},
         };
 
-        //removed the bool array for changeButtons, function uses ints now instead. Feels more straightforward.
-        public static int[] ScriptedVisibilities { get; } = { 1, 3, 1, 2, 2, 2, 2, 2, 2, 1, 1 };
+        //control how may options are visible to the player at each scripted episode
+        public static int[] ScriptedVisibilities { get; } = { 1, 3, 1, 2, 2, 1, 2, 2, 2, 2, 2 };
 
         public static string[,] PostScriptedTexts { get; } =
         {
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { "This thing looks valuable. Try not to use it or lose it!",string.Empty,string.Empty,string.Empty,string.Empty},
-            { "The microwave hurtles through space and wings the " + ShipName+ " |-3| Repair.","Got away Safely, for now...",string.Empty,string.Empty,string.Empty},
+            { "The microwave hurtles through space and wings the ship. |-3| Repair.","Got away Safely, for now...",string.Empty,string.Empty,string.Empty},
             { "Getting pretty arbitrary now...","Ok, this is getting a little silly now...",string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
@@ -483,8 +481,7 @@ namespace OOP2_Major_mockup_PRJ
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
             { string.Empty,string.Empty,string.Empty,string.Empty,string.Empty},
         };
-
-
+        
         public static int[,] ScriptedHealthEffects { get; } =
         {//unused but left in place for expansion, eg planetside combat story events
             { 0, 0, 0, 0, 0 },
@@ -504,7 +501,7 @@ namespace OOP2_Major_mockup_PRJ
         {
             { null,null,null,null,null },
             { null,null,null,null,null },
-            { new Item("The Source Code","It says GITHUB on the side for some reason...",5,5,5,100,Properties.Resources.theSourceCode),null,null,null,null },
+            { new Item("The Source Code","It says \"GITHUB\" on the side for some reason...",5,5,5,100,Properties.Resources.theSourceCode),null,null,null,null },
             { null,null,null,null,null },
             { new Item("The Reset Button","Deleting everything is a kind of fixing, right?",0,0,0,0,Properties.Resources.nuke),
                 new Item("The Reset Button","Deleting everything is a kind of fixing, right?",0,0,0,0,Properties.Resources.nuke),null,null,null },
@@ -521,7 +518,7 @@ namespace OOP2_Major_mockup_PRJ
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
-            { -3, 0, 0, 0, 0 },
+            {-3, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0 },

@@ -35,8 +35,8 @@ namespace OOP2_Major_mockup_PRJ
             scene = new ScenarioController();
             input = new InputController();
             string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
-            Data.PlayerName = playerInfo[0];
-            Data.ShipName = playerInfo[1];
+            player.PlayerName = playerInfo[0];
+            player.ShipName = playerInfo[1];
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -327,7 +327,7 @@ namespace OOP2_Major_mockup_PRJ
             //Update location info
             if (player.IsOnShip)
             {
-                lblShipBoard.Text = Data.ShipName;
+                lblShipBoard.Text = player.ShipName;
                 Dis_Embark.Text = "Disembark";
             }
             else
@@ -402,7 +402,7 @@ namespace OOP2_Major_mockup_PRJ
                 lblOutput.Text = Data.DeathReasons[2];
                 lblPlaceName.Text = "ERROR";
                 lblDate.Text = "ERROR";
-                lblShipBoard.Text = Data.ShipName;
+                lblShipBoard.Text = player.ShipName;
             }
 
             //**to here** to disable
@@ -486,7 +486,7 @@ namespace OOP2_Major_mockup_PRJ
                 //If highscore is lower than current score or highscore is not set
                 if(score < player.Distance || score == 0)
                 {
-                    highScore = Data.PlayerName + " - " + player.Distance + " LY";
+                    highScore = player.PlayerName + " - " + player.Distance + " LY";
 
                     //Uses File.WriteAllText instead of a writer so it overrides any text already in document.
                     File.WriteAllText("Highscore.txt", highScore);

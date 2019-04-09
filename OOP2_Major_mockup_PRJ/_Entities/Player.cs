@@ -14,14 +14,20 @@ namespace OOP2_Major_mockup_PRJ
         public const int MAX_FUEL = 7;
         public const int MAX_ITEMS = 6;
 
+        //initialize backing fields for relevant properties ('full health')
         private int health = MAX_HEALTH;
         private int shipHealth = MAX_SHIPHEALTH;
         private int money = 0;
         private int fuel = MAX_FUEL;
         private int inventoryRow = 1;
 
-        
         //Properties
+        public string PlayerName { get; set; } = "BeebleBrox";
+        public string ShipName { get; set; } = "SS Paradoxical";
+        public int Distance { get; set; }
+        public bool IsOnShip { get; set; } = true;
+        public bool HasMadeChoice { get; set; }
+
         public List<Item> Inventory { get; set; } = new List<Item>();
         public int InventoryRow
         {
@@ -77,9 +83,6 @@ namespace OOP2_Major_mockup_PRJ
                 if (value >= 0) money = value;
             }
         }
-        public int Distance { get; set; }
-        public bool IsOnShip { get; set; } = true;
-        public bool HasMadeChoice { get; set; }
 
     }
 }
