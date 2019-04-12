@@ -55,7 +55,7 @@ namespace OOP2_Major_mockup_PRJ
         /*_-_-_-_-_Button Handlers_-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-__-_-_-_-_*/
         private void NextTurn_Click(object sender, EventArgs e)
         { //(WARP button)
-            if (player.IsOnShip && player.HasMadeChoice)
+            if (player.IsOnShip && player.HasMadeChoice && !player.isDead)
             {
                 if ((scene.StoryCounter >= Data.MAX_EPISODE) && !(messageShown))
                 {//if we are out of scripted scenes, tell the player, then allow them to keep playing randoms until they die.
@@ -84,24 +84,39 @@ namespace OOP2_Major_mockup_PRJ
                 UpdateHUD();
             }
             //Not on ship
-            else if (!player.IsOnShip && player.HasMadeChoice)
+            else if (!player.IsOnShip && player.HasMadeChoice && !player.isDead)
             { 
                 ShowWarning("Unable to warp, you must be on your ship.", 2.5, Color.Gold);
             }
-            else if(player.IsOnShip && !player.HasMadeChoice) { ShowWarning("Unable to end turn until dialog has proceeded", 2.5, Color.Gold); }
+            else if(player.IsOnShip && !player.HasMadeChoice)
+            {
+                ShowWarning("Unable to end turn until dialog has proceeded", 2.5, Color.Gold);
+            }
+            else if (player.isDead)
+            {
+                ShowWarning("You are dead, unable to warp.", 2.5, Color.Gold);
+            }
+
         }
 
         private void Dis_Embark_Click(object sender, EventArgs e)
         {//(Board Ship/ Leave ship button)
-            if (scene.LocationType == 3)
+            if (!player.isDead)
             {
-                ShowWarning("Can't disembark in space!", 2.5, Color.Gold);
+                if (scene.LocationType == 3)
+                {
+                    ShowWarning("Can't disembark in space!", 2.5, Color.Gold);
+                }
+                else
+                {
+                    player.IsOnShip = !player.IsOnShip;
+                }
+                UpdateHUD();
             }
             else
             {
-                player.IsOnShip = !player.IsOnShip;
+                ShowWarning("You're dead. Can't disembark!", 2.5, Color.Gold);
             }
-            UpdateHUD();
         }
 
         private void OptionOne_Click(object sender, EventArgs e)
@@ -216,7 +231,8 @@ namespace OOP2_Major_mockup_PRJ
             {
                 lblOutput.Text = scene.CurrentOptions[button].ResultDescription;
 
-                if (scene.CurrentOptions[button].MoneyEffect < player.Money)
+                //Inverses money effect because merchant events result in negative money values, whereas combat is positive, negative numbers will always be less than the players money.
+                if (-scene.CurrentOptions[button].MoneyEffect > player.Money)
                 {
                     ShowWarning("You can't afford that!", 4, Color.Red);
                     lblOutput.Text = "The merchant, outraged, pushes you away from their wares. You turn back toward the ship, forlorn";
@@ -417,7 +433,7 @@ namespace OOP2_Major_mockup_PRJ
         public void UseInventoryItem(int slot)
         {
             int rowIndex = ((player.InventoryRow - 1) * 5) + (slot - 1);
-            if (player.Inventory.ElementAtOrDefault(rowIndex) != null)
+            if (player.Inventory.ElementAtOrDefault(rowIndex) != null && !player.isDead)
             {
                 Item item = player.Inventory[rowIndex];
                 player.Inventory.RemoveAt(rowIndex);
@@ -484,7 +500,7 @@ namespace OOP2_Major_mockup_PRJ
                 }
 
                 int score = int.Parse(highScore.Substring(highScore.Length - 4, 1));
-                
+
 
                 //If highscore is lower than current score or highscore is not set
                 if(score < player.Distance || score == 0)
