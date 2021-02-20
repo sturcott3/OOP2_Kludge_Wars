@@ -1,5 +1,4 @@
-# OOP2_Kludge_Wars
-major project, partnered
+![]("./LogoGameWide.jpg")
 
 //Special instructions for 'playing' the game:
   This Game is a Choose your own Adventure style story-based game. Read some stuff, make a choice, manage  your resources, Rinse, repeat. The amount of story content is somewhat short, though this is slightly compensated for with the procedurally generated content. The systems are in place to expand the story rapidly, if we choose to continue work at a later date. More on project scope later. 
