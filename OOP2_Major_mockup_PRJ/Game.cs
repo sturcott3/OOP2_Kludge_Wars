@@ -36,7 +36,9 @@ namespace OOP2_Major_mockup_PRJ
             player = new Player();
             scene = new ScenarioController();
             input = new InputController();
-            string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
+
+            //TODO refactor InputController to avoid hardcoding the following
+            string[] playerInfo = { "Player 1", "The Delta" };
             player.PlayerName = playerInfo[0];
             player.ShipName = playerInfo[1];
         }

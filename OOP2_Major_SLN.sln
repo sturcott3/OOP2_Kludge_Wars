@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP2_Major_PRJ", "OOP2_Major_mockup_PRJ\OOP2_Major_PRJ.csproj", "{C459914B-0F8C-4140-AC09-92D1B8EAC5C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheKludgeAwakens", "OOP2_Major_mockup_PRJ\TheKludgeAwakens.csproj", "{C459914B-0F8C-4140-AC09-92D1B8EAC5C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

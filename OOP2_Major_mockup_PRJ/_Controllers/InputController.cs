@@ -12,6 +12,11 @@ namespace OOP2_Major_mockup_PRJ
         private bool StatusOk { get; set; } = true;
 
         //Was intended to be used more, but remains as a useful input validation utility.
+        //temporary fix for application hanging up on player info input screen, removed the following three
+        //lines from Game.cs constructor
+        //string[] playerInfo = input.GetInput("Player Information", "Enter Your Name", "Enter Ship Name", "Start Game", 4, 3);
+        //player.PlayerName = playerInfo[0];
+        //player.ShipName = playerInfo[1];
 
         public string GetInput(string title, string directions, string buttonText, int type)
         {
