@@ -6,7 +6,7 @@ Please note:
 
 ### Install instructions:
 
-- Step 1: Download the installer here: <a href="./Test_Installer_KludgeWars/Release/Kludge_Wars_Setup.msi" download>Kludge Wars Setup</a>
+- Step 1: Download the installer here: <a href="./Test_Installer_KludgeWars/Kludge_Wars_Setup.msi" download>Kludge Wars Setup</a>
 
 - Step 2: Run the installer. Your machine will ask for administrator privelege to do so.
 
