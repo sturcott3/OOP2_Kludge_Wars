@@ -1,8 +1,16 @@
 ![](./LogoGameWide.jpg)
 
+Please note: 
+1. This project is only available on Windows machines, as it is dependant on the .NET framework
+2. This project is no longer being updated, though it may be revived in the future.
+
 ### Install instructions:
 
-coming soon
+- Step 1: Download the installer here: <a href="./Test_Installer_KludgeWars/Release/Kludge_Wars_Setup.msi" download>Kludge Wars Setup</a>
+
+- Step 2: Run the installer. Your machine will ask for administrator privelege to do so.
+
+- Step 3: navigate to wherever the game was installed and run 'OOP2_Major_mockup_PRJ.exe' 
 
 ---
 
@@ -10,7 +18,7 @@ coming soon
 
 This Game is a Choose your own Adventure style story-based game. Read some stuff, make a choice, manage  your resources, rinse, repeat. The length of the story is somewhat short, though there is some procedurally generated content mixed in. The systems are in place to expand the story rapidly, if we choose to continue this project at a later date. More on project scope later. 
 
-#### User controls:
+#### Player Controls:
 
 - The 'Board ship' button lets the user change between being on the ship or outside of it, as appropriate
 - The 2-5 buttons displayed in the flow panel below the story text allow the user to make dialog choices. A choice must be made each turn before proceeding to the next.
